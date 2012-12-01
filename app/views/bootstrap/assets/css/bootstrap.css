@@ -5856,6 +5856,20 @@ a.badge:hover {
           border-radius: 6px;
 }
 
+
+.hero-unit-small {
+  padding: 20px;
+  margin-bottom: 30px;
+  font-size: 18px;
+  font-weight: 200;
+  line-height: 30px;
+  color: inherit;
+  background-color: #eeeeee;
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+}
+
 .hero-unit h1 {
   margin-bottom: 0;
   font-size: 60px;
@@ -5891,3 +5905,91 @@ a.badge:hover {
 .affix {
   position: fixed;
 }
+
+
+.subHeadings {
+	font-size:16px;
+	font-weight:bold;
+	
+	}
+	
+	
+.bgColourGrey {
+	background-color:#E1E1E1;
+	
+	}
+	
+.bgColourGreen {
+	background-color:#CAF4C6;
+	opacity: 0.6;
+	
+	
+	}
+	
+.bgColourYellow {
+	background-color:#E4DCAB;
+	
+	}
+	
+.textinProgressBar {
+	padding:12px 0px 12px 10px;
+	font-size:13px;
+	font-weight:bold;
+	line-height:17px;	
+	
+	}
+	
+.extraPadding {
+	padding-left:8px;
+	padding-right:8px;}
+	
+	
+.headingLevelTwo{
+	font-weight:16px;
+	color:#666;}
+	
+	.tasksBoxes {
+	background-color:#E8E8E8;
+	padding-top:10px;
+	padding-bottom:10px;
+	margin-bottom:10px;
+	height:140px;
+		
+	}
+	
+	
+	
+.tasksBoxesSmallAssign {
+	background-color:#3E60E7;
+	padding-top:10px;
+	padding-bottom:10px;
+	height:80px;
+	color:#FFF;
+		
+	}
+	
+	
+	
+.tasksBoxesSmallDescription {
+	background-color:#FF9;
+	padding-top:10px;
+	padding-bottom:10px;
+	height:80px;}
+	
+	
+.extraSpace {
+
+	height:50px;
+	font-size:10px;
+	color:#999;
+	
+		
+	}
+	
+	.textInsidetaskBoxes {
+		
+		padding-left:12px;}
+		
+	.smalltext {
+		font-size:12px;}
+	
