@@ -1,15 +1,7 @@
-<% title "Event" %>
-
 <p>
-  <strong>Name:</strong>
-  <%= @event.name %>
-</p>
-<p>
-  <strong>Priority:</strong>
-  <%= @event.priority %>
+  <strong>Email sending for event <%= @event.name %> (with id = <%= @event.id %>) completed...</strong>
 </p>
 
 <p>
-  <%= link_to "Edit", edit_event_path(@event) %> |
-  <%= link_to "View All", events_path %>
+  <%= @msg %>
 </p>

@@ -14,6 +14,11 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+
+    p = Person.new(:email => 'jkelabora@dius.com.au', :name => 'jules')
+    mailer = PersonMailer.welcome_email(p)
+    @msg = mailer.deliver
+
   end
 
   def edit
