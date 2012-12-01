@@ -1,0 +1,20 @@
+<% title "Edit Event" %>
+
+<%= form_for @event do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :priority %><br />
+    <%= f.number_field :priority %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>
+
+
+<p>
+  <%= link_to "Show", @event %> |
+  <%= link_to "View All", events_path %>
+</p>

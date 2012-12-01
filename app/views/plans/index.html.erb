@@ -1,0 +1,16 @@
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Postcode</th>
+  </tr>
+  <% for plan in @plans %>
+    <tr>
+      <td><%= plan.name %></td>
+      <td><%= plan.postcode %></td>
+      <td><%= link_to "Show", plan %></td>
+      <td><%= link_to "Edit", edit_plan_path(plan) %></td>
+    </tr>
+  <% end %>
+</table>
+

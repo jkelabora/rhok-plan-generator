@@ -1,0 +1,15 @@
+<% title "Event" %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @event.name %>
+</p>
+<p>
+  <strong>Priority:</strong>
+  <%= @event.priority %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_event_path(@event) %> |
+  <%= link_to "View All", events_path %>
+</p>

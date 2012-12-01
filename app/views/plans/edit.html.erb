@@ -1,0 +1,20 @@
+<% title "Edit Plan" %>
+
+<%= form_for @plan do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :postcode %><br />
+    <%= f.text_field :postcode %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>
+
+
+<p>
+  <%= link_to "Show", @plan %> |
+  <%= link_to "View All", plans_path %>
+</p>

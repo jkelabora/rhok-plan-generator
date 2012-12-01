@@ -1,0 +1,17 @@
+<% title "People" %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Number</th>
+    <th>Email</th>
+  </tr>
+  <% for person in @people %>
+    <tr>
+      <td><%= person.name %></td>
+      <td><%= person.number %></td>
+      <td><%= person.email %></td>
+    </tr>
+  <% end %>
+</table>
+
