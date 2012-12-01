@@ -1,4 +1,12 @@
 RhokPlanGenerator::Application.routes.draw do
+  resources :events
+
+  resources :tasks
+
+  resources :plans
+
+  resources :people
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

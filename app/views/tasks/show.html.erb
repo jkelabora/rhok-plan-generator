@@ -1,0 +1,15 @@
+<% title "Task" %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @task.name %>
+</p>
+<p>
+  <strong>Compulsory:</strong>
+  <%= @task.compulsory %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_task_path(@task) %> |
+  <%= link_to "View All", tasks_path %>
+</p>

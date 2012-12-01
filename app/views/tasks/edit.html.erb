@@ -1,0 +1,20 @@
+<% title "Edit Task" %>
+
+<%= form_for @task do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :compulsory %><br />
+    <%= f.check_box :compulsory %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>
+
+
+<p>
+  <%= link_to "Show", @task %> |
+  <%= link_to "View All", tasks_path %>
+</p>

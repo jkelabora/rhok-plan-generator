@@ -1,0 +1,15 @@
+<% title "Plan" %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @plan.name %>
+</p>
+<p>
+  <strong>Postcode:</strong>
+  <%= @plan.postcode %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_plan_path(@plan) %> |
+  <%= link_to "View All", plans_path %>
+</p>

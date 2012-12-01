@@ -1,0 +1,17 @@
+<% title "Events" %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Priority</th>
+  </tr>
+  <% for event in @events %>
+    <tr>
+      <td><%= event.name %></td>
+      <td><%= event.priority %></td>
+      <td><%= link_to "Show", event %></td>
+      <td><%= link_to "Edit", edit_event_path(event) %></td>
+    </tr>
+  <% end %>
+</table>
+

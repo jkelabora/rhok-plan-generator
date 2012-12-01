@@ -24,6 +24,7 @@ gem 'jquery-rails'
 
 gem "nifty-generators", :group => :development
 
+gem 'mandrill-api'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -39,3 +40,5 @@ gem "nifty-generators", :group => :development
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
+
+#gem "mocha", :group => :test
