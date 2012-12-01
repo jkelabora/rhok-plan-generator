@@ -1,12 +1,11 @@
 source 'https://rubygems.org'
 
+# heroku wants this info
+ruby '1.9.3'
+
 gem 'rails', '3.2.3'
-
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
-gem 'sqlite3'
-
+gem 'pg'
+gem 'thin'
 
 # Gems used only for assets and not required
 # in production environments by default.
