@@ -6,6 +6,11 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+Event.delete_all
+Task.delete_all
+Person.delete_all
+
+
 Event.create(id: 300, name: 'Approaching Fire', priority: 1)
 Task.create(id: 10, name: 'Clean the gutters', event_id: 300)
 Person.create(id: 1, name: 'Julian', email: 'jkelabora@dius.com.au', task_id: 10)
