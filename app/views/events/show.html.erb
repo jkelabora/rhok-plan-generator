@@ -1,7 +1,17 @@
 <p>
-  <strong>Email sending for event <%= @event.name %> (with id = <%= @event.id %>) completed...</strong>
+  <strong>Sent email(s) for event '<%= @event.name %>' (with id = <%= @event.id %>)</strong>
 </p>
 
+<p>
+  <strong>Tasks that subscribe to this event '<%= @task.name %>'</strong>
+</p>
+
+<p>
+  <strong>People that were notified '<%= @person.name %>' on '<%= @person.email %>'</strong>
+</p>
+
+
+===============================================
 <p>
   <%= @msg %>
 </p>
