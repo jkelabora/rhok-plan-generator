@@ -65,6 +65,10 @@ RhokPlanGenerator::Application.routes.draw do
   # match ':controller(/:action(/:id))(.:format)'
 
   root :to => "home#index"
+  match 'page_two' => "home#page_two", :as => :page_two
+  match 'page_three' => "home#page_three", :as => :page_three
+  match 'page_four' => "home#page_four", :as => :page_four
+  # match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
 
 
 end
