@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 # heroku wants this info
 ruby '1.9.3'
 
-gem 'rails', '3.2.3'
+gem 'rails', '3.2.11'
 gem 'pg'
 gem 'thin'
 
