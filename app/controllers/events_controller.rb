@@ -13,7 +13,7 @@ class EventsController < ApplicationController
   end
 
   def show
-    # @event = Event.find(params[:id])
+    @event = Event.find(params[:id])
     # @task = @event.tasks.first
     # @person = @task.people.first
     # mailer = PersonMailer.welcome_email(@event, @person, @task)
