@@ -19,15 +19,15 @@ class EventsController < ApplicationController
     # mailer = PersonMailer.welcome_email(@event, @person, @task)
     # @msg = mailer.deliver
 
-    @account_sid = ENV['TWILIO_ACCOUNT_SID']
-    @auth_token = ENV['TWILIO_AUTH_TOKEN']
+    @account_sid = 'AC6ef2afcab7f0748e9fc427288cdd5f8d'
+    @auth_token = ENV['PARAM1']
 
     # set up a client to talk to the Twilio REST API
     @client = Twilio::REST::Client.new(@account_sid, @auth_token)
 
 
     @account = @client.account
-    @message = @account.sms.messages.create({:from => ENV['TWILIO_FROM'], :to => ENV['TWILIO_TO'], :body => 'rhok-and-roll!'})
+    @message = @account.sms.messages.create({:from => '+19402028234', :to =>  '+61411732678', :body => 'rhok-and-roll!'})
     puts @message
   end
 
