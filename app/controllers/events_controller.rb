@@ -14,8 +14,8 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-    # @task = @event.tasks.first
-    # @person = @task.people.first
+    @task = @event.tasks.first
+    @person = @task.people.first
     # mailer = PersonMailer.welcome_email(@event, @person, @task)
     # @msg = mailer.deliver
 
@@ -27,8 +27,8 @@ class EventsController < ApplicationController
 
 
     @account = @client.account
-    @message = @account.sms.messages.create({:from => '+19402028234', :to =>  '+61411732678', :body => 'rhok-and-roll!'})
-    puts @message
+    @msg = @account.sms.messages.create({:from => '+19402028234', :to =>  '+61411732678', :body => 'rhok-and-roll!'})
+    puts @msg
   end
 
   def edit
