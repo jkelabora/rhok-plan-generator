@@ -17,3 +17,5 @@ end
 gem 'jquery-rails'
 
 gem "nifty-generators", :group => :development
+
+gem 'dotenv', :groups => [:development, :test]
