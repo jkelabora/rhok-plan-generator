@@ -12,10 +12,16 @@ Person.delete_all
 
 
 Event.create(id: 300, name: 'Approaching Fire', priority: 1)
-Task.create(id: 10, name: 'Fill the gutters with water', event_id: 300)
+task_one = Task.find_or_create_by_name(id: 10, name: 'Fill the gutters with water', event_id: 300)
 Person.create(id: 1, name: 'Julian', email: 'jkelabora@dius.com.au', task_id: 10)
 
 
 Event.create(id: 500, name: 'Gale Force Winds', priority: 2)
-Task.create(id: 20, name: 'Secure loose items outside', event_id: 500)
+task_two = Task.find_or_create_by_name(id: 20, name: 'Secure loose items outside', event_id: 500)
 Person.create(id: 2, name: 'Frank', email: 'randombloke95@gmail.com', task_id: 20)
+
+
+p = Plan.find_or_create_by_name(name: 'Clarke Family Plan', postcode: 3113)
+p.tasks << task_one
+p.tasks << task_two
+

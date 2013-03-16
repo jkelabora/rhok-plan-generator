@@ -3,6 +3,8 @@ class Task < ActiveRecord::Base
 
   belongs_to :event
 
+  belongs_to :plan
+
   has_many :people
 
 end
