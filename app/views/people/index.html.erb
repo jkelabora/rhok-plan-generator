@@ -1,15 +1,15 @@
-<% title "People" %>
+<% content_for :title, 'Team' %>
 
 <table>
   <tr>
     <th>Name</th>
-    <th>Number</th>
+    <th>Mobile</th>
     <th>Email</th>
   </tr>
   <% for person in @people %>
     <tr>
       <td><%= person.name %></td>
-      <td><%= person.number %></td>
+      <td><%= person.mobile %></td>
       <td><%= person.email %></td>
     </tr>
   <% end %>

@@ -1,6 +1,10 @@
 class HomeController < ApplicationController
 
   def index
+    (1..4).each do |i|
+      instance_variable_set :"@person#{i}", Person.new
+    end
+
     render 'index'
   end
 

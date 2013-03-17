@@ -4,6 +4,7 @@ class PeopleController < ApplicationController
   end
 
   def create
+    debugger
     @person = Person.new(params[:person])
     if @person.save
       redirect_to people_url, :notice => "Successfully created person."

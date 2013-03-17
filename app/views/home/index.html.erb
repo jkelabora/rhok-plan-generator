@@ -20,7 +20,7 @@
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
     <!-- Fav and touch icons -->
@@ -42,27 +42,27 @@
             <span class="icon-bar"></span>
           </a>
           <a class="brand" href="http://twitter.github.com/bootstrap/examples/hero.html#">Fire Plan</a>
-          
+
           <div class="nav-collapse collapse">
-            
+
             <ul class="nav">
-             
+
               <li class="active"><a href="http://twitter.github.com/bootstrap/examples/hero.html#">Benefits of a fire plan</a></li>
-              
+
               <li><a href="http://twitter.github.com/bootstrap/examples/hero.html#about">Current warnings</a></li>
-              
+
               <li><a href="http://twitter.github.com/bootstrap/examples/hero.html#contact">Contact</a></li>
-              
-              
-                <li><a href="http://twitter.github.com/bootstrap/examples/hero.html#contact">FAQ's</a></li>
-              
-             
-               
+
+
+              <li><a href="http://twitter.github.com/bootstrap/examples/hero.html#contact">FAQ's</a></li>
+
+
+
               </li>
             </ul>
-            
-            
-            
+
+
+
             <form class="navbar-form pull-right">
               <input class="span2" type="text" placeholder="Email">
               <input class="span2" type="password" placeholder="Password">
@@ -79,213 +79,74 @@
       <div class="hero-unit">
         <h1>Welcome, fire plan ready</h1>
         <p>This is how it works</p>
-        
+
       </div>
 
       <!-- Example row of columns -->
-      
-      
-      
-      <div class="row">
-      
-      
-      
-          <div class="span12">
-          
-            
-            <div class="navbar">
-  <div class="navbar-inner">
-    <a class="brand" href="#">Steps to complete</a>
-    <ul class="nav">
 
-<li class="active"><a href="#">Team Details</a></li>
-      <li><a href="#">Team Tasks</a></li>
-      <li><a href="#">Team Summary</a></li>
-      
-    </ul>
-  </div>
-</div>
-      
-      </div>
-      
-      </div>
-      
-      
-      
-      
-      
-      
-      
+
+
       <div class="row">
-        
-     
-        
+
+
+
         <div class="span12">
-          <h2>Start by naming your team</h2>
-          <p>You will need your team member emails and mobile numbers to successfully complete your plan of attack!</p><br><br>
-         
-         
-        <form>
-  <fieldset>
-   <p class="subHeadings"><strong>Team</strong></p>
-       <input type="text" placeholder="Name"> <input type="text" placeholder="Postcode">
-        
-        </fieldset>
-</form>
 
 
+          <div class="navbar">
+            <div class="navbar-inner">
+              <a class="brand" href="#">Steps to complete</a>
+              <ul class="nav">
 
-        
-        <br>
- <br> <p class="subHeadings">Members</p>
+                <li class="active"><a href="#">Team Details</a></li>
+                <li><a href="#">Team Tasks</a></li>
+                <li><a href="#">Team Summary</a></li>
+
+              </ul>
+            </div>
+          </div>
+
         </div>
-         
-        <div class="span3">
-        <p><strong> 1</strong></p>
-        <form>
-  <fieldset>
-    
-    
-   
-    
- <input type="text" placeholder="Name or Nick name"><br>
- 
- <input type="email" placeholder="Email"><br>
-<input type="text" placeholder="Mobile"><br>
-    
-    <br> 
 
-  </fieldset>
-</form>
-       </div>
-       
-       
-       
-       
-       <div class="span3">
-        <p><strong> 2</strong></p>
-        <form>
-  <fieldset>
-    
-    
-   
-    
- <input type="text" placeholder="Name or Nick name"><br>
- 
- <input type="email" placeholder="Email"><br>
-<input type="text" placeholder="Mobile"><br>
-    
-    <br> 
-    
-    
-
-    
-    
-  </fieldset>
-</form>
-       </div>
-       
-       
-       
-       
-       <div class="span3">
-        <p><strong> 3</strong></p>
-        <form>
-  <fieldset>
-    
-    
-   
-    
- <input type="text" placeholder="Name or Nick name"><br>
- 
- <input type="email" placeholder="Email"><br>
-<input type="text" placeholder="Mobile"><br>
-    
-    <br> 
-    
-    
-
-    
-  
-  </fieldset>
-</form>
-       </div>
-        
-        
-        
-        
-        <div class="span3">
-        <p><strong> 4</strong></p>
-        <form>
-  <fieldset>
-    
-    
-   
-    
- <input type="text" placeholder="Name or Nick name"><br>
- 
- <input type="email" placeholder="Email"><br>
-<input type="text" placeholder="Mobile"><br>
-    
-    <br> 
-    
-    
-
-    
-   
-  </fieldset>
-</form>
-       </div>
-        
-        
-        
-        
-        
-        
       </div>
-      
-      <br>
+
+
       <div class="row">
-      
+        <%= render 'people/new' %>
+      </div>
+
+
+    <br>
+    <div class="row">
+
       <div class="span5">
-       <button type="submit" class="btn">+ Add more players</button>
+        <button type="submit" class="btn">+ Add more players</button>
       </div>
-      
-        <div class="span5"></div>
-        <div class="span2">
 
-        <p><%= link_to "Next »", page_two_path, :class => "tn btn-primary btn-large" %></p>
+      <div class="span5"></div>
+      <div class="span2">
 
-        </div>
-      
-      
-      
+        <p><%= link_to "Next »", people_path, :method => :post, :class => "tn btn-primary btn-large" %></p>
+
       </div>
-      
-    
 
-      
-    
-      
-        
-      
-      
+    </div>
 
-      <hr>
+    <hr>
 
-      <footer>
-        <p>© Company 2012</p>
-      </footer>
+    <footer>
+    <p>© Company 2012</p>
+    </footer>
 
-    </div> <!-- /container -->
+  </div> <!-- /container -->
 
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    
-    <%= javascript_include_tag "application" %>
-    
-  </body>
+  <!-- Le javascript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+
+  <%= javascript_include_tag "application" %>
+
+</body>
 </html>
 
 <!-- Localized -->

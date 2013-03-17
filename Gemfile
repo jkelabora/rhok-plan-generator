@@ -16,4 +16,9 @@ end
 
 gem 'jquery-rails'
 
-gem "nifty-generators", :group => :development
+gem 'simple_form'
+
+group :development do
+  gem 'nifty-generators'
+  gem 'debugger'
+end
