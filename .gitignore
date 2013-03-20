@@ -17,3 +17,12 @@
 .idea/
 
 .elasticbeanstalk/
+
+# personal files
+config/database.yml
+
+# ignore swp files
+*.swp
+
+# ignore .DS_Store file
+*.DS_Store
