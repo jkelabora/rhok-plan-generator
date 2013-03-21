@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.11'
+gem 'rails', '3.2.12'
 gem 'mysql2'
 
 # gem "amazon-ses-mailer", "~> 0.0.4"
@@ -20,5 +20,10 @@ gem 'simple_form'
 
 group :development do
   gem 'nifty-generators'
-  gem 'debugger'
+  gem 'pry-rails'
+  gem 'pry-nav'
+end
+
+group :development, :test do
+  gem 'thin'
 end

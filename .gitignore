@@ -17,3 +17,9 @@
 .idea/
 
 .elasticbeanstalk/
+
+# ignore swp files
+*.swp
+
+# ignore .DS_Store file
+*.DS_Store
