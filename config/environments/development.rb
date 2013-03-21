@@ -45,4 +45,7 @@ ActionMailer::Base.smtp_settings = {
 }
 ActionMailer::Base.delivery_method = :smtp
 
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  # In production, :host should be set to the actual host of your application.
+
 end
