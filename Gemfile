@@ -21,4 +21,6 @@ gem 'simple_form'
 group :development do
   gem 'nifty-generators'
   gem 'debugger'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
