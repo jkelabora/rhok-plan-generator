@@ -11,7 +11,5 @@ task :db_setup do
     end
     Rake::Task['db:test:prepare'].invoke
     puts "\ndb setup finished!"
-
   end
 end
-

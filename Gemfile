@@ -1,18 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.12'
-
-group :mysql2 do
-  gem 'mysql2'
-end
-
-group :pg do
-  gem 'pg'
-end
-
-group :sqlite3 do
-  gem 'sqlite3'
-end
+gem 'mysql2'
 
 # gem "amazon-ses-mailer", "~> 0.0.4"
 gem 'twilio-ruby'
@@ -34,7 +23,6 @@ group :development do
   gem 'pry-rails'
   gem 'pry-nav'
 end
-
 
 group :development, :test do
   gem 'thin'
