@@ -4,8 +4,8 @@ class PeopleController < ApplicationController
   end
 
   def create
-    @person = Person.new(params[:person])
-    if @person.save
+
+    if Person.create_multiple params
       redirect_to people_url, :notice => "Successfully created person."
     else
       render :action => 'new'

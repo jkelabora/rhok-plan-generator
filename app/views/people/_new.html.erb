@@ -1,29 +1,35 @@
-<div class="span12">
-  <h2>Start by naming your team</h2>
-  <p>You will need your team member emails and mobile numbers to successfully complete your plan of attack!</p><br><br>
+<%= form_tag people_path, method: :post do %>
+  <div class="span12">
+    <h2>Start by naming your team</h2>
+    <p>You will need your team member emails and mobile numbers to successfully complete your plan of attack!</p><br><br>
 
-  <form>
     <fieldset>
       <p class="subHeadings"><strong>Team</strong></p>
       <input type="text" placeholder="Name"> <input type="text" placeholder="Postcode">
 
     </fieldset>
-  </form>
-  <br>
-  <br>
-  <p class="subHeadings">Members</p>
-</div>
+    <br>
+    <br>
+    <p class="subHeadings">Members</p>
+  </div>
 
-<% (1..4).each do |i| %>
-  <div class="span3">
-    <%= simple_form_for (instance_variable_get "@person#{i}") do |f| %>
-      <p><strong> <%= i %></strong></p>
+  <% @persons.each_with_index do |p, i| %>
+    <div class="span3">
+      <p><strong> <%= i+1 %></strong></p>
       <fieldset>
-        <%= f.input :name,   placeholder: 'Name or Nick name' %>
-        <%= f.input :email,  placeholder: 'Email' %>
-        <%= f.input :mobile, placeholder: 'Mobile' %>
+        <%= text_field_tag 'p_names[]', p.name,  placeholder: 'Name or Nick name' %>
+        <%= email_field_tag 'p_emails[]', p.email, placeholder: 'Email' %>
+        <%= text_field_tag 'p_mobiles[]', p.mobile, placeholder: 'Mobile' %>
         <br>
       </fieldset>
-    <% end %>
+    </div>
+  <% end %>
+
+  <div class="span10">
+    <button type="submit" class="btn">+ Add more players</button>
   </div>
+  <div class="span2">
+    <p><%= submit_tag "Next >>", class: "btn btn-primary" %></p>
+  </div>
+
 <% end %>

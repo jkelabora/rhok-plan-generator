@@ -1,9 +1,8 @@
 class HomeController < ApplicationController
 
   def index
-    (1..4).each do |i|
-      instance_variable_set :"@person#{i}", Person.new
-    end
+    @persons = []
+    (1..4).each { @persons << Person.new }
 
     render 'index'
   end
