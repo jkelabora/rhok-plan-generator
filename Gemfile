@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.11'
+gem 'rails', '3.2.12'
 gem 'mysql2'
 
 # gem "amazon-ses-mailer", "~> 0.0.4"
@@ -22,8 +22,10 @@ gem 'activeadmin'
 gem "meta_search",    '>= 1.1.0.pre'
 
 group :development do
+  gem 'thin'
   gem 'nifty-generators'
-  gem 'debugger'
+  gem 'pry-rails'
+  gem 'pry-nav'
   gem 'better_errors'
   gem 'binding_of_caller'
 end
