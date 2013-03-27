@@ -74,5 +74,5 @@ RhokPlanGenerator::Application.routes.draw do
   match 'page_four' => "home#page_four", :as => :page_four
   # match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
 
-
+  get 'mockup/:action(.:format)', :controller => 'mockup'
 end
