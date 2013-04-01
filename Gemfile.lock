@@ -49,6 +49,8 @@ GEM
       erubis (>= 2.6.6)
     binding_of_caller (0.7.1)
       debug_inspector (>= 0.0.1)
+    bootstrap-sass (2.2.2.0)
+      sass (~> 3.2)
     bourbon (3.1.1)
       sass (>= 3.2.0)
       thor
@@ -61,8 +63,8 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.1)
-    columnize (0.3.6)
     daemons (1.1.9)
+    debug_inspector (0.0.2)
     devise (2.2.3)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -185,6 +187,7 @@ DEPENDENCIES
   activeadmin
   better_errors
   binding_of_caller
+  bootstrap-sass (~> 2.2.2.0)
   coffee-rails (~> 3.2.1)
   jquery-rails
   meta_search (>= 1.1.0.pre)
