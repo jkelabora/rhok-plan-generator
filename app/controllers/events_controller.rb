@@ -27,7 +27,7 @@ class EventsController < ApplicationController
 
 
     @account = @client.account
-    @msg = @account.sms.messages.create({:from => '+19402028234', :to =>  '+61411732678', :body => 'rhok-and-roll!'})
+    @msg = @account.sms.messages.create({:from => '+19402028234', :to =>  @person.mobile, :body => 'rhok-and-roll!'})
     puts @msg
   end
 
