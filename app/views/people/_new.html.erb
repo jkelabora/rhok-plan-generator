@@ -1,11 +1,15 @@
 <%= form_tag people_path, method: :post do %>
   <div class="span12">
-    <h2>Start by naming your team</h2>
-    <p>You will need your team member emails and mobile numbers to successfully complete your plan of attack!</p><br><br>
+    <h2>Family details</h2>
+    <p>Let's start with the names and contact details of everyone</p>
+    <br><br>
 
     <fieldset>
-      <p class="subHeadings"><strong>Team</strong></p>
-      <input type="text" placeholder="Name"> <input type="text" placeholder="Postcode">
+      <p class="subHeadings">
+        <strong>Household</strong>
+      </p>
+      <input type="text" placeholder="Name"> 
+      <input type="text" placeholder="Postcode">
 
     </fieldset>
     <br>
@@ -15,7 +19,7 @@
 
   <% @persons.each_with_index do |p, i| %>
     <div class="span3">
-      <p><strong> <%= i+1 %></strong></p>
+      <!-- <p><strong> <%= i+1 %></strong></p> -->
       <fieldset>
         <%= text_field_tag 'p_names[]', p.name,  placeholder: 'Name or Nick name' %>
         <%= email_field_tag 'p_emails[]', p.email, placeholder: 'Email' %>
@@ -26,8 +30,11 @@
   <% end %>
 
   <div class="span10">
-    <button type="submit" class="btn">+ Add more players</button>
+    <button type="submit" class="btn btn-secondary">
+      <i class="icon-add icon-white">+</i>
+    </button>
   </div>
+
   <div class="span2">
     <p><%= submit_tag "Next >>", class: "btn btn-primary" %></p>
   </div>
