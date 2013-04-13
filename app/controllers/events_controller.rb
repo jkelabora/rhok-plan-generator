@@ -20,8 +20,9 @@ class EventsController < ApplicationController
     # @msg = mailer.deliver
 
     ses = AWS::SimpleEmailService.new(
+      # these two env var *names* are preset by Elastic Beastalk and have been given values via the AWS Console
       :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
-      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY'])
+      :secret_access_key => ENV['AWS_SECRET_KEY']) 
 
     # only required for sandbox ses usage
     identity = ses.identities.verify(@person.email)
