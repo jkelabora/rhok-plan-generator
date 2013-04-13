@@ -10,29 +10,6 @@ Event.delete_all
 Task.delete_all
 Person.delete_all
 
-
-# Event.create(id: 300, name: 'Approaching Fire', priority: 1)
-task_one = Task.find_or_create_by_name(id: 10, name: 'Fill the gutters with water', event_id: 300)
-Person.create(id: 1, name: 'Julian', email: 'jkelabora@dius.com.au', task_id: 10)
-
-
-# Event.create(id: 500, name: 'Gale Force Winds', priority: 2)
-task_two = Task.find_or_create_by_name(id: 20, name: 'Secure loose items outside', event_id: 500)
-Person.create(id: 2, name: 'Frank', email: 'randombloke95@gmail.com', task_id: 20)
-
-
-
-event0 = Event.create(name: 'To Do - Before the bushfire season')
-event1 = Event.create(name: 'To Do - During the Bushfire Season')
-event2 = Event.create(name: 'Night before you evacuate/defend')
-event3 = Event.create(name: 'Doing')
-event4 = Event.create(name: 'Done')
-
-
-#######
-task1 = Task.find_or_create_by_name(name: buckets['5143d205ca26b8bf470015b9'].first, event_id: event1.id)
-
-p = Plan.find_or_create_by_name(name: 'Clarke Family Plan', postcode: 3113)
-
-p.tasks << task_1
-
+# created using script/trello_json_parser.rb
+load = "h = {};h['5143d205ca26b8bf470015b9'] = Event.find_or_create_by_name(name: 'To Do - Before the bushfire season');h['5143de6cb57bd9bf6e001946'] = Event.find_or_create_by_name(name: 'To Do - During the Bushfire Season');h['5143e1fd68d60f4f12001801'] = Event.find_or_create_by_name(name: 'Night before you evacuate/defend');h['5143d205ca26b8bf470015ba'] = Event.find_or_create_by_name(name: 'Doing');h['5143d205ca26b8bf470015bb'] = Event.find_or_create_by_name(name: 'Done');puts h;event = h['5143d205ca26b8bf470015b9'];Task.find_or_create_by_name(name: 'Clear fine fuels around the house/property - weeds, leaf litter, dead branches (smaller than diameter of a pencil).', event_id: event.id);Task.find_or_create_by_name(name: 'Trim tree branches overhanging the house.', event_id: event.id);Task.find_or_create_by_name(name: 'Trim shrubs around the house - no shrubs over 1 metre.', event_id: event.id);Task.find_or_create_by_name(name: 'Clear gutters.', event_id: event.id);Task.find_or_create_by_name(name: 'Cover air vents with fine metal mesh.', event_id: event.id);Task.find_or_create_by_name(name: 'Check hose fittings are in good working order.', event_id: event.id);Task.find_or_create_by_name(name: 'Check hoses reach entire house.', event_id: event.id);Task.find_or_create_by_name(name: 'Prepare emergency stay/go kit.', event_id: event.id);Task.find_or_create_by_name(name: 'Place emergency stay/go kit in an easy accessible location.', event_id: event.id);Task.find_or_create_by_name(name: 'Move firewood away from the house.', event_id: event.id);Task.find_or_create_by_name(name: 'Move any flammable items away from the house.', event_id: event.id);Task.find_or_create_by_name(name: 'Back up computer files onto external hard drive.', event_id: event.id);Task.find_or_create_by_name(name: 'Know where metal buckets, mops, rakes, etc are located.', event_id: event.id);Task.find_or_create_by_name(name: 'Prepare relocation kit.', event_id: event.id);event = h['5143de6cb57bd9bf6e001946'];Task.find_or_create_by_name(name: 'Fill external water sources - eg. wheelie bins with lids.', event_id: event.id);Task.find_or_create_by_name(name: 'Maintain fine fuels around the house.', event_id: event.id);Task.find_or_create_by_name(name: 'Keep gutters clear.', event_id: event.id);Task.find_or_create_by_name(name: 'Know where metal buckets, mops, rakes, etc are located.', event_id: event.id);Task.find_or_create_by_name(name: 'Know where boots are for all household members.', event_id: event.id);Task.find_or_create_by_name(name: 'Practice moving through the house in full protective gear in the complete dark.', event_id: event.id);Task.find_or_create_by_name(name: 'Find somewhere safe to put photos, scrapbooks, documents (birth certificates, insurance docs & receipts, passports).', event_id: event.id);event = h['5143e1fd68d60f4f12001801'];Task.find_or_create_by_name(name: 'Listen to ABC 774 for updates on fire conditions.', event_id: event.id);Task.find_or_create_by_name(name: 'Check warrandyte.org.au Real Time Info page regularly for updates on fire & weather conditions.', event_id: event.id);Task.find_or_create_by_name(name: 'Charge mobile phones and i-pods.', event_id: event.id);Task.find_or_create_by_name(name: 'Check emergency stay/go kit is complete.', event_id: event.id);Task.find_or_create_by_name(name: 'Move door mats and other loose flammable items inside or away from the house.', event_id: event.id);Task.find_or_create_by_name(name: 'Put emergency stay/go kit in car or near the front door.', event_id: event.id);event = h['5143d205ca26b8bf470015ba'];event = h['5143d205ca26b8bf470015bb'];"
+eval load
