@@ -19,7 +19,6 @@
 
   <% @persons.each_with_index do |p, i| %>
     <div class="span3">
-      <!-- <p><strong> <%= i+1 %></strong></p> -->
       <fieldset>
         <%= text_field_tag 'p_names[]', p.name,  placeholder: 'Name or Nick name' %>
         <%= email_field_tag 'p_emails[]', p.email, placeholder: 'Email' %>
@@ -30,9 +29,7 @@
   <% end %>
 
   <div class="span10">
-    <button type="submit" class="btn btn-secondary">
-      <i class="icon-add icon-white">+</i>
-    </button>
+    <button class="btn btn-secondary" type="submit">+</button>
   </div>
 
   <div class="span2">
