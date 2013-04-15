@@ -1,39 +1,53 @@
 <%= form_tag people_path, method: :post do %>
-  <div class="span12">
-    <h2>Family details</h2>
-    <p>Let's start with the names and contact details of everyone</p>
-    <br><br>
+<div class="container">
+  <div class="row">
+    <div class="span12">
+      <h2>Family details</h2>
+      <p>Let's start with the names and contact details of everyone</p>
+    </div>
+  </div>
 
-    <fieldset>
-      <p class="subHeadings">
-        <strong>Household</strong>
-      </p>
-      <input type="text" placeholder="Name"> 
-      <input type="text" placeholder="Postcode">
+  <div class="row">
+    <div class="span12">
+      <h4>Household</h4>
+    </div>
+  </div>
 
-    </fieldset>
-    <br>
-    <br>
-    <p class="subHeadings">Members</p>
+  <div class="row">
+    <div class="span12">
+      <fieldset>
+        <input type="text" placeholder="Name"> 
+        <input type="text" placeholder="Postcode">
+
+      </fieldset>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="span12">
+      <h4>Members</h4>
+    </div>
   </div>
 
   <% @persons.each_with_index do |p, i| %>
-    <div class="span3">
+  <div class="row">
+    <div class="span12">
       <fieldset>
-        <%= text_field_tag 'p_names[]', p.name,  placeholder: 'Name or Nick name' %>
+        <%= text_field_tag 'p_names[]', p.name, placeholder: 'Name or Nick name' %>
         <%= email_field_tag 'p_emails[]', p.email, placeholder: 'Email' %>
         <%= text_field_tag 'p_mobiles[]', p.mobile, placeholder: 'Mobile' %>
         <br>
       </fieldset>
-    </div>
+    </div></div>
   <% end %>
 
-  <div class="span10">
-    <button class="btn btn-secondary" type="submit">+</button>
+  <div class="row">
+    <div class="span10">
+      <button class="btn btn-secondary" type="submit">+</button>
+    </div>
+    <div class="span2">
+      <p><%= submit_tag "Next >>", class: "btn btn-primary" %></p>
+    </div>
   </div>
-
-  <div class="span2">
-    <p><%= submit_tag "Next >>", class: "btn btn-primary" %></p>
-  </div>
-
+</div>
 <% end %>
