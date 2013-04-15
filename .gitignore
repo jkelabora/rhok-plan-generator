@@ -23,3 +23,5 @@
 
 # ignore .DS_Store file
 *.DS_Store
+
+public/assets/
