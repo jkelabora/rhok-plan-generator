@@ -16,7 +16,7 @@ group :assets do
   gem 'jquery-rails'
 end
 
-
+gem 'virtus'
 gem 'simple_form'
 
 gem 'activeadmin'

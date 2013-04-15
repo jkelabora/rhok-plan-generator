@@ -11,6 +11,8 @@ RhokPlanGenerator::Application.routes.draw do
 
   resources :people
 
+  resources :signups
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -66,13 +68,14 @@ RhokPlanGenerator::Application.routes.draw do
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
-  match ':controller(/:action(/:id))(.:format)'
+  # match ':controller(/:action(/:id))(.:format)'
 
-  root :to => "home#index"
-  match 'page_two' => "home#page_two", :as => :page_two
-  match 'page_three' => "home#page_three", :as => :page_three
-  match 'page_four' => "home#page_four", :as => :page_four
+  root :to => "signups#new"
+
+  match 'page_two' => "signups#page_two", :as => :page_two
+  # match 'page_three' => "home#page_three", :as => :page_three
+  # match 'page_four' => "home#page_four", :as => :page_four
   # match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
 
-  get 'mockup/:action(.:format)', :controller => 'mockup'
+  # get 'mockup/:action(.:format)', :controller => 'mockup'
 end
