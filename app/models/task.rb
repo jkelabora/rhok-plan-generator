@@ -5,6 +5,8 @@ class Task < ActiveRecord::Base
 
   belongs_to :plan
 
-  has_many :people
+  has_many :allocations
+
+  has_many :people, :through => :allocations
 
 end
