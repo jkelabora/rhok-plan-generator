@@ -2,30 +2,23 @@
 <div class="container">
   <div class="row">
     <div class="span12">
-      <h2>Family details</h2>
-      <p>Let's start with the names and contact details of everyone</p>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="span12">
-      <h4>Household</h4>
+      <h2>Plan and Family information</h2>
+      <p>Let's start with a few details including the names and contact details of everyone</p>
     </div>
   </div>
 
   <div class="row">
     <div class="span12">
       <fieldset>
-        <input type="text" placeholder="Name"> 
-        <input type="text" placeholder="Postcode">
-
+        <%= text_field_tag "p_plan_name", nil, :placeholder=>"Plan Name" %>
+        <%= text_field_tag "p_postcode", nil, :placeholder=>"Household Postcode"%>
       </fieldset>
     </div>
   </div>
 
   <div class="row">
     <div class="span12">
-      <h4>Members</h4>
+      <h4>Family members</h4>
     </div>
   </div>
 
@@ -37,7 +30,8 @@
         <%= email_field_tag "p_email_#{i}", p.email, placeholder: "Email" %>
         <%= text_field_tag "p_mobile_#{i}", p.mobile, placeholder: "Mobile" %>
       </fieldset>
-    </div></div>
+    </div>
+  </div>
   <% end %>
 
   <div class="row">

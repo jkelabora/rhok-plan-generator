@@ -11,8 +11,8 @@ class Signup
   attr_reader :user
   # attr_reader attribute :plan
 
-  attribute :name, String
-  attribute :plan_name, String
+  attribute :p_plan_name, String
+  attribute :p_postcode, String
 
   attribute :p_name_0, String
   attribute :p_email_0, String
@@ -41,7 +41,7 @@ class Signup
 private
 
   def persist!
-    @plan = Plan.create!(name: plan_name)
+    @plan = Plan.create!(name: p_plan_name, postcode: p_postcode)
     @plan.people.create!(name: p_name_0, email: p_email_0, mobile: p_mobile_0)
     @plan.people.create!(name: p_name_1, email: p_email_1, mobile: p_mobile_1)
   end
