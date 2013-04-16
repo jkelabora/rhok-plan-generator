@@ -3,13 +3,8 @@
 </p>
 
 <p>
-  <strong>Tasks that subscribe to this event '<%= @task.name %>'</strong>
+  <strong>People that were notified "<%= @people.collect(&:name).join(', ') %>" on "<%= @people.collect(&:email).join ', ' %>"</strong>
 </p>
-
-<p>
-  <strong>People that were notified '<%= @person.name %>' on '<%= @person.email %>'</strong>
-</p>
-
 
 ===============================================
 <p>
