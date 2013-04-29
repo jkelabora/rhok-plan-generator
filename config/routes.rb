@@ -4,14 +4,11 @@ RhokPlanGenerator::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
 
   resources :events
-
   resources :tasks
-
   resources :plans
-
   resources :people
-
   resources :signups
+  resources :allocations
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,0 +1,13 @@
+<table>
+  <tr>
+    <th>UserId</th>
+    <th>TaskId</th>
+  </tr>
+  <% for allocation in @allocations %>
+    <tr>
+      <td><%= allocation.person_id %></td>
+      <td><%= allocation.task_id %></td>
+    </tr>
+  <% end %>
+</table>
+
