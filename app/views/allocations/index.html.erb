@@ -79,7 +79,7 @@
 
 <div id="people">
   <% for person in @people %>
-    <div class="column" draggable="true">
+    <div class="column" draggable="true" data-id="<%= person.id %>">
       <header>Person id:name</header>
       <%= person.id %>:<%= person.name %>
     </div>
@@ -88,7 +88,7 @@
 
 <div id="tasks">
   <% for task in @tasks %>
-    <div class="column" draggable="true">
+    <div class="column" draggable="true" data-id="<%= task.id %>">
       <header>Task id:name</header>
       <%= task.id %>:<%= task.name[0..80] %>
     </div>

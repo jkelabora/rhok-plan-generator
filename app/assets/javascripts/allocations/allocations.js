@@ -11,7 +11,7 @@ if (Modernizr.draganddrop) {
     dragSrcEl = this;
 
     e.dataTransfer.effectAllowed = 'move';
-    e.dataTransfer.setData('text/html', this.innerHTML); // the data payload is set to the actual HTML of the source column
+    e.dataTransfer.setData('application/json', this.getAttribute('data-id')); // the data payload is set to the actual HTML of the source column
   }
 
   function handleDragEnter(e) {
@@ -31,6 +31,18 @@ if (Modernizr.draganddrop) {
     this.classList.remove('over');  // this / e.target is previous target element.
   }
 
+  function createAllocation(task_id, person_id) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '/allocations', true);
+    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xhr.onload = function(e) {
+      if (this.status == 201) {
+        console.log(this.responseText);
+      }
+    };
+    xhr.send(JSON.stringify({allocation: {task_id: task_id, person_id: person_id}}));
+  }
+
   function handleDrop(e) {
     // this / e.target is current target element.
     if (e.stopPropagation) {
@@ -38,10 +50,11 @@ if (Modernizr.draganddrop) {
     }
 
     // See the section on the DataTransfer object.
-    if (dragSrcEl != this) {
-      // Set the source column's HTML to the HTML of the column we dropped on.
-      dragSrcEl.innerHTML = this.innerHTML;
-      this.innerHTML = e.dataTransfer.getData('text/html');
+    if (dragSrcEl != this && dragSrcEl.parentNode.id === 'tasks' && this.parentNode.id === 'people') {
+      task_id = e.dataTransfer.getData('application/json');
+      person_id = this.getAttribute('data-id');
+
+      createAllocation(task_id, person_id);
     }
     return false;
   }
