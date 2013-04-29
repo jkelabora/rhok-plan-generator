@@ -4,7 +4,9 @@ class AllocationsController < ApplicationController
 
   def index
     @allocations = Allocation.all
-    respond_with @allocations
+    @people = Person.all
+    @tasks = Task.all
+    render :action => 'index'
   end
 
 # curl -v -H "Accept: application/json" -H "Content-type: application/json" -X POST -d '{"allocation":{"task_id":"2","person_id":"2"}}'  http://localhost:3000/allocations
