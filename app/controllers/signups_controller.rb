@@ -14,7 +14,14 @@ class SignupsController < ApplicationController
 
       # flash[:notice] = "Plan and two people successfully created"
       # @persons = [Person.new, Person.new]
-      render "signups/page_two"
+
+
+
+      @allocations = Allocation.all
+      @people = Person.all
+      @tasks = Task.all
+
+      redirect_to allocations_path
     else
       render "new"
     end
