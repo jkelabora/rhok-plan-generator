@@ -16,7 +16,9 @@ if (Modernizr.draganddrop) {
 
   function handleDragEnter(e) {
     // this / e.target is the current hover target.
-    this.classList.add('over');
+    if (this.parentNode.id === 'people') {
+      this.classList.add('over');
+    }
   }
 
   function handleDragOver(e) {
