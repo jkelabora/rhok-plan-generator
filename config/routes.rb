@@ -1,6 +1,8 @@
 RhokPlanGenerator::Application.routes.draw do
-  ActiveAdmin.routes(self)
 
+  root :to => "signups#new"
+
+  ActiveAdmin.routes(self)
   devise_for :admin_users, ActiveAdmin::Devise.config
 
   resources :events
@@ -67,7 +69,6 @@ RhokPlanGenerator::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
 
-  root :to => "signups#new"
 
   match 'page_two' => "signups#page_two", :as => :page_two
   # match 'page_three' => "home#page_three", :as => :page_three

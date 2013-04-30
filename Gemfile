@@ -19,7 +19,7 @@ end
 gem 'virtus'
 gem 'simple_form'
 
-gem 'activeadmin'
+gem 'activeadmin',    '0.6.0'
 gem "meta_search",    '>= 1.1.0.pre'
 
 group :development do
