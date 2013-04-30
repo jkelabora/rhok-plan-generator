@@ -9,8 +9,8 @@
   -webkit-user-drag: element;
 }
 .column {
-  height: 150px;
-  width: 150px;
+  // height: 150px;
+  // width: 150px;
   float: left;
   border: 2px solid #666666;
   /*background-color: #ccc;*/
@@ -50,13 +50,19 @@
 
 #allocations div.column {
   background-color: green;
+  height: 60px;
+  width: 150px;
 }
 
 #people div.column {
+  height: 60px;
+  width: 150px;
   background-color: yellow;
 }
 
 #tasks div.column {
+  height: 95px;
+  width: 250px;
   background-color: darkgray;
 }
 
