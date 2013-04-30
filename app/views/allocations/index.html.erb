@@ -7,7 +7,9 @@
       </div>
     <% end %>
   </div>
+</div>
 
+<div class='container'>
   <div id="people">
     <% for person in @people %>
       <div class="column" draggable="true" data-id="<%= person.id %>">
@@ -16,7 +18,9 @@
       </div>
     <% end %>
   </div>
+</div>
 
+<div class='container'>
   <div id="tasks">
     <% for task in @tasks %>
       <div class="column" draggable="true" data-id="<%= task.id %>">

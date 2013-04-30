@@ -37,19 +37,17 @@ if (Modernizr.draganddrop) {
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     xhr.onload = function(e) {
       if (this.status == 200) {
-        console.log(this.responseText);
-
-// [{"id":25,"person_id":4,"task_id":44},{"id":26,"person_id":4,"task_id":44}]
-
-// <div id="allocations">
-//   <% for allocation in @allocations %>
-//     <div class="column" draggable="true">
-//       <header>Allocation p<->t</header>
-//       <%= allocation.person_id %><-><%= allocation.task_id %> 
-//     </div>
-//   <% end %>
-// </div>
-
+        // nasty dom update to follow...
+        elem = document.getElementById('allocations');
+        var updated_allocations = JSON.parse(this.responseText);
+        var html = "";
+        for (var a in updated_allocations) {
+          html += "<div class='column' draggable='true'>";
+          html += "<header>Allocation p<->t</header>";
+          html += updated_allocations[a].person_id + "<->" + updated_allocations[a].task_id;
+          html += "</div>";
+        }
+        elem.innerHTML = html;
       }
     };
     xhr.send(JSON.stringify({allocation: {task_id: task_id, person_id: person_id}}));
