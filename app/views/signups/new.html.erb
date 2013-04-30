@@ -1,77 +1,46 @@
-    <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-
-          <div class="brand">Active Fire Plan Generator</div>
-          
-          <div class="nav-collapse collapse">
-            <form class="navbar-form pull-right">
-              <input class="span2" type="text" placeholder="Email">
-              <input class="span2" type="password" placeholder="Password">
-              <button type="submit" class="btn">Sign in</button>
-            </form>
-          </div>
-        </div>
+<div class="container">
+  <%= form_tag signups_path, method: :post do %>
+    <div class="row">
+      <div class="span12">
+        <h2>Plan and Family information</h2>
+        <p>Let's start with a few details including the names and contact details of everyone</p>
       </div>
     </div>
 
-    <div class="container">
-
-      <!-- Main hero unit for a primary marketing message or call to action -->
-      <!-- <div class="hero-unit"> -->
-        <!-- <h1>Welcome, fire plan ready</h1> -->
-        <!-- <p>This is how it works</p> -->
-      <!-- </div> -->
-
-      <!-- Example row of columns -->
-
-      <div class="row">
-
-
-
-        <div class="span12">
-
-
-          <div class="navbar">
-            <div class="navbar-inner">
-              <a class="brand" href="#">Steps to complete</a>
-              <ul class="nav">
-
-                <li class="active"><a href="#">Family Details</a></li>
-                <li><a href="#">Tasks</a></li>
-                <li><a href="#">Summary</a></li>
-
-              </ul>
-            </div>
-          </div>
-
-        </div>
-
+    <div class="row">
+      <div class="span12">
+        <fieldset>
+          <%= text_field_tag "p_plan_name", nil, :placeholder=>"Plan Name" %>
+          <%= text_field_tag "p_postcode", nil, :placeholder=>"Household Postcode"%>
+        </fieldset>
       </div>
+    </div>
 
-
-      <div class="row">
-        <%= render 'people/new' %>
+    <div class="row">
+      <div class="span12">
+        <h4>Family members</h4>
       </div>
+    </div>
 
-    <br>
-    
-    <hr>
+    <% @persons.each_with_index do |p, i| %>
+    <div class="row">
+      <div class="span12">
+        <fieldset>
+          <%= text_field_tag "p_name_#{i}", p.name, placeholder: "Name or Nick name" %>
+          <%= email_field_tag "p_email_#{i}", p.email, placeholder: "Email" %>
+          <%= text_field_tag "p_mobile_#{i}", p.mobile, placeholder: "Mobile" %>
+        </fieldset>
+      </div>
+    </div>
+    <% end %>
 
-    <footer>
-    <p>© 2012</p>
-    </footer>
-
-  </div> <!-- /container -->
-
-  <!-- Le javascript
-  ================================================== -->
-  <!-- Placed at the end of the document so the pages load faster -->
-</html>
-
-<!-- Localized -->
+    <div class="row">
+      <div class="span10">
+        <button class="btn btn-secondary" type="submit">+</button>
+      </div>
+      <div class="span2">
+        <p><%= submit_tag "Next >>", class: "btn btn-primary" %></p>
+      </div>
+    </div>
+  <% end %>
+</div>
