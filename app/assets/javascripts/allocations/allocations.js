@@ -2,7 +2,6 @@ if (Modernizr.draganddrop) {
   // Browser supports HTML5 DnD.
   // console.log('yay..!');
 
-
   var dragSrcEl = null;
 
   function handleDragStart(e) {
@@ -16,7 +15,7 @@ if (Modernizr.draganddrop) {
 
   function handleDragEnter(e) {
     // this / e.target is the current hover target.
-    if (this.parentNode.id === 'people') {
+    if (this.parentNode.parentNode.id === 'people') {
       this.classList.add('over');
     }
   }
@@ -44,10 +43,9 @@ if (Modernizr.draganddrop) {
         var updated_allocations = JSON.parse(this.responseText);
         var html = "";
         for (var a in updated_allocations) {
-          html += "<div class='column' draggable='true'>";
-          html += "<header>Allocation p<->t</header>";
+          html += "<li><span class='dnd-node'>";
           html += updated_allocations[a].person_id + "<->" + updated_allocations[a].task_id;
-          html += "</div>";
+          html += "</span></li>";
         }
         elem.innerHTML = html;
       }
@@ -62,7 +60,7 @@ if (Modernizr.draganddrop) {
     }
 
     // See the section on the DataTransfer object.
-    if (dragSrcEl != this && dragSrcEl.parentNode.id === 'tasks' && this.parentNode.id === 'people') {
+    if (dragSrcEl != this && dragSrcEl.parentNode.parentNode.id === 'tasks' && this.parentNode.parentNode.id === 'people') {
       task_id = e.dataTransfer.getData('application/json');
       person_id = this.getAttribute('data-id');
 
@@ -74,22 +72,20 @@ if (Modernizr.draganddrop) {
   function handleDragEnd(e) {
     // this/e.target is the source node.
 
-    [].forEach.call(cols, function (col) {
-      col.classList.remove('over');
-      col.style.opacity = '1.0';
+    [].forEach.call(nodes, function (node) {
+      node.classList.remove('over');
+      node.style.opacity = '1.0';
     });
   }
 
-
-
-  var cols = document.querySelectorAll('.column');
-  [].forEach.call(cols, function(col) {
-    col.addEventListener('dragstart', handleDragStart, false);
-    col.addEventListener('dragenter', handleDragEnter, false);
-    col.addEventListener('dragover', handleDragOver, false);
-    col.addEventListener('dragleave', handleDragLeave, false);
-    col.addEventListener('drop', handleDrop, false);
-    col.addEventListener('dragend', handleDragEnd, false);
+  var nodes = document.querySelectorAll('.dnd-node');
+  [].forEach.call(nodes, function(node) {
+    node.addEventListener('dragstart', handleDragStart, false);
+    node.addEventListener('dragenter', handleDragEnter, false);
+    node.addEventListener('dragover', handleDragOver, false);
+    node.addEventListener('dragleave', handleDragLeave, false);
+    node.addEventListener('drop', handleDrop, false);
+    node.addEventListener('dragend', handleDragEnd, false);
   });
 
 

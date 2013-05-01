@@ -1,32 +1,29 @@
 <div class='container'>
-  <div id="allocations">
+  <ul id="allocations">
     <% for allocation in @allocations %>
-      <div class="column" draggable="true">
-        <header>Allocation p<->t</header>
-        <%= allocation.person_id %><-><%= allocation.task_id %> 
-      </div>
+      <li>
+        <span class="dnd-node"><%= allocation.person_id %><-><%= allocation.task_id %></span>
+      </li>
     <% end %>
-  </div>
+  </ul>
 </div>
 
 <div class='container'>
-  <div id="people">
+  <ul id="people">
     <% for person in @people %>
-      <div class="column" draggable="true" data-id="<%= person.id %>">
-        <header>Person id:name</header>
-        <%= person.id %>:<%= person.name %>
-      </div>
+      <li>
+        <span class="dnd-node" data-id="<%= person.id %>"><%= person.name.capitalize %> (<%= person.email %>, <%= person.mobile %>)</span>
+      </li>
     <% end %>
-  </div>
+  </ul>
 </div>
 
 <div class='container'>
-  <div id="tasks">
+  <ul id="tasks">
     <% for task in @tasks %>
-      <div class="column" draggable="true" data-id="<%= task.id %>">
-        <header>Task id:name</header>
-        <%= task.id %>:<%= task.name[0..80] %>
-      </div>
+      <li>
+        <span class="dnd-node" draggable='true' data-id="<%= task.id %>"><%= task.name[0..50] %></span>
+      </li>
     <% end %>
-  </div>
+  </ul>
 </div>

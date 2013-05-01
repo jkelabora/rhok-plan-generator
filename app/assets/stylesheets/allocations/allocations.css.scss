@@ -1,3 +1,60 @@
+li {
+  list-style: none;
+  float: left;
+  padding: 10px;
+  margin: 10px;
+}
+
+ul#tasks li span {
+  text-decoration: none;
+  color: #000;
+  margin: 10px;
+  width: 150px;
+  border: 3px dashed #999;
+  background: #eee;
+  padding: 10px;
+  // display: block;
+}
+
+*:-khtml-drag {
+  background-color: rgba(238,238,238, 0.5);
+}
+
+// ul#tasks li span:hover:after {
+//   content: ' (drag me)';
+// }
+
+ul {
+  margin-left: 200px;
+}
+
+ul#people li span.over {
+  border-color: #333;
+  background: red;
+}
+
+ul#people li span {
+  text-decoration: none;
+  color: #000;
+  margin: 10px;
+  width: 150px;
+  border: 3px solid #999;
+  background: rgb(137, 196, 165);
+  padding: 10px;
+  // display: block;
+}
+
+ul#allocations li span {
+  text-decoration: none;
+  color: #000;
+  margin: 10px;
+  width: 150px;
+  border: 3px solid #999;
+  background: rgb(147, 137, 179);
+  padding: 10px;
+  // display: block;
+}
+
 /* Prevent the text contents of draggable elements from being selectable. */
 [draggable] {
   -moz-user-select: none;
@@ -7,66 +64,34 @@
   /* Required to make elements draggable in old WebKit */
   -khtml-user-drag: element;
   -webkit-user-drag: element;
-}
-.column {
-  // height: 150px;
-  // width: 150px;
-  float: left;
-  border: 2px solid #666666;
-  /*background-color: #ccc;*/
-  margin-right: 5px;
-  -webkit-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -moz-border-radius: 10px;
-  border-radius: 10px;
-  -webkit-box-shadow: inset 0 0 3px #000;
-  -ms-box-shadow: inset 0 0 3px #000;
-  box-shadow: inset 0 0 3px #000;
-  text-align: center;
   cursor: move;
 }
-.column header {
+
+
+// ===============================================maybe useful for target image
+#bin {
+  background: url(images/bin.jpg) top right no-repeat;
+  height: 250px;
+  width: 166px;
+  float: left;
+  border: 5px solid #000;
+  position: relative;
+  margin-top: 0;
+}
+
+#bin.over {
+  background: url(images/bin.jpg) top left no-repeat;
+}
+
+#bin p {
+  font-weight: bold;
+  text-align: center;
+  position: absolute;
+  bottom: 20px;
+  width: 166px;
+  font-size: 32px;
   color: #fff;
-  text-shadow: #000 0 1px;
-  box-shadow: 5px;
-  padding: 5px;
-  background: -moz-linear-gradient(left center, rgb(0,0,0), rgb(79,79,79), rgb(21,21,21));
-  background: -webkit-gradient(linear, left top, right top,
-                               color-stop(0, rgb(0,0,0)),
-                               color-stop(0.50, rgb(79,79,79)),
-                               color-stop(1, rgb(21,21,21)));
-  background: -webkit-linear-gradient(left center, rgb(0,0,0), rgb(79,79,79), rgb(21,21,21));
-  background: -ms-linear-gradient(left center, rgb(0,0,0), rgb(79,79,79), rgb(21,21,21));
-  border-bottom: 1px solid #ddd;
-  -webkit-border-top-left-radius: 10px;
-  -moz-border-radius-topleft: 10px;
-  -ms-border-radius-topleft: 10px;
-  border-top-left-radius: 10px;
-  -webkit-border-top-right-radius: 10px;
-  -ms-border-top-right-radius: 10px;
-  -moz-border-radius-topright: 10px;
-  border-top-right-radius: 10px;
+  text-shadow: #000 2px 2px 2px;
 }
 
-#allocations div.column {
-  background-color: green;
-  height: 60px;
-  width: 150px;
-}
-
-#people div.column {
-  height: 60px;
-  width: 150px;
-  background-color: yellow;
-}
-
-#tasks div.column {
-  height: 95px;
-  width: 250px;
-  background-color: darkgray;
-}
-
-.column.over {
-  border: 2px dashed #000;
-}
 
