@@ -30,6 +30,7 @@ class AllocationsController < ApplicationController
   def destroy
     Allocation.delete(params[:id])
     render :json => {}
+    # render :json => {id: params[:id]}
   end
 
 end

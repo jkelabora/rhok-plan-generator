@@ -1,5 +1,5 @@
 class Task < ActiveRecord::Base
-  attr_accessible :name, :compulsory, :people, :id, :event_id
+  attr_accessible :name, :compulsory, :people, :id, :event_id, :plan_id
 
   belongs_to :event
 
