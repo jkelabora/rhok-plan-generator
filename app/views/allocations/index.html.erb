@@ -1,4 +1,8 @@
 <div class='container'>
+  <h5 id='event' data-id="<%= @event.id %>"><%= @event.name %></h5>
+</div>
+
+<div class='container'>
   <ul id="allocations">
     <% for allocation in @allocations %>
       <li>

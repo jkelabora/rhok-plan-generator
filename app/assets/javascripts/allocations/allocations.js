@@ -50,7 +50,8 @@ if (Modernizr.draganddrop) {
         elem.innerHTML = html;
       }
     };
-    xhr.send(JSON.stringify({allocation: {task_id: task_id, person_id: person_id}}));
+    current_event_id = document.getElementById('event').getAttribute('data-id');
+    xhr.send(JSON.stringify({id: current_event_id, allocation: {task_id: task_id, person_id: person_id}}));
   }
 
   function handleDrop(e) {
