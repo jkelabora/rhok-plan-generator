@@ -32,10 +32,6 @@ if (Modernizr.draganddrop) {
     this.classList.remove('over');  // this / e.target is previous target element.
   }
 
-  function wow(e) {
-    console.log('jeeeezuz...');
-  }
-
   function createAllocation(task_id, person_id) {
     var xhr = new XMLHttpRequest();
     xhr.open('POST', '/allocations', true);
