@@ -6,7 +6,7 @@
   <ul id="allocations">
     <% for allocation in @allocations %>
       <li>
-        <span class="dnd-node"><%= allocation.person_id %><-><%= allocation.task_id %></span>
+        <span class="dnd-node" data-id="<%= allocation.id %>"><%= allocation.person_id %><-><%= allocation.task_id %></span>
       </li>
     <% end %>
   </ul>

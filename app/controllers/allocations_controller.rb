@@ -25,4 +25,11 @@ class AllocationsController < ApplicationController
     @allocations = Allocation.where(task_id: @tasks)
     render :json => @allocations.to_json(except: ['created_at', 'updated_at'])
   end
+
+# curl -v -H "Accept: application/json" -H "Content-type: application/json" -X DELETE http://localhost:3000/allocations/3
+  def destroy
+    Allocation.delete(params[:id])
+    render :json => {}
+  end
+
 end

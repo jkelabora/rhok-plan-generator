@@ -11,6 +11,8 @@ RhokPlanGenerator::Application.routes.draw do
   resources :people
   resources :signups
   resources :allocations
+  # resources :allocations, :only => [:index, :create, :destroy]
+  # resources :allocations, :path_names => { :index  => 'index', :create  => 'create', :destroy => 'destroy' }
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
