@@ -1,4 +1,6 @@
-if (Modernizr.draganddrop) {
+// disable Moderinizr for now... need to sort out asset compilation
+
+// if (Modernizr.draganddrop) {
   // Browser supports HTML5 DnD.
 
   var dragSrcEl = null;
@@ -112,6 +114,6 @@ if (Modernizr.draganddrop) {
     $('ul#allocations .dnd-node').bind('click', deleteAllocation);
   });
 
-} else {
+// } else {
   // Fallback to a library solution for drag and drop.
-}
+// }
