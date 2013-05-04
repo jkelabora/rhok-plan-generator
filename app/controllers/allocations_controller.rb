@@ -10,6 +10,7 @@ class AllocationsController < ApplicationController
         Event.first
       end
     end
+    @events = Event.all
     @tasks = Task.where(event_id: @event)
     @people = Person.all
     @allocations = Allocation.where(task_id: @tasks)
@@ -30,7 +31,6 @@ class AllocationsController < ApplicationController
   def destroy
     Allocation.delete(params[:id])
     render :json => {}
-    # render :json => {id: params[:id]}
   end
 
 end

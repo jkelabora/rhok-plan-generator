@@ -1,6 +1,5 @@
 if (Modernizr.draganddrop) {
   // Browser supports HTML5 DnD.
-  // console.log('yay..!');
 
   var dragSrcEl = null;
 
@@ -38,7 +37,6 @@ if (Modernizr.draganddrop) {
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     xhr.onload = function(e) {
       if (this.status == 200) {
-        // nasty dom update to follow...
         elem = document.getElementById('allocations');
         var updated_allocations = JSON.parse(this.responseText);
         var html = "";
@@ -48,13 +46,10 @@ if (Modernizr.draganddrop) {
           html += "</span></li>";
         }
         elem.innerHTML = html;
-
-        // bit of jquery blah...
         jQuery('ul#allocations .dnd-node').bind('click', deleteAllocation);
-
       }
     };
-    current_event_id = document.getElementById('event').getAttribute('data-id');
+    current_event_id = jQuery('ul#events li.active').attr('data-id');
     xhr.send(JSON.stringify({id: current_event_id, allocation: {task_id: task_id, person_id: person_id}}));
   }
 
