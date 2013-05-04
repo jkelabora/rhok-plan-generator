@@ -49,7 +49,7 @@ RhokPlanGenerator::Application.configure do
   # config.assets.precompile += %w( search.js )
 
   # ----------> elastic beanstalk 500 fix via: https://github.com/gregbell/active_admin/issues/483
-  config.assets.precompile += %w[active_admin.css active_admin.js print.css active_admin/print.css]
+  config.assets.precompile += %w[active_admin.css active_admin.js print.css active_admin/print.css modernizr-latest]
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
