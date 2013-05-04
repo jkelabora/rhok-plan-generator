@@ -29,7 +29,7 @@ class EventsController < ApplicationController
         :from => 'jkelabora@dius.com.au',
         :to => p.email,
         :body_text => 'Sample email text.',
-        :body_html => "<h1>Sample Email #{Time.now}</h1>")
+        :body_html => "<h1>Sample Email #{Time.now}</h1>") if Rails.env == 'production'
     end
 
     account_sid = 'AC6ef2afcab7f0748e9fc427288cdd5f8d'
@@ -44,7 +44,7 @@ class EventsController < ApplicationController
       body += "'#{@event.name}' was triggered; you have #{p.tasks.where(event_id: @event).count} related tasks allocated."
       body += " Please check #{p.email}" if p.email
       # sms body can be up to 160 characters long
-      @msg = account.sms.messages.create({:from => '+19402028234', :to =>  p.mobile, :body => body[0..159]})
+      @msg = account.sms.messages.create({:from => '+19402028234', :to =>  p.mobile, :body => body[0..159]}) if Rails.env == 'production'
     end
   end
 
