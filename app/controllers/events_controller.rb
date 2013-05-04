@@ -40,8 +40,11 @@ class EventsController < ApplicationController
     account = client.account
 
     @people.each do |p|
-      @msg = account.sms.messages.create({:from => '+19402028234', :to =>  p.mobile, :body => 'rhok-and-roll!'})
-      puts @msg.inspect
+      body = "A reminder from the Active Fire Plan Generator. "
+      body += "'#{@event.name}' was triggered; you have #{p.tasks.where(event_id: @event).count} related tasks allocated."
+      body += " Please check #{p.email}" if p.email
+      # sms body can be up to 160 characters long
+      @msg = account.sms.messages.create({:from => '+19402028234', :to =>  p.mobile, :body => body[0..159]})
     end
   end
 

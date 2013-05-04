@@ -1,7 +1,10 @@
 class Person < ActiveRecord::Base
-  attr_accessible :name, :mobile, :email, :number#task_id, :number
+  attr_accessible :name, :mobile, :email, :number
 
-  # belongs_to :task
+  has_many :allocations
+
+  has_many :tasks, :through => :allocations
+
 
   def self.create_multiple params
 
