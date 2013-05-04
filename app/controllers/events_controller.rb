@@ -21,12 +21,9 @@ class EventsController < ApplicationController
       :secret_access_key => ENV['AWS_SECRET_KEY']) 
 
     @people.each do |p|
-      identity = ses.identities.verify(p.email) # only required for sandbox ses usage
-      puts "identity.verified? #{identity.verified?}"
-
       ses.send_email(
         :subject => "A Sample Email #{Time.now}",
-        :from => 'jkelabora@dius.com.au',
+        :from => 'jkelabora@dius.com.au', # ses verified sender address
         :to => p.email,
         :body_text => 'Sample email text.',
         :body_html => "<h1>Sample Email #{Time.now}</h1>") if Rails.env == 'production'
@@ -44,7 +41,7 @@ class EventsController < ApplicationController
       body += "'#{@event.name}' was triggered; you have #{p.tasks.where(event_id: @event).count} related tasks allocated."
       body += " Please check #{p.email}" if p.email
       # sms body can be up to 160 characters long
-      @msg = account.sms.messages.create({:from => '+19402028234', :to =>  p.mobile, :body => body[0..159]}) if Rails.env == 'production'
+      @msg = account.sms.messages.create({:from => '+19402028234', :to => p.mobile, :body => body[0..159]}) if Rails.env == 'production'
     end
   end
 
