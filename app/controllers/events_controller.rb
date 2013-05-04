@@ -14,7 +14,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-    @people = @event.tasks.map{|t| t.people }.flatten.uniq # TODO: THIS IS INEFFICIENT!
+    @people = @event.tasks.collect(&:people).flatten.uniq # TODO: THIS IS INEFFICIENT!
     ses = AWS::SimpleEmailService.new(
       # these two env var *names* are preset by Elastic Beastalk and have been given values via the AWS Console
       :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
