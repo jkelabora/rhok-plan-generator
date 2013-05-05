@@ -48,7 +48,7 @@
           html += "</span></li>";
         }
         jQuery(elem).html(html);
-        jQuery('ul.allocations span').bind('click', deleteAllocation);
+        jQuery(elem).find('span').bind('click', deleteAllocation);
       }
     };
     current_event_id = jQuery('ul#events li.active').attr('data-id');
