@@ -14,6 +14,7 @@ class AllocationsController < ApplicationController
     @tasks = Task.where(event_id: @event)
     @people = Person.all
     @allocations = Allocation.where(task_id: @tasks)
+
     render :action => 'index'
   end
 
@@ -21,10 +22,18 @@ class AllocationsController < ApplicationController
   def create
     Allocation.create!(params[:allocation])
     @event = Event.find(params[:id])
-    @tasks = Task.where(event_id: @event)
-    @people = Person.all
-    @allocations = Allocation.where(task_id: @tasks)
-    render :json => @allocations.to_json(except: ['created_at', 'updated_at'])
+    @person = Person.find(params[:allocation][:person_id])
+    @tasks = @person.tasks.where(event_id: @event)
+    @allocations = @person.allocations.where(task_id: @tasks)
+
+    render :json => {
+      person_id: @person.id,
+      allocations: @allocations.collect{|a|
+        { id: a.id,
+         name: a.task.name
+        }
+      }
+    }.to_json
   end
 
 # curl -v -H "Accept: application/json" -H "Content-type: application/json" -X DELETE http://localhost:3000/allocations/3

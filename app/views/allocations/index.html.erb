@@ -3,7 +3,7 @@
     <div class="navbar-inner">
       <ul id="events" class="nav">
         <% for e in @events %>
-          <li class="event <%= 'active' if e == @event %>" data-id="<%= e.id %>">
+          <li class="<%= 'active' if e == @event %>" data-id="<%= e.id %>">
             <%= link_to e.name, allocations_path(:id => e.id) %>
           </li>
         <% end %>
@@ -13,20 +13,17 @@
 </div>
 
 <div class='container'>
-  <ul id="allocations">
-    <% for allocation in @allocations %>
-      <li>
-        <span class="dnd-node" data-id="<%= allocation.id %>"><%= allocation.person_id %><-><%= allocation.task_id %></span>
-      </li>
-    <% end %>
-  </ul>
-</div>
-
-<div class='container'>
   <ul id="people">
     <% for person in @people %>
-      <li>
-        <span class="dnd-node" data-id="<%= person.id %>"><%= person.name.capitalize %> (<%= person.email %>, <%= person.mobile %>)</span>
+      <li data-id="<%= person.id %>">
+        <span class="dnd-node person"><%= person.name.capitalize %> (<%= person.email %>, <%= person.mobile %>)</span>
+        <ul class='allocations'>
+          <% for a in  person.allocations.where(task_id: @tasks) %>
+            <li class='allocation' >
+              <span class='allocation' data-id="<%= a.id %>"><%= a.task.name[0...40] %></span>
+            </li>
+          <% end %>
+        </ul>
       </li>
     <% end %>
   </ul>
@@ -36,7 +33,7 @@
   <ul id="tasks">
     <% for task in @tasks %>
       <li>
-        <span class="dnd-node" draggable='true' data-id="<%= task.id %>"><%= task.name[0..50] %></span>
+        <span class="dnd-node" draggable='true' data-id="<%= task.id %>"><%= task.name[0...40] %></span>
       </li>
     <% end %>
   </ul>

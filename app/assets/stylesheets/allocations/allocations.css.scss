@@ -33,12 +33,7 @@ ul {
   margin-left: 200px;
 }
 
-ul#people li span.over {
-  border-color: #333;
-  background: rgb(55, 255, 150);
-}
-
-ul#people li span {
+ul#people li span.person {
   text-decoration: none;
   color: #000;
   margin: 10px;
@@ -49,15 +44,25 @@ ul#people li span {
   // display: block;
 }
 
-ul#allocations li span {
+ul#people li span.over {
+  border-color: #333;
+  background: rgb(55, 255, 150);
+}
+
+ul.allocations {
+  margin-left: 0px;
+  padding-left: 10px;
+  padding-top: 10px;
+}
+
+li.allocation {
+  float: none;
   text-decoration: none;
-  color: #000;
-  margin: 10px;
-  width: 150px;
+  margin: 0px;
+  width: 100%;
   border: 3px solid #999;
-  background: rgb(147, 137, 179);
-  padding: 10px;
-  // display: block;
+  background: rgb(201, 130, 130);
+  padding: 0px;
 }
 
 /* Prevent the text contents of draggable elements from being selectable. */

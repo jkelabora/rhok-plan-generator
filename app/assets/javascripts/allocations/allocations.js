@@ -39,16 +39,16 @@
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     xhr.onload = function(e) {
       if (this.status == 200) {
-        elem = document.getElementById('allocations');
         var updated_allocations = JSON.parse(this.responseText);
+        elem = jQuery("ul#people [data-id="+updated_allocations.person_id+"] ul.allocations");
         var html = "";
-        for (var a in updated_allocations) {
-          html += "<li><span class='dnd-node' data-id='" + updated_allocations[a].id + "'>";
-          html += updated_allocations[a].person_id + "<->" + updated_allocations[a].task_id;
+        for (var a in updated_allocations.allocations) {
+          html += "<li class='allocation'><span class='allocation' data-id='" + updated_allocations.allocations[a].id + "'>";
+          html += updated_allocations.allocations[a].name.substr(0, 40);
           html += "</span></li>";
         }
-        elem.innerHTML = html;
-        jQuery('ul#allocations .dnd-node').bind('click', deleteAllocation);
+        jQuery(elem).html(html);
+        jQuery('ul.allocations span').bind('click', deleteAllocation);
       }
     };
     current_event_id = jQuery('ul#events li.active').attr('data-id');
@@ -64,7 +64,7 @@
     // See the section on the DataTransfer object.
     if (dragSrcEl != this && dragSrcEl.parentNode.parentNode.id === 'tasks' && this.parentNode.parentNode.id === 'people') {
       task_id = e.dataTransfer.getData('application/json');
-      person_id = this.getAttribute('data-id');
+      person_id = this.parentNode.getAttribute('data-id');
 
       createAllocation(task_id, person_id);
     }
@@ -97,10 +97,10 @@
           type: 'post',
           dataType: 'script',
           data: { '_method': 'delete' },
-          node: $(this),
+          node: $(this)[0].parentNode,
           success: function() {
             // seriously should to be a better way to do this....
-            $(this)[0].node[0].remove();
+            $(this)[0].node.remove();
           }
         });
         return false;
@@ -111,7 +111,7 @@
 
   // another bit of jquery blah-ness
   jQuery(function($) { // document ready
-    $('ul#allocations .dnd-node').bind('click', deleteAllocation);
+    $('ul.allocations span').bind('click', deleteAllocation);
   });
 
 // } else {
