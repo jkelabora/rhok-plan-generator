@@ -91,16 +91,15 @@
   });
 
   function deleteAllocation(e){
+      var elem = this;
       if(confirm("Are you sure?")){
         $.ajax({
-          url: '/allocations/' + $(this)[0].getAttribute('data-id'),
+          url: '/allocations/' + elem.getAttribute('data-id'),
           type: 'post',
           dataType: 'script',
           data: { '_method': 'delete' },
-          node: $(this)[0].parentNode,
           success: function() {
-            // seriously should to be a better way to do this....
-            $(this)[0].node.remove();
+            $(elem).parent().remove();
           }
         });
         return false;
