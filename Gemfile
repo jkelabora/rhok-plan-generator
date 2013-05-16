@@ -5,6 +5,7 @@ gem 'mysql2'
 
 gem 'aws-sdk'
 gem 'twilio-ruby'
+gem 'draper', '~> 1.0'
 
 # Gems used only for assets and not required
 # in production environments by default.

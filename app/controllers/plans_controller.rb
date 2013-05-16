@@ -17,7 +17,7 @@ class PlansController < ApplicationController
   end
 
   def show
-    @plan = Plan.find(params[:id])
+    @plan = Plan.find(params[:id]).decorate
   end
 
   def edit

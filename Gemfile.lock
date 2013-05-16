@@ -76,6 +76,10 @@ GEM
       orm_adapter (~> 0.1)
       railties (~> 3.1)
       warden (~> 1.2.1)
+    draper (1.2.1)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      request_store (~> 1.0.3)
     erubis (2.7.0)
     eventmachine (1.0.0)
     execjs (1.4.0)
@@ -151,6 +155,7 @@ GEM
     rake (10.0.3)
     rdoc (3.12.2)
       json (~> 1.4)
+    request_store (1.0.5)
     responders (0.9.3)
       railties (~> 3.1)
     sass (3.2.7)
@@ -201,6 +206,7 @@ DEPENDENCIES
   binding_of_caller
   bootstrap-sass (~> 2.2.2.0)
   coffee-rails (~> 3.2.1)
+  draper (~> 1.0)
   jquery-rails
   meta_search (>= 1.1.0.pre)
   mysql2

@@ -1,22 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="span12">
+      <p>
+        <strong>Name:</strong>
+        <%= @plan.name %>
+      </p>
+      <p>
+        <strong>Postcode:</strong>
+        <%= @plan.postcode %>
+      </p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @plan.name %>
-</p>
-<p>
-  <strong>Postcode:</strong>
-  <%= @plan.postcode %>
-</p>
+        <% @plan.events.each do |event| %>
+          
+          <h3><%= event.name %></h3>
+          
+          <table class="table table-striped">
+            <% @plan.tasks_for(event).each do |task| %>
+              <tr>
+                <td><%= task.name %></td>
+              </tr>      
+            <% end %>
+          </table>
+        <% end %>
 
-<ul>
-<% @plan.tasks.each do |task| %>
-
-  <li><%= task.name %></li>
-
-<% end %> 
-</ul>
-
-<p>
-  <%= link_to "Edit", edit_plan_path(@plan) %> |
-  <%= link_to "View All", plans_path %>
-</p>
+      <p>
+        <%= link_to "Edit", edit_plan_path(@plan) %> |
+        <%= link_to "View All", plans_path %>
+      </p>
+    </div>
+  </div>
+</div>
