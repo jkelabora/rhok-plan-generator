@@ -17,6 +17,7 @@
           <table class="table table-striped">
             <% @plan.tasks_for(event).each do |task| %>
               <tr>
+                <td><%= @plan.people_for(task) %></td>
                 <td><%= task.name %></td>
               </tr>      
             <% end %>

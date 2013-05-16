@@ -18,4 +18,8 @@ class PlanDecorator < Draper::Decorator
     tasks.flatten.uniq
   end
 
+  def people_for(task)
+    task.people.collect(&:name).join(', ')
+  end
+
 end
