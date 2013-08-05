@@ -17,12 +17,7 @@ grant all on rhok_test.* to 'rhok'@localhost identified by 'rhok';
 
 git clone https://github.com/jkelabora/rhok-plan-generator.git
 
-
-export RDS_DB_NAME=rhok
-export RDS_USERNAME=rhok
-export RDS_PASSWORD=rhok
-export DB_SOCKET=/tmp/mysql.sock
-
+source .profile
 
 cd rhok-plan-generator/
 
