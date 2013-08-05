@@ -10,7 +10,10 @@ Generate Bushfire Survival Plans that include notification functionality
 mysql -u root -p
 
 create user rhok;
+create database rhok;
+create database rhok_test;
 grant all on rhok.* to 'rhok'@localhost identified by 'rhok';
+grant all on rhok_test.* to 'rhok'@localhost identified by 'rhok';
 
 git clone https://github.com/jkelabora/rhok-plan-generator.git
 
