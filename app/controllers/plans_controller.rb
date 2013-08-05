@@ -1,4 +1,7 @@
+require 'prawn'
+
 class PlansController < ApplicationController
+
   def index
     @plans = Plan.all
   end
@@ -23,6 +26,13 @@ class PlansController < ApplicationController
   def edit
     @plan = Plan.find(params[:id])
   end
+
+  def download
+    @plan = Plan.find(params[:plan_id]).decorate
+    respond_to do |format|    
+      format.pdf { render :layout => false}
+    end
+  end  
 
   def update
     @plan = Plan.find(params[:id])

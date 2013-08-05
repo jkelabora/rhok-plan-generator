@@ -7,7 +7,9 @@ RhokPlanGenerator::Application.routes.draw do
 
   resources :events
   resources :tasks
-  resources :plans
+  resources :plans do
+    get 'download'
+  end
   resources :people
   resources :signups
   resources :allocations

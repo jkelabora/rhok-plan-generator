@@ -26,7 +26,8 @@
 
       <p>
         <%= link_to "Edit", edit_plan_path(@plan) %> |
-        <%= link_to "View All", plans_path %>
+        <%= link_to "View All", plans_path %> |
+        <%= link_to "Download as PDF", plan_download_path(@plan, :format => :pdf)%>
       </p>
     </div>
   </div>
