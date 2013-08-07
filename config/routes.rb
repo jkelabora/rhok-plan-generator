@@ -8,8 +8,11 @@ RhokPlanGenerator::Application.routes.draw do
   resources :events
   resources :tasks
   resources :plans do
-    get 'download'
+    get "download"
   end
+
+  get "/sharedplans/:id", to: "shared_plans#show"
+
   resources :people
   resources :signups
   resources :allocations

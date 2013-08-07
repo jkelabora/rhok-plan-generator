@@ -1,0 +1,2 @@
+class PrivatePlan < ShareablePlan
+end

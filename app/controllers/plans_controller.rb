@@ -33,7 +33,7 @@ class PlansController < ApplicationController
       format.pdf { render :layout => false}
     end
   end  
-
+ 
   def update
     @plan = Plan.find(params[:id])
     if @plan.update_attributes(params[:plan])
@@ -42,4 +42,5 @@ class PlansController < ApplicationController
       render :action => 'edit'
     end
   end
+
 end

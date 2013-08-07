@@ -44,5 +44,9 @@ private
     @plan = Plan.create!(name: p_plan_name, postcode: p_postcode)
     @plan.people.create!(name: p_name_0, email: p_email_0, mobile: p_mobile_0)
     @plan.people.create!(name: p_name_1, email: p_email_1, mobile: p_mobile_1)
+
+    # todo should the plan have a a collection of shareable plans?
+    PrivatePlan.create!(:plan => @plan)
+    PublicPlan.create!(:plan => @plan)
   end
 end

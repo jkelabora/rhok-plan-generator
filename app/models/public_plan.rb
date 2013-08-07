@@ -1,0 +1,2 @@
+class PublicPlan < ShareablePlan
+end
