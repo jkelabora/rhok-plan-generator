@@ -3,8 +3,8 @@ class TwilioClient
   def initialize people, event
     @people = people
     @event = event
-    account_sid = 'AC6ef2afcab7f0748e9fc427288cdd5f8d'
-    auth_token = ENV['PARAM1']
+    account_sid = ENV['TWILIO_ACCOUNT_SID'] || 'AC6ef2afcab7f0748e9fc427288cdd5f8d'
+    auth_token = ENV['PARAM1'] || ''
 
     # set up a client to talk to the Twilio REST API
     @account = Twilio::REST::Client.new(account_sid, auth_token).account
