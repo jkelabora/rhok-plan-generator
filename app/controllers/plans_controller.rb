@@ -15,6 +15,18 @@ class PlansController < ApplicationController
     end
   end
 
+  def duplicate
+    @source = Plan.find_by_public_guid(params[:public_guid])
+    h = { name: (@source.name + '-copied'), postcode: @source.postcode }
+    
+    if @new = Plan.create(h)
+      redirect_to @new, :notice => "Successfully duplicated plan."
+    else
+      render :action => 'new'
+    end
+
+  end
+
   def new
     @plan = Plan.new
   end
