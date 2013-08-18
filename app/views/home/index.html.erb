@@ -1,22 +1,48 @@
+<div class='container'>
 
-<div class='count'>
-Plans: <%= @plan_count %>
-</div>
-<div class='count'>
-People: <%= @people_count %>
-</div>
-<div class='count'>
-Tasks: <%= @task_count %>
-</div>
-<div class='count'>
-Allocations: <%= @allocation_count %>
-</div>
-
-
-<% @public_plans.each do |plan| %>
-  <div class='sample-plans'>
-    <%= link_to 'i want to copy this plan', plan_duplicate_url(plan.public_guid) %>
+  <div class='count'>
+  People: <%= @people_count %>
   </div>
-<% end %>
+  <div class='count'>
+  Tasks: <%= @task_count %>
+  </div>
+  <div class='count'>
+  Allocations: <%= @allocation_count %>
+  </div>
 
-<div id='postcode'>3113</div>
+  <div class='count'>
+  All Plans: <%= @private_plan_count + @public_plans.count %>
+  </div>
+
+  <div class='count'>
+  Private Plans: <%= @private_plan_count %>
+  </div>
+
+  <div class='count'>
+  Public Plans: <%= @public_plans.count %>
+  </div>
+  <% @public_plans.each do |plan| %>
+    <div class='sample-plans'>
+      <%= link_to 'i want to copy this plan', plan_duplicate_url(plan.public_guid) %>
+    </div>
+  <% end %>
+
+  <div>
+    Create a new blank plan
+
+    <%= form_for @blank_plan do |f| %>
+    <p>
+      <%= f.label :name %><br />
+      <%= f.text_field :name %>
+    </p>
+    <p>
+      <%= f.label :postcode %><br />
+      <%= f.text_field :postcode %>
+    </p>
+    <p><%= f.submit %></p>
+    <% end %>
+  </div>
+
+  <div id='postcode'>3113</div>
+
+</end>

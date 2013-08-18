@@ -7,6 +7,7 @@ class PlansController < ApplicationController
   end
 
   def create
+    # may need to create an anonymous user at this point depending on the entry point..
     @plan = Plan.new(params[:plan])
     if @plan.save
       redirect_to @plan, :notice => "Successfully created plan."
@@ -19,6 +20,8 @@ class PlansController < ApplicationController
     @source = Plan.find_by_public_guid(params[:public_guid])
     h = { name: (@source.name + '-copied'), postcode: @source.postcode }
     
+    # need to create an anonymous user at this point..
+
     if @new = Plan.create(h)
       redirect_to @new, :notice => "Successfully duplicated plan."
     else
