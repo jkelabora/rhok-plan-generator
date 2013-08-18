@@ -1,11 +1,8 @@
 class ShareablePlan < ActiveRecord::Base
 
-  self.table_name = 'shareable_plans'
-
   belongs_to :plan, :autosave => false, :dependent => :destroy
 
-  attr_reader :guid
-  attr_accessible :type, :plan
+  attr_accessible :type, :plan, :guid
 
   before_create :init
 
