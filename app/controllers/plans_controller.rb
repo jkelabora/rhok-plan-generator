@@ -30,10 +30,6 @@ class PlansController < ApplicationController
 
   end
 
-  def new
-    @plan = Plan.new
-  end
-
   def show
     @plan = Plan.find(params[:id]).decorate
   end
