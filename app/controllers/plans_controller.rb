@@ -8,7 +8,7 @@ class PlansController < ApplicationController
 
   def create
     # may need to create an anonymous user at this point depending on the entry point..
-    @plan = Plan.new(params[:plan])
+    @plan = Plan.new(params[:plan].merge(postcode: 3113))
     if @plan.save
       redirect_to @plan, :notice => "Successfully created plan."
     else
