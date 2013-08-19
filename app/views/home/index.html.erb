@@ -35,7 +35,10 @@
       <%= f.label :name %><br />
       <%= f.text_field :name %>
     </p>
-    <span>(Plans will be generated for postcode 3113)</span>
+
+    <%= f.check_box :opt_out %> Tick to keep plan private (you can change that later if you like)
+
+    <p>(Plans will be generated for postcode 3113)</p>
     <!--<p>
       <%= f.label :postcode %><br />
       <%= f.text_field :postcode %>
