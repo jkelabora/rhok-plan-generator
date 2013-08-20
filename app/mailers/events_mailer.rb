@@ -25,7 +25,7 @@ class EventsMailer
 
       @service.send_email(
         :subject => subject,
-        :from => 'jkelabora@dius.com.au', # ses verified sender address
+        :from => 'jkelabora@gmail.com', # ses verified sender address
         :to => p.email,
         :body_text => body_text,
         :body_html => body_text) if Rails.env == 'production'
