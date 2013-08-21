@@ -19,7 +19,8 @@ class PlansController < ApplicationController
     # need to create an anonymous user at this point..
 
     if @new = Plan.create(h)
-      redirect_to @new, :notice => "Successfully duplicated plan."
+      # redirect_to @new, :notice => "Successfully duplicated plan."
+      redirect_to allocations_path
     else
       render :action => 'new'
     end
