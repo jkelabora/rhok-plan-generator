@@ -28,7 +28,7 @@ class PlansController < ApplicationController
   end
 
   def download
-    @plan = Plan.find(params[:plan_id]).decorate
+    @plan = Plan.find_by_private_guid(params[:private_guid]).decorate
     respond_to do |format|    
       format.pdf { render :layout => false}
     end

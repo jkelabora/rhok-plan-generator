@@ -9,10 +9,9 @@ RhokPlanGenerator::Application.routes.draw do
 
   resources :events
   resources :tasks
-  resources :plans, only: [:create] do
-    get "download"
-  end
 
+  resources :plans, only: [:create, :show]
+  get "plans/:private_guid/download", to: "plans#download", as: 'plan_download'
   get "plans/:public_guid/duplicate", to: "plans#duplicate", as: 'plan_duplicate'
   get "plans/:private_guid/allocations", to: "allocations#index", as: 'plan_allocations'
 

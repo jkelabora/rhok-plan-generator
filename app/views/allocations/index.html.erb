@@ -1,5 +1,12 @@
 <div class='container'>
-  <div id='plan-name'><h3><%= @plan.name %></h3></div>
+  <div id='plan-name'>
+    <h3><%= @plan.name %></h3>
+    <span>
+      <%= button_to 'PDF',
+        plan_download_path(:private_guid => @plan.private_guid, :format => :pdf),
+        class: "btn btn-success", method: :get %>
+    </span>
+  </div>
 </div>
 
 <div class='container'>
