@@ -23,7 +23,8 @@
   </div>
   <% @public_plans.each do |plan| %>
     <div class='sample-plans'>
-      <%= link_to 'i want to copy this plan', plan_duplicate_url(plan.public_guid) %>
+      <span><%= plan.name %></span>
+      <span><%= link_to 'copy!', plan_duplicate_url(plan.public_guid) %></span>
     </div>
   <% end %>
 
