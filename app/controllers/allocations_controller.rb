@@ -11,9 +11,15 @@ class AllocationsController < ApplicationController
       end
     end
     @events = Event.all
+
+    @plan = Plan.find_by_private_guid params[:private_guid]
+    @people = Person.where(plan_id: @plan)
+
+
+    #TODO restrict/filter these based on task type (public v private etc)
     @tasks = Task.where(event_id: @event)
-    @people = Person.all
-    @allocations = Allocation.where(task_id: @tasks)
+
+    @allocations = Allocation.where(task_id: @tasks).where(people_id: @people)
 
     render :action => 'index'
   end

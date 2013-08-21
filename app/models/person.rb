@@ -5,7 +5,6 @@ class Person < ActiveRecord::Base
 
   has_many :tasks, :through => :allocations
 
-
   def self.create_multiple params
 
     can_save = true

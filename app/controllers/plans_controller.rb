@@ -3,26 +3,26 @@ require 'prawn'
 class PlansController < ApplicationController
 
   def create
-    # may need to create an anonymous user at this point depending on the entry point..
+    @anon = Person.new(name: 'anon', email: '', mobile: '') #TODO: optionally provide user form fields?
     @plan = Plan.new(params[:plan].merge(postcode: 3113))
+    @plan.people << @anon
     if @plan.save
-      redirect_to @plan, :notice => "Successfully created plan."
+      redirect_to plan_allocations_path(@plan.private_guid)
     else
-      render :action => 'new'
+      redirect_to 'home#index', :notice  => "Problem creating plan"
     end
   end
 
   def duplicate
     @source = Plan.find_by_public_guid(params[:public_guid])
-    h = { name: (@source.name + '-copied'), postcode: @source.postcode }
     
-    # need to create an anonymous user at this point..
-
-    if @new = Plan.create(h)
-      # redirect_to @new, :notice => "Successfully duplicated plan."
-      redirect_to allocations_path
+    @anon = Person.new(name: 'anon', email: '', mobile: '')
+    @duplicate = Plan.new( name: "#{@source.name}-COPY", postcode: @source.postcode )
+    @duplicate.people << @anon
+    if @duplicate.save
+      redirect_to plan_allocations_path(@duplicate.private_guid)
     else
-      render :action => 'new'
+      redirect_to 'home#index', :notice  => "Problem duplicating plan"
     end
 
   end
@@ -34,14 +34,7 @@ class PlansController < ApplicationController
     end
   end  
 
-  def show
-    @plan = Plan.find(params[:id]).decorate
-  end
- 
-  def edit
-    @plan = Plan.find(params[:id])
-  end
-
+  # leave as a json endpoint.. will need to edit plan details at some point
   def update
     @plan = Plan.find(params[:id])
     if @plan.update_attributes(params[:plan])
