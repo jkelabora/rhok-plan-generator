@@ -9,7 +9,7 @@ class PlansController < ApplicationController
     if @plan.save
       redirect_to plan_allocations_path(@plan.private_guid)
     else
-      redirect_to 'home#index', :notice  => "Problem creating plan"
+      redirect_to home_index_path(postcode: 3113), :notice  => "Problem creating plan"
     end
   end
 
@@ -22,7 +22,7 @@ class PlansController < ApplicationController
     if @duplicate.save
       redirect_to plan_allocations_path(@duplicate.private_guid)
     else
-      redirect_to 'home#index', :notice  => "Problem duplicating plan"
+      redirect_to home_index_path(postcode: 3113), :notice  => "Problem duplicating plan"
     end
 
   end
