@@ -46,8 +46,9 @@
         links = d3.layout.tree().links(nodes);
 
     // Restart the force layout.
-    force
-        .nodes(nodes)
+    force.nodes(nodes)
+        .distance(70)
+        .charge(-70)
         .links(links)
         .start();
 
