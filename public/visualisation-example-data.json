@@ -373,7 +373,7 @@
       {"name": "SortOperator", "size": 2023}
      ]
     },
-    {"name": "Visualization", "size": 16540}
+    {"name": "Visualization", "size": 16540, "plan": 222}
    ]
   }
  ]

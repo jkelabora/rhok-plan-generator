@@ -87,6 +87,8 @@
     // Enter any new nodes.
     node.enter().append("svg:circle")
         .attr("class", "node")
+        .attr("name", function(d) { return d.name; })
+        .attr("plan", function(d) { return d.plan; })
         .attr("cx", function(d) { return d.x; })
         .attr("cy", function(d) { return d.y; })
         .attr("r", function(d) { return Math.sqrt(d.size) / 10 || 4.5; })
@@ -115,6 +117,9 @@
 
   // Toggle children on click.
   function toggle(d) {
+    if (d.plan) {
+      alert('ha!');
+    }
     if (d.children) {
       d._children = d.children;
       d.children = null;
