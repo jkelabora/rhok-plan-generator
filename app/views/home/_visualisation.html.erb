@@ -39,6 +39,18 @@
   d3.json("visualisation-example-data.json", function(json) {
     root = json;
     update();
+
+    // Initialize the display to show a few nodes.
+    // from: http://stackoverflow.com/questions/17504136/starting-d3-force-layout-collapsed-text-labels-duplicating
+    function collapseAll(d) {
+        if (d.children) {
+          d.children.forEach(collapseAll);
+          toggle(d);
+        }
+      }
+      root.children.forEach(collapseAll);
+      update(root);
+
   });
 
   function update() {
@@ -79,7 +91,7 @@
         .attr("cy", function(d) { return d.y; })
         .attr("r", function(d) { return Math.sqrt(d.size) / 10 || 4.5; })
         .style("fill", color)
-        .on("click", click)
+        .on("click", toggle)
         .call(force.drag);
 
     // Exit any old nodes.
@@ -102,7 +114,7 @@
   }
 
   // Toggle children on click.
-  function click(d) {
+  function toggle(d) {
     if (d.children) {
       d._children = d.children;
       d.children = null;
