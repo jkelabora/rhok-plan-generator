@@ -34,6 +34,10 @@ class PlansController < ApplicationController
     end
   end  
 
+  def show
+    @plan = Plan.find_by_public_guid(params[:public_guid]).decorate
+  end
+
   # leave as a json endpoint.. will need to edit plan details at some point
   def update
     @plan = Plan.find(params[:id])
