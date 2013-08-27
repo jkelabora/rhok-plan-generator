@@ -3,7 +3,7 @@
     <h3><%= @plan.name %></h3>
     <span>
       <%= button_to 'PDF',
-        plan_download_path(:private_guid => @plan.private_guid, :format => :pdf),
+        plan_download_url(:private_guid => @plan.private_guid, :format => :pdf),
         class: "btn btn-success", method: :get %>
     </span>
   </div>
@@ -15,7 +15,7 @@
       <ul id="events" class="nav">
         <% for e in @events %>
           <li class="<%= 'active' if e == @event %>" data-id="<%= e.id %>">
-            <%= link_to e.name, plan_allocations_path(:private_guid => @plan.private_guid, :id => e.id) %>
+            <%= link_to e.name, plan_allocations_url(:private_guid => @plan.private_guid, :id => e.id) %>
           </li>
         <% end %>
       </ul>
