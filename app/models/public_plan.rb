@@ -1,2 +1,0 @@
-class PublicPlan < ShareablePlan
-end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130827130120) do
+ActiveRecord::Schema.define(:version => 20130831014105) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -79,16 +79,6 @@ ActiveRecord::Schema.define(:version => 20130827130120) do
     t.string   "private_guid"
     t.string   "public_guid"
   end
-
-  create_table "shareable_plans", :force => true do |t|
-    t.integer  "plan_id"
-    t.string   "guid"
-    t.string   "type"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "shareable_plans", ["plan_id"], :name => "index_shareable_plans_on_plan_id"
 
   create_table "tasks", :force => true do |t|
     t.string   "name"

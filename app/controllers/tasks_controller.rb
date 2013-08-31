@@ -1,7 +1,4 @@
 class TasksController < ApplicationController
-  def index
-    @tasks = Task.all
-  end
 
   def create
     @task = Task.new(params[:task])
@@ -10,14 +7,6 @@ class TasksController < ApplicationController
     else
       render :action => 'new'
     end
-  end
-
-  def show
-    @task = Task.find(params[:id])
-  end
-
-  def edit
-    @task = Task.find(params[:id])
   end
 
   def update

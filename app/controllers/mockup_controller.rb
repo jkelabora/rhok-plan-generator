@@ -1,2 +1,0 @@
-class MockupController < ApplicationController
-end

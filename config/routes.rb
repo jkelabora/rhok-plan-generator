@@ -5,10 +5,11 @@ RhokPlanGenerator::Application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :admin_users, ActiveAdmin::Devise.config
 
+  get "api/events/:event_id/trigger", to: "events#trigger", as: 'trigger_event'
+
   resources :home, only: [:index]
 
-  resources :events
-  resources :tasks
+  resources :tasks, only: [:create, :update]
 
   resources :plans, only: [:create]
   get "plans/:public_guid/show", to: "plans#show", as: 'plan'
@@ -16,7 +17,6 @@ RhokPlanGenerator::Application.routes.draw do
 
   get "plans/private/:private_guid/download", to: "plans#download", as: 'plan_download'
   get "plans/private/:private_guid/allocations", to: "allocations#index", as: 'plan_allocations'
-
 
   resources :allocations, only: [:create, :destroy]
 
