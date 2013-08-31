@@ -10,10 +10,10 @@ class PlanDecorator < Draper::Decorator
     events.flatten.uniq
   end
 
-  def tasks_for(event) 
+  def tasks_for(event)
     tasks = []
     object.people.each do |person|
-      tasks << person.tasks.all { |task| task.event == event }
+      tasks << person.tasks.where(event_id: event)
     end
     tasks.flatten.uniq
   end
