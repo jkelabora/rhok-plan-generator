@@ -8,6 +8,7 @@ RhokPlanGenerator::Application.routes.draw do
   get "api/events/:event_id/trigger", to: "events#trigger", as: 'trigger_event'
 
   resources :home, only: [:index]
+  get "home/visualisation", to: "home#visualisation", as: 'home_visualisation'
 
   resources :tasks, only: [:create, :update]
 
