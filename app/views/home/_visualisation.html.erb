@@ -126,8 +126,8 @@
 
   // Toggle children on click.
   function toggle(d) {
-    if (d.plan) {
-      alert('ha!');
+    if (d.name == 'copy!') {
+      copyPlan(d);
     }
     if (d.children) {
       d._children = d.children;
@@ -151,6 +151,12 @@
 
     recurse(root);
     return nodes;
+  }
+
+  function copyPlan(d) {
+    d3.text("/plans/" + d.guid + "/duplicate")
+      .header("Content-type", "application/x-www-form-urlencoded")
+      .post(function(error, text) { window.location = text }); // bit of a hack...
   }
 
 </script>

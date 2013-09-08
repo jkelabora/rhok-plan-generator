@@ -13,6 +13,8 @@ class PlansController < ApplicationController
     end
   end
 
+  # respond_to :html, :js
+
   def duplicate
     @source = Plan.find_by_public_guid(params[:public_guid])
     
@@ -20,7 +22,7 @@ class PlansController < ApplicationController
     @duplicate = Plan.new( name: "#{@source.name}-COPY", postcode: @source.postcode )
     @duplicate.people << @anon
     if @duplicate.save
-      redirect_to plan_allocations_path(@duplicate.private_guid)
+      render :js => "#{plan_allocations_path(@duplicate.private_guid)}"
     else
       redirect_to home_index_path(postcode: 3113), :notice  => "Problem duplicating plan"
     end
