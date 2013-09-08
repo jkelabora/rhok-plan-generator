@@ -25,7 +25,7 @@ class HomeController < ApplicationController
         @public_plans.collect{|p|
           { name: p.name,
             size: 7,
-            children: [{name: 'view'}, {name: 'copy!', guid: p.public_guid}]
+            children: [{name: 'view', private_guid: p.private_guid}, {name: 'copy!', guid: p.public_guid}]
           }
         } + arr
     }.to_json

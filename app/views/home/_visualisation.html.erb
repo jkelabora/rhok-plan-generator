@@ -129,6 +129,9 @@
     if (d.name == 'copy!') {
       copyPlan(d);
     }
+    if (d.name == 'view') {
+      viewPlan(d);
+    }
     if (d.children) {
       d._children = d.children;
       d.children = null;
@@ -157,6 +160,9 @@
     d3.text("/plans/" + d.guid + "/duplicate")
       .header("Content-type", "application/x-www-form-urlencoded")
       .post(function(error, text) { window.location = text }); // bit of a hack...
+  }
+  function viewPlan(d) {
+    window.location = "/plans/" + d.private_guid + "/show";
   }
 
 </script>
