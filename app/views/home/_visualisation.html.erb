@@ -60,8 +60,8 @@
 
     // Restart the force layout.
     force.nodes(nodes)
-        .distance(70)
-        .charge(-170)
+        .distance(170)
+        .charge(-270)
         .links(links)
         .start();
 
@@ -81,26 +81,20 @@
     link.exit().remove();
 
     // Update the nodes…
-    node = vis.selectAll("circle.node")
+    node = vis.selectAll("text.node")
         .data(nodes, function(d) { return d.id; })
         .style("fill", color);
 
     // Enter any new nodes.
-    node.enter().append("svg:circle")
+    node.enter().append("svg:text")
         .attr("class", "node")
-        .attr("name", function(d) { return d.name; })
-        .attr("plan", function(d) { return d.plan; })
+        .text(function(d) { return d.name; })
         .attr("children", childrenCount )
-        .attr("cx", function(d) { return d.x; })
-        .attr("cy", function(d) { return d.y; })
-        .attr("r", function(d) { if (d.name == 'root') { return 40; } return Math.sqrt(d.size) / 10 || 4.5; })
+        .attr("x", function(d) { return d.x; })
+        .attr("y", function(d) { return d.y; })
         .style("fill", color)
         .on("click", toggle)
         .call(force.drag);
-
-    // adds 'name' on node hover
-    node.append("title")
-      .text(function(d) { return d.name; });
 
     // Exit any old nodes.
     node.exit().remove();
@@ -112,8 +106,8 @@
         .attr("x2", function(d) { return d.target.x; })
         .attr("y2", function(d) { return d.target.y; });
 
-    node.attr("cx", function(d) { return d.x; })
-        .attr("cy", function(d) { return d.y; });
+    node.attr("x", function(d) { return d.x; })
+        .attr("y", function(d) { return d.y; });
   }
 
   // could be used to show the immediate children of a collapsed node 

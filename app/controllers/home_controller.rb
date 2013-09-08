@@ -24,7 +24,7 @@ class HomeController < ApplicationController
     # }.to_json
     render :json => 
     {
-       "name" => "root",
+       "name" => "3113",
        "children" => [
         {"name" => "AggregateExpression", "size" => 1616},
         {"name" => "And", "size" => 1027},
