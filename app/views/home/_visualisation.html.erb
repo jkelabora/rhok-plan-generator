@@ -98,6 +98,10 @@
         .on("click", toggle)
         .call(force.drag);
 
+    // adds 'name' on node hover
+    node.append("title")
+      .text(function(d) { return d.name; });
+
     // Exit any old nodes.
     node.exit().remove();
   }
