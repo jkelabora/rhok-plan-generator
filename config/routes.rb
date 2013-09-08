@@ -20,8 +20,6 @@ RhokPlanGenerator::Application.routes.draw do
 
   resources :allocations, only: [:create, :destroy]
 
-  get "/sharedplans/:id", to: "shared_plans#show"
-
   resources :people
   resources :signups
 end
