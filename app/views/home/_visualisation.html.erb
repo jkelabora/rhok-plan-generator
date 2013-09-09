@@ -6,10 +6,8 @@
 <!-- <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script> -->
 
 <style type="text/css">
-  circle.node {
-    cursor: pointer;
-    stroke: #3182bd;
-    stroke-width: 1.5px;
+  .root_node {
+    font-size: 18px;
   }
 
   line.link {
@@ -84,11 +82,12 @@
     // Update the nodes…
     node = vis.selectAll("text.node")
         .data(nodes, function(d) { return d.id; })
+        .attr("class", node_class)
         .style("fill", color);
 
     // Enter any new nodes.
     node.enter().append("svg:text")
-        .attr("class", "node")
+        .attr("class", node_class)
         .text(function(d) { return d.name; })
         .attr("children", childrenCount )
         .attr("x", function(d) { return d.x; })
@@ -120,8 +119,20 @@
     }
   }
 
+  function node_class(d) {
+    if (d.root_node == true) {
+      return "node root_node";
+    } else {
+      return "node";
+    }
+  }
+
   // Color leaf nodes orange, and packages white or blue.
+  // Special treatment for the root node...
   function color(d) {
+    if (d.root_node == true) {
+      return "#0B740B";
+    }
     return d._children ? "#3182bd" : d.children ? "#c6dbef" : "#fd8d3c";
   }
 

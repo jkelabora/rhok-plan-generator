@@ -32,7 +32,7 @@ class HomeController < ApplicationController
     arr = []; @private_plans.count.times{ arr << {name: 'private'} }
 
     render :json => {
-      name: postcode.empty? ? 'all' : postcode,
+      name: postcode.empty? ? 'all' : postcode, root_node: true,
       children:
         @public_plans.collect{|p|
           { name: p.name,
