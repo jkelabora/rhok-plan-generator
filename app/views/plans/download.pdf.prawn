@@ -6,7 +6,7 @@ pdf.text "Fire Plan - #{@plan.name}", :size => 30, :style => :bold
 pdf.text "Postcode  #{@plan.postcode}", :size => 20, :style => :bold
 
 pdf.move_down(10)
-pdf.text "Share the online version of this plan (in read-only form) using <u>#{link_to 'this link', plan_url(@plan.public_guid)}</u>", :inline_format => true if @plan.public_guid
+pdf.text "Share the online version of this plan (in read-only form) using <u>#{link_to 'this link', plan_url(@plan.private_guid)}</u>", :inline_format => true if @plan.public_guid
 pdf.text "Return to edit this plan online <u>#{link_to 'here', plan_allocations_url(:private_guid => @plan.private_guid)}</u>", :inline_format => true
 
 pdf.move_down(30)
