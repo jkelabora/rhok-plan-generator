@@ -9,6 +9,10 @@ class Plan < ActiveRecord::Base
 
   before_create :init_guids
 
+  # using *_plan names for these so as not to clash with existing AR methods
+  scope :public_plans,  -> { where('public_guid is not null') }
+  scope :private_plans, -> { where('public_guid is null')}
+
   def opt_out
     @opt_out
   end

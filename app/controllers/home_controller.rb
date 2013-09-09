@@ -3,9 +3,16 @@ class HomeController < ApplicationController
   respond_to :json
 
   def index
-    # postcode is provided in params but we'll hard-code to use 3113 for now
-    @private_plan_count = Plan.where('public_guid is null').count
-    @public_plans = Plan.where('public_guid is not null')
+    @postcode = params[:postcode]
+
+    @public_plans = Plan.public_plans
+    private_plans = Plan.private_plans
+    if @postcode
+      @public_plans = @public_plans.where(postcode: @postcode)
+      private_plans = private_plans.where(postcode: @postcode)
+    end
+
+    @private_plan_count = private_plans.count
     @task_count = Task.count
     @allocation_count = Allocation.count
     @people_count = Person.count
@@ -14,13 +21,18 @@ class HomeController < ApplicationController
   end
 
   def visualisation
-    @private_plan_count = Plan.where('public_guid is null').count
-    @public_plans = Plan.where('public_guid is not null')
+    postcode = params[:postcode]
+    @public_plans = Plan.public_plans
+    @private_plans = Plan.private_plans
+    unless postcode.empty?
+      @public_plans = @public_plans.where(postcode: postcode)
+      @private_plans = @private_plans.where(postcode: postcode)
+    end
 
-    arr = []; @private_plan_count.times{ arr << {name: 'private'} }
+    arr = []; @private_plans.count.times{ arr << {name: 'private'} }
 
     render :json => {
-      name: 3113,
+      name: postcode.empty? ? 'all' : postcode,
       children:
         @public_plans.collect{|p|
           { name: p.name,
