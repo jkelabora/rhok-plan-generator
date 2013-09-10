@@ -3,20 +3,9 @@ class HomeController < ApplicationController
   respond_to :json
 
   def index
-    @postcode = params[:postcode]
-
-    @public_plans = Plan.public_plans
-    private_plans = Plan.private_plans
-    if @postcode
-      @public_plans = @public_plans.where(postcode: @postcode)
-      private_plans = private_plans.where(postcode: @postcode)
-    end
-
-    @private_plan_count = private_plans.count
+    @people_count = Person.count
     @task_count = Task.count
     @allocation_count = Allocation.count
-    @people_count = Person.count
-
     @blank_plan = Plan.new
   end
 

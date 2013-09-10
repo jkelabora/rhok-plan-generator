@@ -4,16 +4,14 @@ class PlansController < ApplicationController
 
   def create
     @anon = Person.new(name: 'anon', email: '', mobile: '') #TODO: optionally provide user form fields?
-    @plan = Plan.new(params[:plan].merge(postcode: 3113))
+    @plan = Plan.new(params[:plan])
     @plan.people << @anon
     if @plan.save
       redirect_to plan_allocations_path(@plan.private_guid)
     else
-      redirect_to home_index_path(postcode: 3113), :notice  => "Problem creating plan"
+      redirect_to home_index_path, :notice  => "Problem creating plan"
     end
   end
-
-  # respond_to :html, :js
 
   def duplicate
     @source = Plan.find_by_public_guid(params[:public_guid])
@@ -24,7 +22,7 @@ class PlansController < ApplicationController
     if @duplicate.save
       render :js => "#{plan_allocations_path(@duplicate.private_guid)}"
     else
-      redirect_to home_index_path(postcode: 3113), :notice  => "Problem duplicating plan"
+      redirect_to home_index_path, :notice  => "Problem duplicating plan"
     end
 
   end

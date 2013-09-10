@@ -2,7 +2,7 @@ class Plan < ActiveRecord::Base
   attr_accessible :name, :postcode, :public_guid, :private_guid, :opt_out
 
   validates_uniqueness_of :private_guid
-  validates_uniqueness_of :public_guid, unless: Proc.new { |p| p.public_guid == nil }
+  validates_uniqueness_of :public_guid, unless: Proc.new { |p| p.public_guid == nil || p.public_guid.empty? }
 
   has_many :tasks
   has_many :people
