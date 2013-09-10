@@ -8,8 +8,8 @@ class Signup
   include ActiveModel::Conversion
   include ActiveModel::Validations
 
-  attr_reader :user
-  # attr_reader attribute :plan
+  attr_reader :person
+  attr_reader :plan
 
   attribute :p_plan_name, String
   attribute :p_postcode, String
@@ -17,9 +17,6 @@ class Signup
   attribute :p_name_0, String
   attribute :p_email_0, String
   attribute :p_mobile_0, String
-  attribute :p_name_1, String
-  attribute :p_email_1, String
-  attribute :p_mobile_1, String
 
   # validates :email, presence: true
   # … more validations …
@@ -42,7 +39,11 @@ private
 
   def persist!
     @plan = Plan.create!(name: p_plan_name, postcode: p_postcode)
-    @plan.people.create!(name: p_name_0, email: p_email_0, mobile: p_mobile_0)
-    @plan.people.create!(name: p_name_1, email: p_email_1, mobile: p_mobile_1)
+
+    # create person if they choose to give detail otherwise use this anon approach
+    @anon = Person.new(name: 'anon', email: '', mobile: '')
+    @plan.people << @anon
+    # @plan.people.create!(name: p_name_0, email: p_email_0, mobile: p_mobile_0)
+
   end
 end

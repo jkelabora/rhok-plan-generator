@@ -2,8 +2,8 @@
   <%= form_tag signups_path, method: :post do %>
     <div class="row">
       <div class="span12">
-        <h2>Plan and Family information</h2>
-        <p>Let's start with a few details including the names and contact details of everyone</p>
+        <h2>Let's get started!</h2>
+        <p>All we need is a plan name and your postcode (so we can help find plan templates that you may find useful)</p>
       </div>
     </div>
 
@@ -18,7 +18,7 @@
 
     <div class="row">
       <div class="span12">
-        <h4>Family members</h4>
+        <h4>Optional details</h4>
       </div>
     </div>
 
@@ -36,7 +36,7 @@
 
     <div class="row">
       <div class="span10">
-        <button class="btn btn-secondary" type="submit">+</button>
+        <!-- <button class="btn btn-secondary" type="submit">+</button> -->
       </div>
       <div class="span2">
         <p><%= submit_tag "Next >>", class: "btn btn-primary" %></p>

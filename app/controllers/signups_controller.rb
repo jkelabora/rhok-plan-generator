@@ -1,27 +1,26 @@
 class SignupsController < ApplicationController
 
   def new
-    @persons = [Person.new, Person.new]
+    @persons = [Person.new]
   end
 
   def create
 
-    # @signup = Signup.new(params[:signup]).whatevs
     @signup = Signup.new(params.select{|p|p.start_with? 'p_'})
 
     if @signup.save
-      # redirect_to dashboard_path
+      @event = Event.first
+      @events = Event.all
 
-      # flash[:notice] = "Plan and two people successfully created"
-      # @persons = [Person.new, Person.new]
+      @plan = @signup.plan
+      @people = [@signup.person]
 
+      @custom_tasks = Task.where(event_id: @event).where(custom: true)  #TODO: should be a scope
+      @public_tasks = Task.where(event_id: @event).where(custom: false)  #TODO: should be a scope
 
+      @allocations = Allocation.where(task_id: @custom_tasks).where(people_id: @people)
 
-      @allocations = Allocation.all
-      @people = Person.all
-      @tasks = Task.all
-
-      redirect_to allocations_path
+      redirect_to plan_allocations_path(@plan.private_guid)
     else
       render "new"
     end
