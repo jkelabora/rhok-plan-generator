@@ -9,6 +9,9 @@
   .root_node {
     font-size: 18px;
   }
+  .root_node {
+    font-size: 16px;
+  }
 
   line.link {
     fill: none;
@@ -122,6 +125,9 @@
   function node_class(d) {
     if (d.root_node == true) {
       return "node root_node";
+    }
+    if (d.postcode_node == true) {
+      return "node postcode_node";
     } else {
       return "node";
     }
@@ -132,6 +138,9 @@
   function color(d) {
     if (d.root_node == true) {
       return "#0B740B";
+    }
+    if (d.postcode_node == true) {
+      return d.children ? "#9B6CCE" : "#530E9E";
     }
     return d._children ? "#3182bd" : d.children ? "#c6dbef" : "#fd8d3c";
   }

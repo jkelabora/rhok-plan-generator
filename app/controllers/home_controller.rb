@@ -21,27 +21,28 @@ class HomeController < ApplicationController
   end
 
   def visualisation
-    postcode = params[:postcode]
-    @public_plans = Plan.public_plans
-    @private_plans = Plan.private_plans
-    unless postcode.empty?
-      @public_plans = @public_plans.where(postcode: postcode)
-      @private_plans = @private_plans.where(postcode: postcode)
-    end
-
-    arr = []; @private_plans.count.times{ arr << {name: 'private'} }
-
     render :json => {
-      name: postcode.empty? ? 'all' : postcode, root_node: true,
+      name: "#{Plan.count} plans!", root_node: true,
       children:
-        @public_plans.collect{|p|
-          { name: p.name,
-            size: 7,
-            children: [{name: 'view', private_guid: p.private_guid}, {name: 'copy!', guid: p.public_guid}]
+        Plan.all.collect(&:postcode).uniq.collect do |postcode|
+          { name: postcode,
+            postcode_node: true,
+            children:
+              Plan.public_plans.where(postcode: postcode).collect do |p|
+                { name: p.name,
+                  size: 7,
+                  children: [{name: 'view', private_guid: p.private_guid}, {name: 'copy!', guid: p.public_guid}]
+                }
+              end + private_arr(Plan.private_plans.where(postcode: postcode))
           }
-        } + arr
-    }.to_json
+        end
+      }.to_json
+  end
 
+  private
+
+  def private_arr plans
+    arr = []; plans.count.times{ arr << {name: 'private'} }; arr
   end
 
 end
