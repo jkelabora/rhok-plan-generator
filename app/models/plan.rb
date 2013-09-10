@@ -10,8 +10,8 @@ class Plan < ActiveRecord::Base
   before_create :init_guids
 
   # using *_plan names for these so as not to clash with existing AR methods
-  scope :public_plans,  -> { where('public_guid is not null') }
-  scope :private_plans, -> { where('public_guid is null')}
+  scope :public_plans,  -> { where( "public_guid is not null and public_guid <> ''" ) }
+  scope :private_plans, -> { where( :public_guid => [nil, ''] ) } # a way to get to a working OR clause
 
   def opt_out
     @opt_out
