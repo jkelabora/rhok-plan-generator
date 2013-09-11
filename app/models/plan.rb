@@ -21,6 +21,14 @@ class Plan < ActiveRecord::Base
     @opt_out = transient_check_box_flag
   end
 
+  def public?
+    !!self.public_guid
+  end
+
+  def private?
+    !public?
+  end
+
   protected
     def init_guids
       self.private_guid = SecureRandom.hex 4

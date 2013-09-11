@@ -13,22 +13,30 @@ class HomeController < ApplicationController
     render :json => {
       name: "#{Plan.count} plans!", root_node: true,
       children:
-        Plan.all.collect(&:postcode).uniq.collect do |postcode|
+        candidate_postcodes.collect do |postcode|
           { name: postcode,
             postcode_node: true,
             children:
-              Plan.public_plans.where(postcode: postcode).collect do |p|
+              all.select{|p| p.postcode == postcode && p.public? }.collect do |p|
                 { name: p.name,
                   size: 7,
                   children: [{name: 'view', private_guid: p.private_guid}, {name: 'copy!', guid: p.public_guid}]
                 }
-              end + private_arr(Plan.private_plans.where(postcode: postcode))
+              end + private_arr(all.select{|p| p.postcode == postcode && p.private? })
           }
         end
       }.to_json
   end
 
   private
+
+  def all
+    @all ||= Plan.all
+  end
+
+  def candidate_postcodes
+    @pc ||= all.collect(&:postcode).uniq
+  end
 
   def private_arr plans
     arr = []; plans.count.times{ arr << {name: 'private'} }; arr
