@@ -1,12 +1,7 @@
 class SignupsController < ApplicationController
 
-  def new
-    @persons = [Person.new]
-  end
-
   def create
-
-    @signup = Signup.new(params.select{|p|p.start_with? 'p_'})
+    @signup = Signup.new(params)
 
     if @signup.save
       @event = Event.first
@@ -22,7 +17,7 @@ class SignupsController < ApplicationController
 
       redirect_to plan_allocations_path(@plan.private_guid)
     else
-      render "new"
+      render "new", :notice  => "Problem saving.. possibly missing plan name and postcode?"
     end
   end
 end

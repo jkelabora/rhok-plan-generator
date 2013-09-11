@@ -1,7 +1,5 @@
-
 <div class='container'>
 
-  <span class='hidden' id="postcode"><%= @postcode %></span>
   <%= render 'visualisation' %>
 
   <div class='count'>
@@ -12,27 +10,6 @@
   </div>
   <div class='count'>
   Allocations: <%= @allocation_count %>
-  </div>
-
-  <p>
-
-  <div>
-    Create a new blank plan
-
-    <%= form_for @blank_plan do |f| %>
-    <p>
-      <%= f.label :name %><br />
-      <%= f.text_field :name %>
-    </p>
-
-    <%= f.check_box :opt_out %> Tick to keep plan private (you can change that later if you like)
-
-    <p>
-      <%= f.label :postcode %><br />
-      <%= f.text_field :postcode %>
-    </p>
-    <p><%= f.submit %></p>
-    <% end %>
   </div>
 
 </end>

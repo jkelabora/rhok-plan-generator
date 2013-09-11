@@ -24,7 +24,7 @@ class Plan < ActiveRecord::Base
   protected
     def init_guids
       self.private_guid = SecureRandom.hex 4
-      self.public_guid = SecureRandom.hex 4 unless self.opt_out == '1'
+      self.public_guid = SecureRandom.hex 4 unless self.opt_out
     end
 
 end

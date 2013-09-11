@@ -10,8 +10,8 @@
     <div class="row">
       <div class="span12">
         <fieldset>
-          <%= text_field_tag "p_plan_name", nil, :placeholder=>"Plan Name" %>
-          <%= text_field_tag "p_postcode", nil, :placeholder=>"Household Postcode"%>
+          <%= text_field_tag "plan_name", nil, :placeholder=>"Plan Name" %>
+          <%= text_field_tag "postcode", nil, :placeholder=>"Household Postcode"%>
         </fieldset>
       </div>
     </div>
@@ -22,22 +22,26 @@
       </div>
     </div>
 
-    <% @persons.each_with_index do |p, i| %>
     <div class="row">
       <div class="span12">
         <fieldset>
-          <%= text_field_tag "p_name_#{i}", p.name, placeholder: "Name or Nick name" %>
-          <%= email_field_tag "p_email_#{i}", p.email, placeholder: "Email" %>
-          <%= text_field_tag "p_mobile_#{i}", p.mobile, placeholder: "Mobile" %>
+          <%= text_field_tag "name", nil, placeholder: "Name or Nickname" %>
+          <%= email_field_tag "email", nil, placeholder: "Email" %>
+          <%= text_field_tag "mobile", nil, placeholder: "Mobile" %>
         </fieldset>
       </div>
     </div>
-    <% end %>
+
+    <div>
+      <div class="span12">
+        <fieldset>
+            <%= check_box_tag :opt_out %> Keep your plan private?
+        </fieldset>
+      </div>
+    </div>
 
     <div class="row">
-      <div class="span10">
-        <!-- <button class="btn btn-secondary" type="submit">+</button> -->
-      </div>
+      <div class="span10"></div>
       <div class="span2">
         <p><%= submit_tag "Next >>", class: "btn btn-primary" %></p>
       </div>

@@ -38,8 +38,7 @@
       .attr("width", w)
       .attr("height", h);
 
-  var postcode = d3.select("#postcode").text();
-  d3.json("home/visualisation.json" + "?postcode=" + postcode, function(json) {
+  d3.json("home/visualisation.json", function(json) {
     root = json;
     update();
 

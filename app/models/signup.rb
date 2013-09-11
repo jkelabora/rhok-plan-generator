@@ -11,14 +11,16 @@ class Signup
   attr_reader :person
   attr_reader :plan
 
-  attribute :p_plan_name, String
-  attribute :p_postcode, String
+  attribute :plan_name, String
+  attribute :postcode, String
 
-  attribute :p_name_0, String
-  attribute :p_email_0, String
-  attribute :p_mobile_0, String
+  attribute :name, String
+  attribute :email, String
+  attribute :mobile, String
+  attribute :opt_out, Boolean
 
-  # validates :email, presence: true
+  validates :plan_name, presence: true
+  validates :postcode, presence: true
   # … more validations …
 
   # Forms are never themselves persisted
@@ -38,12 +40,14 @@ class Signup
 private
 
   def persist!
-    @plan = Plan.create!(name: p_plan_name, postcode: p_postcode)
+    @plan = Plan.create!(name: plan_name, postcode: postcode, opt_out: opt_out)
 
-    # create person if they choose to give detail otherwise use this anon approach
-    @anon = Person.new(name: 'anon', email: '', mobile: '')
-    @plan.people << @anon
-    # @plan.people.create!(name: p_name_0, email: p_email_0, mobile: p_mobile_0)
+    if name.empty? and email.empty? and mobile.empty?
+      @person = Person.new(name: 'anon', email: '', mobile: '')
+    else
+      @person = Person.new(name: name, email: email, mobile: mobile)
+    end
+    @plan.people << @person
 
   end
 end

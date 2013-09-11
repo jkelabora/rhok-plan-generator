@@ -20,7 +20,7 @@ RhokPlanGenerator::Application.routes.draw do
   get "plans/private/:private_guid/allocations", to: "allocations#index", as: 'plan_allocations'
 
   resources :allocations, only: [:create, :destroy]
+  resources :signups, only: [:new, :create]
 
   resources :people
-  resources :signups
 end
