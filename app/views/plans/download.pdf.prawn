@@ -24,7 +24,7 @@ pdf.move_down(30)
         ]
     end
 
-    pdf.table items, :row_colors => ["CBCBCB", "F0F0F0"] do
+    pdf.table items, :row_colors => ["CBCBCB", "F0F0F0"], :column_widths => {0 => 100} do
         row(0).font_style = :bold
     end
 
