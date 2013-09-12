@@ -1,6 +1,11 @@
 <div class="container">
   <div class="row">
     <div class="span12">
+      <span>
+        <%= button_to 'COPY!',
+          plan_duplicate_url(:public_guid => @plan.public_guid),
+          class: "btn btn-success", method: :post %>
+      </span>
       <p>
         <strong>Name:</strong>
         <%= @plan.name %>

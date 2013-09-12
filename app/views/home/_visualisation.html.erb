@@ -177,8 +177,8 @@
   }
 
   function copyPlan(d) {
-    d3.text("/plans/" + d.guid + "/duplicate")
-      .header("Content-type", "application/x-www-form-urlencoded")
+    d3.text("/plans/" + d.guid + "/duplicate.json")
+      .header("Content-type", "application/json")
       .post(function(error, text) { window.location = text }); // bit of a hack...
   }
   function viewPlan(d) {

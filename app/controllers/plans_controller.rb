@@ -2,6 +2,8 @@ require 'prawn'
 
 class PlansController < ApplicationController
 
+  respond_to :json, :html
+
   def duplicate
     @source = Plan.find_by_public_guid(params[:public_guid])
     
@@ -9,7 +11,12 @@ class PlansController < ApplicationController
     @duplicate = Plan.new( name: "#{@source.name}-COPY", postcode: @source.postcode )
     @duplicate.people << @anon
     if @duplicate.save
-      render :js => "#{plan_allocations_path(@duplicate.private_guid)}"
+
+      respond_to do |format|
+        format.html { redirect_to plan_allocations_path(@duplicate.private_guid) }
+        format.json { render :js => "#{plan_allocations_path(@duplicate.private_guid)}" }
+      end
+
     else
       redirect_to home_index_path, :notice  => "Problem duplicating plan"
     end
