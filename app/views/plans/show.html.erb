@@ -8,22 +8,20 @@
       <p>
         <strong>Postcode:</strong>
         <%= @plan.postcode %>
+        <%= gmaps(@map_options) %>
       </p>
-
-        <% @plan.events.each do |event| %>
-          
-          <h3><%= event.name %></h3>
-          
-          <table class="table table-striped">
-            <% @plan.tasks_for(event).each do |task| %>
-              <tr>
-                <td><%= @plan.people_for(task) %></td>
-                <td><%= task.name %></td>
-              </tr>      
-            <% end %>
-          </table>
-        <% end %>
-
+      <% @plan.events.each do |event| %>
+        <h3><%= event.name %></h3>
+        <table class="table table-striped">
+          <% @plan.tasks_for(event).each do |task| %>
+            <tr>
+              <td><%= @plan.people_for(task) %></td>
+              <td><%= task.name %></td>
+            </tr>
+          <% end %>
+        </table>
+      <% end %>
     </div>
   </div>
 </div>
+

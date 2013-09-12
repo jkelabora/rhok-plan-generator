@@ -6,6 +6,7 @@ gem 'mysql2'
 gem 'aws-sdk'
 gem 'twilio-ruby'
 gem 'draper', '~> 1.0'
+gem 'gmaps4rails'
 gem 'prawn'
 gem 'prawnto'
 

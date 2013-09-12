@@ -29,13 +29,21 @@ class PlansController < ApplicationController
 
   def download
     @plan = Plan.find_by_private_guid(params[:private_guid]).decorate
-    respond_to do |format|    
+    @json = @plan.to_gmaps4rails
+    respond_to do |format|
       format.pdf { render :layout => false}
     end
-  end  
+  end
 
   def show
     @plan = Plan.find_by_private_guid(params[:private_guid]).decorate
+
+    @plan.process_geocoding
+
+    @map_options =  {
+      :map_options => { :type => "ROADMAP", auto_zoom: false, :zoom => 14},
+      :markers     => { :data => @plan.to_gmaps4rails, :options => {:do_clustering => true} }
+    }
   end
 
   # leave as a json endpoint.. will need to edit plan details at some point
