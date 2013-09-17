@@ -23,12 +23,12 @@ class EventsMailer
       p.tasks.where(event_id: @event).each {|t| body_text += "- #{t.name}\n"}
       body_text += "\n\nHope that helps,\nBest regards,\nThe Active Fire Plan Generator team"
 
-      @service.send_email(
-        :subject => subject,
-        :from => 'jkelabora@gmail.com', # ses verified sender address
-        :to => p.email,
-        :body_text => body_text,
-        :body_html => body_text) if Rails.env == 'production'
+      # @service.send_email(
+      #   :subject => subject,
+      #   :from => 'jkelabora@gmail.com', # ses verified sender address
+      #   :to => p.email,
+      #   :body_text => body_text,
+      #   :body_html => body_text) if Rails.env == 'production'
     end
   end
 

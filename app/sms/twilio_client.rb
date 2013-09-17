@@ -16,7 +16,7 @@ class TwilioClient
       body += "'#{@event.name}' was triggered; you have #{p.tasks.where(event_id: @event).count} related tasks allocated."
       body += " Please check #{p.email}" if p.email
       # sms body can be up to 160 characters long
-      @account.sms.messages.create({:from => '+19402028234', :to => p.mobile, :body => body[0..159]}) if Rails.env == 'production'
+#      @account.sms.messages.create({:from => '+19402028234', :to => p.mobile, :body => body[0..159]}) if Rails.env == 'production'
     end
   end
 
