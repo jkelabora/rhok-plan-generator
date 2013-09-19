@@ -20,7 +20,7 @@ class HomeController < ApplicationController
               all.select{|p| p.postcode == postcode && p.public? }.collect do |p|
                 { name: p.name,
                   size: 7,
-                  children: [{name: 'view', guid: p.public_guid}, {name: 'copy!', guid: p.public_guid}]
+                  children: [{name: 'view', guid: p.public_guid}]
                 }
               end + private_arr(all.select{|p| p.postcode == postcode && p.private? })
           }
