@@ -15,7 +15,7 @@ class PlansController < ApplicationController
 
   def duplicate
     @source = Plan.find_by_public_guid(params[:public_guid])
-    
+
     @anon = Person.new(name: 'anon', email: '', mobile: '')
     @duplicate = Plan.new( name: "#{@source.name}-COPY", postcode: @source.postcode )
     @duplicate.people << @anon
@@ -29,17 +29,20 @@ class PlansController < ApplicationController
 
   def download
     @plan = Plan.find_by_private_guid(params[:private_guid]).decorate
-    @json = @plan.to_gmaps4rails
     respond_to do |format|
-      format.pdf { render :layout => false}
+      format.pdf do 
+        #save image
+        File.open("#{Rails.root}/app/assets/images/map-#{@plan.private_guid}.png", 'wb') do |file|
+          file.write(@plan.static_gmap)
+        end
+        render :layout => false
+      end
     end
   end
 
   def show
     @plan = Plan.find_by_private_guid(params[:private_guid]).decorate
-
     @plan.process_geocoding
-
     @map_options =  {
       :map_options => { :type => "ROADMAP", auto_zoom: false, :zoom => 14},
       :markers     => { :data => @plan.to_gmaps4rails, :options => {:do_clustering => true} }

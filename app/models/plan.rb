@@ -17,7 +17,6 @@ class Plan < ActiveRecord::Base
 
   def gmaps4rails_address
     "#{self.postcode}, Australia"
-    #"90 Water St, New York, NY 10005"
   end
 
   def opt_out

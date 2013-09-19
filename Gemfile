@@ -6,7 +6,7 @@ gem 'mysql2'
 gem 'aws-sdk'
 gem 'twilio-ruby'
 gem 'draper', '~> 1.0'
-gem 'gmaps4rails'
+gem 'gmaps4rails', :git => 'git@github.com:stefan-lz/Google-Maps-for-Rails.git', :branch => 'static_maps'
 gem 'prawn'
 gem 'prawnto'
 
