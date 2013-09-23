@@ -1,15 +1,28 @@
 <div class='container'>
 
-  <%= render 'visualisation' %>
+  <div class="row">
+    <div class="span12">
+      <%= render 'visualisation' %>
+    </div>
+  </div>
 
-  <div class='count'>
-  People: <%= @people_count %>
+  <div class="row">
+    <div class="span9"></div>
+    <p class="span3">
+      Or get a plan in <%= link_to '3 fast steps', new_signup_url %>
+    </p>
   </div>
-  <div class='count'>
-  Tasks: <%= @task_count %>
-  </div>
-  <div class='count'>
-  Allocations: <%= @allocation_count %>
+
+  <div class="row">
+    <div class='span12'>
+    People: <%= @people_count %>
+    </div>
+    <div class='span12'>
+    Tasks: <%= @task_count %>
+    </div>
+    <div class='span12'>
+    Allocations: <%= @allocation_count %>
+    </div>
   </div>
 
 </end>
