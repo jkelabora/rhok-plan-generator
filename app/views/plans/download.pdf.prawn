@@ -1,5 +1,7 @@
 pdf.repeat(:all) do
-    pdf.draw_text "Fire plan - #{@plan.name}", :at => pdf.bounds.bottom_left, :style => :italic, :size => 10
+    pdf.draw_text "Fire Plan - #{@plan.name}", :at => [pdf.bounds.left - 0, 8], :style => :italic, :size => 10
+    pdf.number_pages "Page <page> of <total>", :at => pdf.bounds.bottom_left, :style => :italic, :size => 10
+    pdf.draw_text "Generated at: #{Time.now}", :at => [pdf.bounds.right - 180, -8], :style => :italic, :justify => :right, :size => 10
 end
 
 pdf.text "Fire Plan - #{@plan.name}", :size => 30, :style => :bold
