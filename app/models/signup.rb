@@ -43,7 +43,7 @@ private
     @plan = Plan.create!(name: plan_name, postcode: postcode, opt_out: opt_out)
 
     if name.empty? and email.empty? and mobile.empty?
-      @person = Person.new(name: 'anon', email: '', mobile: '')
+      @person = Person.anon
     else
       @person = Person.new(name: name, email: email, mobile: mobile)
     end
