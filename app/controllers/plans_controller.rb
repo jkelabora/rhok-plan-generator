@@ -7,7 +7,7 @@ class PlansController < ApplicationController
   def duplicate
     @source = Plan.find_by_public_guid(params[:public_guid])
     
-    @duplicate = Plan.new( name: "#{@source.name}-COPY", postcode: @source.postcode )
+    @duplicate = Plan.new( name: "#{@source.name}-COPY", postcode: @source.postcode, plan_id: @source.id)
     @duplicate.people << Person.anon
     if @duplicate.save
 
