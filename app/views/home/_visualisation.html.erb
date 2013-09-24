@@ -6,7 +6,7 @@
 <!-- <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script> -->
 
 <style type="text/css">
-  .root_node {
+  .view_node {
     font-size: 18px;
   }
   .root_node {
@@ -127,6 +127,9 @@
     if (d.root_node == true) {
       return "node root_node";
     }
+    if (d.view_node == true) {
+      return "node view_node";
+    }
     if (d.postcode_node == true) {
       return "node postcode_node";
     } else {
@@ -140,15 +143,18 @@
     if (d.root_node == true) {
       return "#0B740B";
     }
+    if (d.view_node == true) {
+      return "#fd8d3c";
+    }
     if (d.postcode_node == true) {
       return d.children ? "#9B6CCE" : "#530E9E";
     }
-    return d._children ? "#3182bd" : d.children ? "#c6dbef" : "#fd8d3c";
+    return d._children ? "#3182bd" : d.children ? "#c6dbef" : "#E69B9B";
   }
 
   // Toggle children on click.
   function toggle(d) {
-    if (d.name == 'view') {
+    if (d.name == 'view!') {
       viewPlan(d);
     }
     if (d.children) {

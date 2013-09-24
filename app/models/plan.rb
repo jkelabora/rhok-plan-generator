@@ -17,12 +17,23 @@ class Plan < ActiveRecord::Base
   scope :public_plans,  -> { where( "public_guid is not null and public_guid <> ''" ) }
   scope :private_plans, -> { where( :public_guid => [nil, ''] ) } # a way to get to a working OR clause
 
+  scope :top_level,     -> { where(plan_id: nil) }
+  scope :for_postcode,  ->(postcode) { where(postcode: postcode) }
+
   def opt_out
     @opt_out
   end
 
   def opt_out= transient_check_box_flag
     @opt_out = transient_check_box_flag
+  end
+
+  def display_name
+    if public?
+      self.name
+    else
+      '[details-withheld]'
+    end
   end
 
   def public?

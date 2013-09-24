@@ -10,36 +10,55 @@ class HomeController < ApplicationController
   end
 
   def visualisation
-    render :json => {
-      name: "#{Plan.count} plans!", root_node: true,
-      children:
-        candidate_postcodes.collect do |postcode|
-          { name: postcode,
-            postcode_node: true,
-            children:
-              all.select{|p| p.postcode == postcode && p.public? }.collect do |p|
-                { name: p.name,
-                  size: 7,
-                  children: [{name: 'view', guid: p.public_guid}]
-                }
-              end + private_arr(all.select{|p| p.postcode == postcode && p.private? })
-          }
-        end
-      }.to_json
+    render :json => VisualisationPresenter.present
   end
 
   private
 
-  def all
-    @all ||= Plan.all
-  end
+  class VisualisationPresenter
 
-  def candidate_postcodes
-    @pc ||= all.collect(&:postcode).uniq
-  end
+    class << self
 
-  def private_arr plans
-    arr = []; plans.count.times{ arr << {name: 'private'} }; arr
+      def present
+        {
+          name: "#{Plan.count} plans!",
+          root_node: true,
+          children:
+            Plan.uniq.pluck(:postcode).collect do |postcode|
+              { name: postcode,
+                postcode_node: true,
+                children:
+                  Plan.top_level.for_postcode(postcode).collect do |p|
+                    generate_decendents(p)
+                end
+              }
+            end
+        }.to_json
+      end
+
+      private
+
+      def generate_decendents node
+        {
+          name: node.display_name,
+          size: 7
+        }.merge(children(node))
+      end
+
+      def children node
+        if node.private?
+          {}
+        else
+          { children:
+            node.child_plans.collect do |c|
+              generate_decendents(c) # recurse
+            end + [{ name: 'view!', guid: node.public_guid, view_node: true }]
+          }
+        end
+      end
+
+    end
+
   end
 
 end
