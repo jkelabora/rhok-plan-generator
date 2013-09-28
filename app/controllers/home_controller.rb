@@ -25,7 +25,7 @@ class HomeController < ApplicationController
           root_node: true,
           children:
             Plan.uniq.pluck(:postcode).collect do |postcode|
-              { name: postcode,
+              { name: "#{postcode} (#{Plan.for_postcode(postcode).count})",
                 postcode_node: true,
                 children:
                   Plan.top_level.for_postcode(postcode).collect do |p|
