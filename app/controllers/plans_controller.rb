@@ -5,12 +5,9 @@ class PlansController < ApplicationController
   respond_to :json, :html
 
   def duplicate
-    @source = Plan.find_by_public_guid(params[:public_guid])
-    
-    @duplicate = Plan.new( name: "#{@source.name}-COPY", postcode: @source.postcode, plan_id: @source.id)
-    @duplicate.people << Person.anon
-    if @duplicate.save
+    @duplicate = Plan.find_by_public_guid(params[:public_guid]).duplicate
 
+    if @duplicate.save
       respond_to do |format|
         format.html { redirect_to plan_allocations_path(@duplicate.private_guid) }
         format.json { render :js => "#{plan_allocations_path(@duplicate.private_guid)}" }

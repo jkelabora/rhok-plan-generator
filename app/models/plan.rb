@@ -44,6 +44,26 @@ class Plan < ActiveRecord::Base
     !public?
   end
 
+  def duplicate
+    @duplicate = Plan.new(name: "#{self.name}-COPY", postcode: self.postcode, plan_id: self.id)
+    anon = Person.anon
+    transaction do
+      anon.save
+      @duplicate.people << anon
+      Event.all.each do |ev|
+        self.people.each do |person|
+          tasks = person.tasks.where(event_id: ev)
+          tasks.each do |t|
+            dup_task = t.dup
+            dup_task.save
+            Allocation.create!(person_id: anon.id, task_id: dup_task.id)
+          end
+        end
+      end # close transaction
+    end
+    @duplicate
+  end
+
   protected
     def init_guids
       self.private_guid = SecureRandom.hex 4
