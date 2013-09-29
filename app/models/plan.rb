@@ -4,7 +4,6 @@ class Plan < ActiveRecord::Base
   validates_uniqueness_of :private_guid
   validates_uniqueness_of :public_guid, unless: Proc.new { |p| p.public_guid == nil || p.public_guid.empty? }
 
-  has_many :tasks
   has_many :people
 
   # manage the self-referential nature of plans
