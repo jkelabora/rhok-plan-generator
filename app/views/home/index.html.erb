@@ -2,27 +2,43 @@
 
   <div class="row">
     <div class="span12">
+      <div id="chart"></div>
+      <%= javascript_include_tag "d3-v3-min.js" %>
       <%= render 'visualisation' %>
+      <%= render 'collapsible_tree_visualisation' %>
+      <!-- <%= render 'tree_visualisation' %> -->
     </div>
+  </div>
+  <div class="row">
+    <div class="span8"></div>
+      <p class="span4">
+        <%= link_to_function 'Force Directed', 'force_directed()' %><span class='link-spacer'>|</span>
+        <%= link_to_function 'Collapsible Tree', 'collapsible_tree()' %><!-- <span class='link-spacer'/>|</span> -->
+        <!-- <%= link_to_function '(Static Tree)', 'static_tree()' %> -->
+      </p>
   </div>
 
   <div class="row">
-    <div class="span9"></div>
-    <p class="span3">
+    <div class="span6"></div>
+    <p class="span6">
       Check out what people are up to above or get a plan in <%= link_to '3 fast steps', new_signup_url %>
     </p>
   </div>
 
-  <div class="row">
-    <div class='span12'>
+<!--   <div class="row">
+    <div class='span2'>
     People: <%= @people_count %>
     </div>
-    <div class='span12'>
+    <div class='span2'>
     Tasks: <%= @task_count %>
     </div>
-    <div class='span12'>
+    <div class='span2'>
     Allocations: <%= @allocation_count %>
     </div>
   </div>
+ -->
+  <script type="text/javascript">
+    window.onload = force_directed();
+  </script>
 
 </end>

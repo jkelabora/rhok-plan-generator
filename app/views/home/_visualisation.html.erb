@@ -1,10 +1,6 @@
 
 <!-- Collapsible Force Layout -->
 <!-- http://bl.ocks.org/mbostock/1062288 -->
-
-<%= javascript_include_tag "d3-v3-min.js" %>
-<!-- <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script> -->
-
 <style type="text/css">
   .view_node {
     font-size: 18px;
@@ -22,167 +18,170 @@
   }
 </style>
 
-<div id="chart"></div>
-
 <script type="text/javascript">
 
-  var w = 960,
-      h = 500,
-      node,
-      link,
-      root;
+  function force_directed() {
 
-  var force = d3.layout.force()
-      .on("tick", tick)
-      .size([w, h]);
+    d3.select("#chart").selectAll('svg').remove();
 
-  var vis = d3.select("#chart").append("svg:svg")
-      .attr("width", w)
-      .attr("height", h);
+    var w = 960,
+        h = 800,
+        node,
+        link,
+        root;
 
-  d3.json("home/visualisation.json", function(json) {
-    root = json;
-    update();
+    var force = d3.layout.force()
+        .on("tick", tick)
+        .size([w, h]);
 
-    // Initialize the display to show a few nodes.
-    // from: http://stackoverflow.com/questions/17504136/starting-d3-force-layout-collapsed-text-labels-duplicating
-    function collapseAll(d) {
-        if (d.children) {
-          d.children.forEach(collapseAll);
-          toggle(d);
+    var vis = d3.select("#chart").append("svg:svg")
+        .attr("width", w)
+        .attr("height", h);
+
+    d3.json("home/visualisation.json", function(json) {
+      root = json;
+      update();
+
+      // Initialize the display to show a few nodes.
+      // from: http://stackoverflow.com/questions/17504136/starting-d3-force-layout-collapsed-text-labels-duplicating
+      function collapseAll(d) {
+          if (d.children) {
+            d.children.forEach(collapseAll);
+            toggle(d);
+          }
         }
+        root.children.forEach(collapseAll);
+        update(root);
+
+    });
+
+    function update() {
+      var nodes = flatten(root),
+          links = d3.layout.tree().links(nodes);
+
+      // Restart the force layout.
+      force.nodes(nodes)
+          .distance(170)
+          .charge(-370)
+          .links(links)
+          .start();
+
+      // Update the links…
+      link = vis.selectAll("line.link")
+          .data(links, function(d) { return d.target.id; });
+
+      // Enter any new links.
+      link.enter().insert("svg:line", ".node")
+          .attr("class", "link")
+          .attr("x1", function(d) { return d.source.x; })
+          .attr("y1", function(d) { return d.source.y; })
+          .attr("x2", function(d) { return d.target.x; })
+          .attr("y2", function(d) { return d.target.y; });
+
+      // Exit any old links.
+      link.exit().remove();
+
+      // Update the nodes…
+      node = vis.selectAll("text.node")
+          .data(nodes, function(d) { return d.id; })
+          .attr("class", node_class)
+          .style("fill", color);
+
+      // Enter any new nodes.
+      node.enter().append("svg:text")
+          .attr("class", node_class)
+          .text(function(d) { return d.name; })
+          .attr("children", childrenCount )
+          .attr("x", function(d) { return d.x; })
+          .attr("y", function(d) { return d.y; })
+          .style("fill", color)
+          .on("click", toggle)
+          .call(force.drag);
+
+      // Exit any old nodes.
+      node.exit().remove();
+    }
+
+    function tick() {
+      link.attr("x1", function(d) { return d.source.x; })
+          .attr("y1", function(d) { return d.source.y; })
+          .attr("x2", function(d) { return d.target.x; })
+          .attr("y2", function(d) { return d.target.y; });
+
+      node.attr("x", function(d) { return d.x; })
+          .attr("y", function(d) { return d.y; });
+    }
+
+    // could be used to show the immediate children of a collapsed node 
+    function childrenCount(d) { 
+      if (d.children) {
+        return d.children.length;
+      } else {
+        return 0;
       }
-      root.children.forEach(collapseAll);
-      update(root);
-
-  });
-
-  function update() {
-    var nodes = flatten(root),
-        links = d3.layout.tree().links(nodes);
-
-    // Restart the force layout.
-    force.nodes(nodes)
-        .distance(170)
-        .charge(-370)
-        .links(links)
-        .start();
-
-    // Update the links…
-    link = vis.selectAll("line.link")
-        .data(links, function(d) { return d.target.id; });
-
-    // Enter any new links.
-    link.enter().insert("svg:line", ".node")
-        .attr("class", "link")
-        .attr("x1", function(d) { return d.source.x; })
-        .attr("y1", function(d) { return d.source.y; })
-        .attr("x2", function(d) { return d.target.x; })
-        .attr("y2", function(d) { return d.target.y; });
-
-    // Exit any old links.
-    link.exit().remove();
-
-    // Update the nodes…
-    node = vis.selectAll("text.node")
-        .data(nodes, function(d) { return d.id; })
-        .attr("class", node_class)
-        .style("fill", color);
-
-    // Enter any new nodes.
-    node.enter().append("svg:text")
-        .attr("class", node_class)
-        .text(function(d) { return d.name; })
-        .attr("children", childrenCount )
-        .attr("x", function(d) { return d.x; })
-        .attr("y", function(d) { return d.y; })
-        .style("fill", color)
-        .on("click", toggle)
-        .call(force.drag);
-
-    // Exit any old nodes.
-    node.exit().remove();
-  }
-
-  function tick() {
-    link.attr("x1", function(d) { return d.source.x; })
-        .attr("y1", function(d) { return d.source.y; })
-        .attr("x2", function(d) { return d.target.x; })
-        .attr("y2", function(d) { return d.target.y; });
-
-    node.attr("x", function(d) { return d.x; })
-        .attr("y", function(d) { return d.y; });
-  }
-
-  // could be used to show the immediate children of a collapsed node 
-  function childrenCount(d) { 
-    if (d.children) {
-      return d.children.length;
-    } else {
-      return 0;
-    }
-  }
-
-  function node_class(d) {
-    if (d.root_node == true) {
-      return "node root_node";
-    }
-    if (d.view_node == true) {
-      return "node view_node";
-    }
-    if (d.postcode_node == true) {
-      return "node postcode_node";
-    } else {
-      return "node";
-    }
-  }
-
-  // Color leaf nodes orange, and packages white or blue.
-  // Special treatment for the root node...
-  function color(d) {
-    if (d.root_node == true) {
-      return "#0B740B";
-    }
-    if (d.view_node == true) {
-      return "#fd8d3c";
-    }
-    if (d.postcode_node == true) {
-      return d.children ? "#9B6CCE" : "#530E9E";
-    }
-    return d._children ? "#3182bd" : d.children ? "#c6dbef" : "#E69B9B";
-  }
-
-  // Toggle children on click.
-  function toggle(d) {
-    if (d.name == 'view!') {
-      viewPlan(d);
-    }
-    if (d.children) {
-      d._children = d.children;
-      d.children = null;
-    } else {
-      d.children = d._children;
-      d._children = null;
-    }
-    update();
-  }
-
-  // Returns a list of all nodes under the root.
-  function flatten(root) {
-    var nodes = [], i = 0;
-
-    function recurse(node) {
-      if (node.children) node.children.forEach(recurse);
-      if (!node.id) node.id = ++i;
-      nodes.push(node);
     }
 
-    recurse(root);
-    return nodes;
-  }
+    function node_class(d) {
+      if (d.root_node == true) {
+        return "node root_node";
+      }
+      if (d.view_node == true) {
+        return "node view_node";
+      }
+      if (d.postcode_node == true) {
+        return "node postcode_node";
+      } else {
+        return "node";
+      }
+    }
 
-  function viewPlan(d) {
-    window.location = "/plans/" + d.guid + "/show";
+    // Color leaf nodes orange, and packages white or blue.
+    // Special treatment for the root node...
+    function color(d) {
+      if (d.root_node == true) {
+        return "#0B740B";
+      }
+      if (d.view_node == true) {
+        return "#fd8d3c";
+      }
+      if (d.postcode_node == true) {
+        return d.children ? "#9B6CCE" : "#530E9E";
+      }
+      return d._children ? "#3182bd" : d.children ? "#c6dbef" : "#E69B9B";
+    }
+
+    // Toggle children on click.
+    function toggle(d) {
+      if (d.name == 'view!') {
+        viewPlan(d);
+      }
+      if (d.children) {
+        d._children = d.children;
+        d.children = null;
+      } else {
+        d.children = d._children;
+        d._children = null;
+      }
+      update();
+    }
+
+    // Returns a list of all nodes under the root.
+    function flatten(root) {
+      var nodes = [], i = 0;
+
+      function recurse(node) {
+        if (node.children) node.children.forEach(recurse);
+        if (!node.id) node.id = ++i;
+        nodes.push(node);
+      }
+
+      recurse(root);
+      return nodes;
+    }
+
+    function viewPlan(d) {
+      window.location = "/plans/" + d.guid + "/show";
+    }
   }
 
 </script>
