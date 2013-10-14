@@ -23,10 +23,12 @@ class HomeController < ApplicationController
         {
           name: "#{Plan.count} plans!",
           root_node: true,
+          size: Plan.count,
           children:
             Plan.uniq.pluck(:postcode).collect do |postcode|
-              { name: "#{postcode} (#{Plan.for_postcode(postcode).count})",
+              { name: "#{postcode}",
                 postcode_node: true,
+                size: Plan.for_postcode(postcode).count,
                 children:
                   Plan.top_level.for_postcode(postcode).collect do |p|
                     generate_decendents(p)
@@ -41,7 +43,7 @@ class HomeController < ApplicationController
       def generate_decendents node
         {
           name: node.display_name,
-          size: 7
+          size: 4,
         }.merge(children(node))
       end
 
@@ -52,7 +54,7 @@ class HomeController < ApplicationController
           { children:
             node.child_plans.collect do |c|
               generate_decendents(c) # recurse
-            end + [{ name: 'view!', guid: node.public_guid, view_node: true }]
+            end + [{ size: 9, name: 'view!', guid: node.public_guid, view_node: true }]
           }
         end
       end

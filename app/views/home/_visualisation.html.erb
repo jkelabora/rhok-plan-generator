@@ -1,13 +1,6 @@
-
 <!-- Collapsible Force Layout -->
-<!-- http://bl.ocks.org/mbostock/1062288 -->
+<!-- http://bl.ocks.org/mbostock/1093130 -->
 <style type="text/css">
-  .view_node {
-    font-size: 18px;
-  }
-  .root_node {
-    font-size: 16px;
-  }
   line.link {
     fill: none;
     stroke: #9ecae1;
@@ -15,6 +8,23 @@
   }
   div#chart {
     border: rgb(211, 211, 211) 1px solid;
+  }
+  .node circle {
+    cursor: pointer;
+    stroke: #3182bd;
+    stroke-width: 1.5px;
+  }
+  .node text {
+    font: 18px sans-serif;
+    pointer-events: none;
+    text-anchor: middle;
+  }
+  .view_node text {
+    font: 20px sans-serif;
+  }
+  .root_node text {
+    stroke: #176E9B;
+    font: 20px sans-serif;
   }
 </style>
 
@@ -24,21 +34,25 @@
 
     d3.select("#chart").selectAll('svg').remove();
 
-    var w = 960,
-        h = 800,
-        node,
-        link,
+    var width = 960,
+        height = 800,
         root;
 
     var force = d3.layout.force()
-        .on("tick", tick)
-        .size([w, h]);
+        .linkDistance(80)
+        .charge(-120)
+        .gravity(.05)
+        .size([width, height])
+        .on("tick", tick);
 
-    var vis = d3.select("#chart").append("svg:svg")
-        .attr("width", w)
-        .attr("height", h);
+    var svg = d3.select("#chart").append("svg")
+        .attr("width", width)
+        .attr("height", height);
 
-    d3.json("home/visualisation.json", function(json) {
+    var link = svg.selectAll(".link"),
+        node = svg.selectAll(".node");
+
+    d3.json("home/visualisation.json", function(error, json) {
       root = json;
       update();
 
@@ -46,6 +60,7 @@
       // from: http://stackoverflow.com/questions/17504136/starting-d3-force-layout-collapsed-text-labels-duplicating
       function collapseAll(d) {
           if (d.children) {
+            console.log('.');
             d.children.forEach(collapseAll);
             toggle(d);
           }
@@ -57,68 +72,67 @@
 
     function update() {
       var nodes = flatten(root),
-          links = d3.layout.tree().links(nodes);
+      links = d3.layout.tree().links(nodes);
 
       // Restart the force layout.
-      force.nodes(nodes)
-          .distance(100)
-          .charge(-670)
+      force
+          .nodes(nodes)
+              .distance(100)
+              .charge(-670)
           .links(links)
           .start();
 
-      // Update the links…
-      link = vis.selectAll("line.link")
-          .data(links, function(d) { return d.target.id; });
+      // Update links.
+      link = link.data(links, function(d) { return d.target.id; });
 
-      // Enter any new links.
-      link.enter().insert("svg:line", ".node")
-          .attr("class", "link")
-          .attr("x1", function(d) { return d.source.x; })
-          .attr("y1", function(d) { return d.source.y; })
-          .attr("x2", function(d) { return d.target.x; })
-          .attr("y2", function(d) { return d.target.y; });
-
-      // Exit any old links.
       link.exit().remove();
 
-      // Update the nodes…
-      node = vis.selectAll("text.node")
-          .data(nodes, function(d) { return d.id; })
-          .attr("class", node_class)
-          .style("fill", color);
+      link.enter().insert("line", ".node")
+          .attr("class", "link");
 
-      // Enter any new nodes.
-      node.enter().append("svg:text")
+      // Update nodes.
+      node = node.data(nodes, function(d) { return d.id; });
+
+      node.exit().remove();
+
+      var nodeEnter = node.enter().append("g")
           .attr("class", node_class)
-          .text(function(d) { return d.name; })
-          .attr("children", childrenCount )
-          .attr("x", function(d) { return d.x; })
-          .attr("y", function(d) { return d.y; })
-          .style("fill", color)
           .on("click", toggle)
           .call(force.drag);
 
-      // Exit any old nodes.
-      node.exit().remove();
+      nodeEnter.append("circle")
+          .attr("r", function(d) { return d.size * 3 });
+
+      nodeEnter.append("text")
+          .attr("dy", ".35em")
+          .text(function(d) { return d.name; });
+
+      node.select("circle")
+          .style("fill", color);
     }
 
     function tick() {
+
       link.attr("x1", function(d) { return d.source.x; })
           .attr("y1", function(d) { return d.source.y; })
           .attr("x2", function(d) { return d.target.x; })
           .attr("y2", function(d) { return d.target.y; });
 
-      node.attr("x", function(d) { return d.x; })
-          .attr("y", function(d) { return d.y; });
+      node.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+
     }
 
-    // could be used to show the immediate children of a collapsed node 
-    function childrenCount(d) { 
-      if (d.children) {
-        return d.children.length;
-      } else {
-        return 0;
+    function color(d) {
+      if (d.root_node == true) {
+        return "#94C8FF";
       }
+      if (d.view_node == true) {
+        return "#fd8d3c";
+      }
+      if (d.postcode_node == true) {
+        return d.children ? "#C8B3E0" : "#AF64FF";
+      }
+      return d._children ? "#3182bd" : d.children ? "#c6dbef" : "#E69B9B";
     }
 
     function node_class(d) {
@@ -135,23 +149,9 @@
       }
     }
 
-    // Color leaf nodes orange, and packages white or blue.
-    // Special treatment for the root node...
-    function color(d) {
-      if (d.root_node == true) {
-        return "#0B740B";
-      }
-      if (d.view_node == true) {
-        return "#fd8d3c";
-      }
-      if (d.postcode_node == true) {
-        return d.children ? "#9B6CCE" : "#530E9E";
-      }
-      return d._children ? "#3182bd" : d.children ? "#c6dbef" : "#E69B9B";
-    }
-
     // Toggle children on click.
     function toggle(d) {
+      // if (d3.event.defaultPrevented) return; // ignore drag
       if (d.name == 'view!') {
         viewPlan(d);
       }
@@ -164,6 +164,7 @@
       }
       update();
     }
+
 
     // Returns a list of all nodes under the root.
     function flatten(root) {
