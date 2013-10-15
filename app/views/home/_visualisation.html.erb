@@ -137,9 +137,12 @@
         return "#fd8d3c";
       }
       if (d.postcode_node == true) {
-        return d.children ? "#C8B3E0" : "#AF64FF";
+        return d.children ? "#AF64FF" : "#C8B3E0";
       }
-      return d._children ? "#3182bd" : d.children ? "#c6dbef" : "#E69B9B";
+      var private_plan = "#E69B9B";
+      var contracted = "#61B0E9";
+      var expanded = "#c6dbef";
+      return d._children ? expanded : d.children ? contracted : private_plan;
     }
 
     function node_class(d) {
