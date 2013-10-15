@@ -24,9 +24,13 @@
   }
   .root_node text {
     stroke: #176E9B;
+    fill: #176E9B;
     font: 20px sans-serif;
   }
-</style>
+/*  .postcode_node text {
+    text-anchor: right;
+  }
+*/</style>
 
 <script type="text/javascript">
 
@@ -39,8 +43,8 @@
         root;
 
     var force = d3.layout.force()
-        .linkDistance(80)
-        .charge(-120)
+        .linkDistance(200)
+        .charge(-670)
         .gravity(.05)
         .size([width, height])
         .on("tick", tick);
@@ -59,15 +63,13 @@
       // Initialize the display to show a few nodes.
       // from: http://stackoverflow.com/questions/17504136/starting-d3-force-layout-collapsed-text-labels-duplicating
       function collapseAll(d) {
-          if (d.children) {
-            console.log('.');
-            d.children.forEach(collapseAll);
-            toggle(d);
-          }
+        if (d.children) {
+          d.children.forEach(collapseAll);
+          toggle(d);
         }
-        root.children.forEach(collapseAll);
-        update(root);
-
+      }
+      root.children.forEach(collapseAll);
+      update(root);
     });
 
     function update() {
@@ -77,18 +79,14 @@
       // Restart the force layout.
       force
           .nodes(nodes)
-              .distance(100)
-              .charge(-670)
+                  .linkDistance(200)
+        .charge(-670)
+        .gravity(.05)
+
+              // .distance(100)
+              // .charge(-670)
           .links(links)
           .start();
-
-      // Update links.
-      link = link.data(links, function(d) { return d.target.id; });
-
-      link.exit().remove();
-
-      link.enter().insert("line", ".node")
-          .attr("class", "link");
 
       // Update nodes.
       node = node.data(nodes, function(d) { return d.id; });
@@ -109,6 +107,15 @@
 
       node.select("circle")
           .style("fill", color);
+
+      // Update links.
+      link = link.data(links, function(d) { return d.target.id; });
+
+      link.exit().remove();
+
+      link.enter().insert("line", ".node")
+          .attr("class", "link");
+
     }
 
     function tick() {
@@ -124,7 +131,7 @@
 
     function color(d) {
       if (d.root_node == true) {
-        return "#94C8FF";
+        return "#C2DEFC";
       }
       if (d.view_node == true) {
         return "#fd8d3c";
@@ -177,7 +184,7 @@
       }
 
       recurse(root);
-      return nodes;
+      return nodes.reverse(); // to control the z-indexes (done in order of append)
     }
 
     function viewPlan(d) {
