@@ -19,18 +19,25 @@
     pointer-events: none;
     text-anchor: middle;
   }
-  .view_node text {
-    font: 20px sans-serif;
+
+  .view_node circle {
+    visibility: hidden;
   }
+  .view_node text {
+    visibility: hidden;
+  }
+  .view_node a {
+    font: 23px sans-serif;
+    color: #3F9B0C;
+    text-decoration: none;
+  }
+
   .root_node text {
     stroke: #176E9B;
     fill: #176E9B;
     font: 20px sans-serif;
   }
-/*  .postcode_node text {
-    text-anchor: right;
-  }
-*/</style>
+</style>
 
 <script type="text/javascript">
 
@@ -78,15 +85,12 @@
 
       // Restart the force layout.
       force
-          .nodes(nodes)
-                  .linkDistance(200)
+        .nodes(nodes)
+        .linkDistance(200)
         .charge(-670)
         .gravity(.05)
-
-              // .distance(100)
-              // .charge(-670)
-          .links(links)
-          .start();
+        .links(links)
+        .start();
 
       // Update nodes.
       node = node.data(nodes, function(d) { return d.id; });
@@ -97,6 +101,18 @@
           .attr("class", node_class)
           .on("click", toggle)
           .call(force.drag);
+
+      // use a proper link for viewing a plan
+      nodeEnter.append("foreignObject")
+          .attr("width", 80)
+          .attr("height", 25)
+          .append("xhtml:div")
+          .html(function(d) {
+            if (d.view_node == true) {
+              uri = "/plans/" + d.guid + "/show"
+              return "<a href='"+uri+"'>view!</a>";
+            }
+          });
 
       nodeEnter.append("circle")
           .attr("r", function(d) { return d.size * 3 });
@@ -161,9 +177,9 @@
 
     // Toggle children on click.
     function toggle(d) {
-      // if (d3.event.defaultPrevented) return; // ignore drag
-      if (d.name == 'view!') {
-        viewPlan(d);
+      if (d.view_node == true) {
+        d3.event.defaultPrevented;
+        return;
       }
       if (d.children) {
         d._children = d.children;
@@ -174,7 +190,6 @@
       }
       update();
     }
-
 
     // Returns a list of all nodes under the root.
     function flatten(root) {
@@ -190,9 +205,6 @@
       return nodes.reverse(); // to control the z-indexes (done in order of append)
     }
 
-    function viewPlan(d) {
-      window.location = "/plans/" + d.guid + "/show";
-    }
   }
 
 </script>
