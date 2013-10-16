@@ -21,7 +21,7 @@ class HomeController < ApplicationController
 
       def present
         {
-          name: "#{Plan.count} plans!",
+          name: "#{Plan.count} plans across #{Plan.uniq.pluck(:postcode).count} postcodes!",
           root_node: true,
           size: Plan.count,
           children:
