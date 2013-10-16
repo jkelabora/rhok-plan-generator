@@ -31,7 +31,7 @@ class Plan < ActiveRecord::Base
     if public?
       self.name
     else
-      '[details-withheld]'
+      '(details withheld)'
     end
   end
 
