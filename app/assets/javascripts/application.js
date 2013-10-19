@@ -13,8 +13,6 @@
 //= require d3-v3-min
 //= require jquery
 //= require jquery_ujs
-//= require jquery-ui-touch-punch-min
 //= require bootstrap-custom
 //= require_tree .
-
-
+//= require jquery-ui-touch-punch-min
