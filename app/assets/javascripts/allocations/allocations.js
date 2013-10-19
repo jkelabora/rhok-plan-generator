@@ -55,7 +55,7 @@
       hoverClass: "ui-state-hover",
       accept: ":not(.ui-sortable-helper)",
       drop: function( event, ui ) {
-        $( "<li class='allocation'></li>" ).text( ui.draggable.text() ).appendTo( $('.allocations') );
+        $( "<li class='allocation'></li>" ).text( ui.draggable.text() ).appendTo( $( this ).parent().find("allocations") );
         task_id = ui.draggable.find("span").attr("data-id");
         person_id = $( this ).parent().get(0).getAttribute('data-id');
         createAllocation(task_id, person_id);
