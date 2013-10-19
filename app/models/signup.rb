@@ -19,6 +19,10 @@ class Signup
   attribute :mobile, String
   attribute :opt_out, Boolean
 
+  # survey style questions
+  attribute :alone, Boolean
+  attribute :pets, Boolean
+
   validates :plan_name, presence: true
   validates :postcode, presence: true
   # … more validations …
@@ -40,14 +44,37 @@ class Signup
 private
 
   def persist!
-    @plan = Plan.create!(name: plan_name, postcode: postcode, opt_out: opt_out)
-
     if name.empty? and email.empty? and mobile.empty?
       @person = Person.anon
     else
       @person = Person.new(name: name, email: email, mobile: mobile)
     end
+    @person.save
+
+    # https://github.com/mbleigh/acts-as-taggable-on
+    tasks = Task.tagged_with(tag_list, :any => true).where(custom: false)
+    tasks.each do |original|
+      duplicate = original.dup
+      duplicate.custom = true
+
+      if duplicate.save
+        Allocation.create!(person_id: @person.id, task_id: duplicate.id)
+      end
+    end
+
+    @plan = Plan.new(name: plan_name, postcode: postcode, opt_out: opt_out)
+    @plan.save
+
     @plan.people << @person
 
   end
+
+  def tag_list
+    arr = ["general"]
+    arr << "alone" if alone
+    arr << "pets" if pets
+    puts arr
+    arr
+  end
+
 end
