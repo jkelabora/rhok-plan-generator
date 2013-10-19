@@ -3,36 +3,6 @@
 // if (Modernizr.draganddrop) {
   // Browser supports HTML5 DnD.
 
-  var dragSrcEl = null;
-
-  function handleDragStart(e) {
-    this.style.opacity = '0.4';  // this / e.target is the source node.
-  
-    dragSrcEl = this;
-
-    e.dataTransfer.effectAllowed = 'move';
-    e.dataTransfer.setData('application/json', this.getAttribute('data-id')); // the data payload is set to the actual HTML of the source column
-  }
-
-  function handleDragEnter(e) {
-    // this / e.target is the current hover target.
-    if (this.parentNode.parentNode.id === 'people') {
-      this.classList.add('over');
-    }
-  }
-
-  function handleDragOver(e) {
-    if (e.preventDefault) {
-      e.preventDefault(); // Necessary. Allows us to drop.
-    }
-    e.dataTransfer.dropEffect = 'move';  // See the section on the DataTransfer object.
-    return false;
-  }
-
-  function handleDragLeave(e) {
-    this.classList.remove('over');  // this / e.target is previous target element.
-  }
-
   function createAllocation(task_id, person_id) {
     var xhr = new XMLHttpRequest();
     xhr.open('POST', '/allocations', true);
@@ -55,41 +25,6 @@
     xhr.send(JSON.stringify({id: current_event_id, allocation: {task_id: task_id, person_id: person_id}}));
   }
 
-  function handleDrop(e) {
-    // this / e.target is current target element.
-    if (e.stopPropagation) {
-      e.stopPropagation(); // stops the browser from redirecting.
-    }
-
-    // See the section on the DataTransfer object.
-    if (dragSrcEl != this && dragSrcEl.parentNode.parentNode.id === 'tasks' && this.parentNode.parentNode.id === 'people') {
-      task_id = e.dataTransfer.getData('application/json');
-      person_id = this.parentNode.getAttribute('data-id');
-
-      createAllocation(task_id, person_id);
-    }
-    return false;
-  }
-
-  function handleDragEnd(e) {
-    // this/e.target is the source node.
-
-    [].forEach.call(nodes, function (node) {
-      node.classList.remove('over');
-      node.style.opacity = '1.0';
-    });
-  }
-
-  var nodes = document.querySelectorAll('.dnd-node');
-  [].forEach.call(nodes, function(node) {
-    node.addEventListener('dragstart', handleDragStart, false);
-    node.addEventListener('dragenter', handleDragEnter, false);
-    node.addEventListener('dragover', handleDragOver, false);
-    node.addEventListener('dragleave', handleDragLeave, false);
-    node.addEventListener('drop', handleDrop, false);
-    node.addEventListener('dragend', handleDragEnd, false);
-  });
-
   function deleteAllocation(e){
       var elem = this;
       if(confirm("Are you sure?")){
@@ -111,6 +46,21 @@
   // another bit of jquery blah-ness
   jQuery(function($) { // document ready
     $('ul.allocations span').bind('click', deleteAllocation);
+    $('ul#tasks li').draggable({
+      opacity: 0.7, helper: "clone",
+      appendTo: "body"
+    });
+    $( "div.person" ).droppable({
+      activeClass: "ui-state-default",
+      hoverClass: "ui-state-hover",
+      accept: ":not(.ui-sortable-helper)",
+      drop: function( event, ui ) {
+        $( "<li class='allocation'></li>" ).text( ui.draggable.text() ).appendTo( $('.allocations') );
+        task_id = ui.draggable.find("span").attr("data-id");
+        person_id = $( this ).parent().get(0).getAttribute('data-id');
+        createAllocation(task_id, person_id);
+      }
+    });
   });
 
 // } else {
