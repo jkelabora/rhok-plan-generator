@@ -27,7 +27,9 @@
   <ul id="people">
     <% for person in @people %>
       <li data-id="<%= person.id %>">
-        <span class="dnd-node person"><%= person.name.capitalize %></span>
+        <div class="person">
+          <span class="dnd-node person"><%= person.name.capitalize %></span>
+        </div>
         <ul class='allocations'>
           <% for a in  person.allocations.where(task_id: @custom_tasks) %>
             <li class='allocation' >

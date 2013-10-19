@@ -33,7 +33,7 @@ ul {
   margin-left: 200px;
 }
 
-ul#people li span.person {
+ul#people li div.person {
   text-decoration: none;
   color: #000;
   margin: 10px;
@@ -104,4 +104,6 @@ li.allocation {
   text-shadow: #000 2px 2px 2px;
 }
 
-
+ul#people li div.ui-state-hover {
+  background: none repeat scroll 0 0 #00FFFF;  
+}

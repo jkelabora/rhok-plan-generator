@@ -15,5 +15,4 @@
 //= require jquery_ujs
 //= require bootstrap-custom
 //= require_tree .
-
-
+//= require jquery-ui-touch-punch-min
