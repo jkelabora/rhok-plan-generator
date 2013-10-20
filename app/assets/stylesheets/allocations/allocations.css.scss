@@ -1,3 +1,7 @@
+.navbar .nav > li > a {
+  font-size: large;
+}
+
 li {
   list-style: none;
   float: left;
@@ -18,20 +22,17 @@ ul#tasks li span {
   border: 3px dashed #999;
   background: #eee;
   padding: 10px;
-  // display: block;
 }
 
 *:-khtml-drag {
   background-color: rgba(238,238,238, 0.5);
 }
 
-// ul#tasks li span:hover:after {
-//   content: ' (drag me)';
-// }
-
-ul {
-  margin-left: 200px;
+/*
+ul#tasks li span:hover:after {
+  content: ' (drag me)';
 }
+*/
 
 ul#people li div.person {
   text-decoration: none;
@@ -41,7 +42,6 @@ ul#people li div.person {
   border: 3px solid #999;
   background: rgb(137, 196, 165);
   padding: 10px;
-  // display: block;
 }
 
 ul#people li span.over {
@@ -77,33 +77,6 @@ li.allocation {
   cursor: move;
 }
 
-
-// ===============================================maybe useful for target image
-#bin {
-  background: url(images/bin.jpg) top right no-repeat;
-  height: 250px;
-  width: 166px;
-  float: left;
-  border: 5px solid #000;
-  position: relative;
-  margin-top: 0;
-}
-
-#bin.over {
-  background: url(images/bin.jpg) top left no-repeat;
-}
-
-#bin p {
-  font-weight: bold;
-  text-align: center;
-  position: absolute;
-  bottom: 20px;
-  width: 166px;
-  font-size: 32px;
-  color: #fff;
-  text-shadow: #000 2px 2px 2px;
-}
-
 ul#people li div.ui-state-hover {
-  background: none repeat scroll 0 0 #00FFFF;  
+  background: none repeat scroll 0 0 #00FFFF;
 }

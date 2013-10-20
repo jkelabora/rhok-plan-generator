@@ -1,3 +1,11 @@
+<div class="jumbotron top">
+  <div class="container">
+    <h3>
+      Check out what people are up to below or get a plan <%= link_to 'quickly', new_signup_url %>
+    </h3>
+  </div>
+</div>
+
 <div class='container'>
 
   <div class="row">
@@ -22,27 +30,8 @@
       <!-- </p>
   </div> -->
 
-  <div class="row">
-    <div class="span5"></div>
-    <p class="span7">
-      Check out what people are up to above or go straight to getting a plan <%= link_to 'quickly', new_signup_url %>
-    </p>
-  </div>
+</div>
 
-<!--   <div class="row">
-    <div class='span2'>
-    People: <%= @people_count %>
-    </div>
-    <div class='span2'>
-    Tasks: <%= @task_count %>
-    </div>
-    <div class='span2'>
-    Allocations: <%= @allocation_count %>
-    </div>
-  </div>
- -->
-  <script type="text/javascript">
-    window.onload = force_directed();
-  </script>
-
-</end>
+<script type="text/javascript">
+  window.onload = force_directed();
+</script>

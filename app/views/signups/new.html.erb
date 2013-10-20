@@ -1,17 +1,25 @@
+<div class="jumbotron top">
+  <div class="container">
+    <h3>Let's get started!</h3>
+  </div>
+</div>
+
 <div class="container">
   <%= form_tag signups_path, method: :post do %>
     <div class="row">
       <div class="span12">
-        <h2>Let's get started!</h2>
+      <p></p>
+      </div>
+      <div class="span12">
         <p>All we need is a plan name and your postcode (so we can help find plan templates that you may find useful)</p>
       </div>
     </div>
 
     <div class="row">
-      <div class="span12">
+      <div class="span8">
         <fieldset>
-          <%= text_field_tag "plan_name", nil, :placeholder=>"Plan Name" %>
-          <%= text_field_tag "postcode", nil, :placeholder=>"Household Postcode"%>
+          <%= text_field_tag "plan_name", nil, placeholder: "Plan Name", class: 'large-element' %>
+          <%= text_field_tag "postcode", nil, placeholder: "Household Postcode", class: 'large-element' %>
         </fieldset>
       </div>
     </div>
@@ -25,9 +33,9 @@
     <div class="row">
       <div class="span12">
         <fieldset>
-          <%= text_field_tag "name", nil, placeholder: "Name or Nickname" %>
-          <%= email_field_tag "email", nil, placeholder: "Email" %>
-          <%= text_field_tag "mobile", nil, placeholder: "Mobile" %>
+          <%= text_field_tag "name", nil, placeholder: "Name or Nickname", class: 'large-element' %>
+          <%= email_field_tag "email", nil, placeholder: "Email", class: 'large-element' %>
+          <%= text_field_tag "mobile", nil, placeholder: "Mobile", class: 'large-element' %>
         </fieldset>
       </div>
     </div>
@@ -56,9 +64,9 @@
     </div>
 
     <div class="row">
-      <div class="span10"></div>
       <div class="span2">
-        <p><%= submit_tag "Next >>", class: "btn btn-primary" %></p>
+        <p>
+        <p><%= submit_tag "Next >>", class: "btn btn-default" %></p>
       </div>
     </div>
   <% end %>

@@ -12,11 +12,22 @@
  *= require_tree .
 */
 
-@import "bootstrap-custom";
-@import "bootstrap/responsive-utilities";
+@import "bootstrap";
 
-body {
-  padding-top: 60px;
+.jumbotron.top {
+  margin-bottom: 0px;
+  background-color: rgb(71, 136, 152);
+  padding-top: 65px;
+  padding-bottom: 20px;
+  color: white;
+}
+
+.jumbotron.second {
+  margin-bottom: 0px;
+  background-color: rgb(54, 106, 118);
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: white;
 }
 
 .brand a {

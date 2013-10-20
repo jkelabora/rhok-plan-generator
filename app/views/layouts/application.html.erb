@@ -8,13 +8,11 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <%= render 'navbar' %>
-    <%= yield %>
-    <%= javascript_include_tag "application" %>
-  </body>
-
-  <footer>
+    <div id="wrap"> <!-- for the sticky footer -->
+      <%= render 'navbar' %>
+      <%= yield %>
+      <%= javascript_include_tag "application" %>
+    </div>
     <%= render 'footer' %>
-  </footer>
-
+  </body>
 </html>

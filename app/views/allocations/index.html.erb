@@ -1,24 +1,24 @@
-<div class='container'>
-  <div id='plan-name'>
+<div class="jumbotron top">
+  <div class="container">
     <h3><%= @plan.name %></h3>
-    <span>
-      <%= button_to 'PDF',
-        plan_download_url(:private_guid => @plan.private_guid, :format => :pdf),
-        class: "btn btn-success", method: :get %>
-    </span>
   </div>
 </div>
 
-<div class='container'>
-  <div class="navbar">
-    <div class="navbar-inner">
-      <ul id="events" class="nav">
-        <% for e in @events %>
-          <li class="<%= 'active' if e == @event %>" data-id="<%= e.id %>">
-            <%= link_to e.name, plan_allocations_url(:private_guid => @plan.private_guid, :id => e.id) %>
-          </li>
-        <% end %>
-      </ul>
+<div class="jumbotron second">
+  <div class="container">
+    <%= button_to 'PDF',
+      plan_download_url(:private_guid => @plan.private_guid, :format => :pdf),
+      class: "btn btn-success", method: :get %>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <ul id="events" class="nav">
+          <% for e in @events %>
+            <li class="<%= 'active' if e == @event %>" data-id="<%= e.id %>">
+              <%= link_to e.name, plan_allocations_url(:private_guid => @plan.private_guid, :id => e.id) %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
