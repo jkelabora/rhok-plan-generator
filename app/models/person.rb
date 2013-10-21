@@ -8,9 +8,4 @@ class Person < ActiveRecord::Base
     self.new(name: 'anonymous', email: '', mobile: '')
   end
 
-  def display_name # move to view helper
-    return "YOUR" if self.name == 'anonymous'
-    self.name.upcase
-  end
-
 end

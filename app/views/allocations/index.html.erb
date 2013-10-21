@@ -30,7 +30,7 @@
 <div class="container">
   <div class='row'>
     <div class='col-lg-6 lists'>
-      <h5><%= @people.first.display_name %> LIST</h5>
+      <h5>YOUR LIST</h5>
       <ul id='allocations'>
         <% for a in @people.first.allocations.where(task_id: @custom_tasks) %>
           <li class='allocation' data-id="<%= a.id %>"><%= a.task.name %></li>
