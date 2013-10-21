@@ -10,7 +10,7 @@
     <%= button_to 'PDF',
       plan_download_url(:private_guid => @plan.private_guid, :format => :pdf),
       class: "btn btn-success", method: :get %>
-    <div class="navbar">
+    <nav class="navbar" role="navigation">
       <div class="navbar-inner">
         <ul id="events" class="nav">
           <% for e in @events %>
@@ -20,35 +20,30 @@
           <% end %>
         </ul>
       </div>
-    </div>
+    </nav>
   </div>
 </div>
 
-<div class='container'>
-  <ul id="people">
-    <% for person in @people %>
-      <li data-id="<%= person.id %>">
-        <div class="person">
-          <span class="dnd-node person"><%= person.name.capitalize %></span>
-        </div>
-        <ul class='allocations'>
-          <% for a in  person.allocations.where(task_id: @custom_tasks) %>
-            <li class='allocation' >
-              <span class='allocation' data-id="<%= a.id %>"><%= a.task.name[0...40] %></span>
-            </li>
-          <% end %>
-        </ul>
-      </li>
-    <% end %>
-  </ul>
-</div>
+<!-- using only one person for now -->
+<span class='hidden person' data-id="<%= @people.first.id %>"></span>
 
-<div class='container'>
-  <ul id="tasks">
-    <% for task in @public_tasks %>
-      <li>
-        <span class="dnd-node" draggable='true' data-id="<%= task.id %>"><%= task.name[0...40] %></span>
-      </li>
-    <% end %>
-  </ul>
+<div class="container">
+  <div class='row'>
+    <div class='col-lg-6 lists'>
+      <h5><%= @people.first.display_name %> LIST</h5>
+      <ul id='allocations'>
+        <% for a in @people.first.allocations.where(task_id: @custom_tasks) %>
+          <li class='allocation' data-id="<%= a.id %>"><%= a.task.name %></li>
+        <% end %>
+      </ul>
+    </div>
+    <div class='col-lg-6 lists'>
+      <h5>SUGGESTED LIST</h5>
+      <ul id="tasks">
+        <% for task in @public_tasks %>
+          <li class="dnd-node suggested" draggable='true' data-id="<%= task.id %>"><%= task.name %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
 </div>

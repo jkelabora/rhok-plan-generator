@@ -1,68 +1,27 @@
+.lists, .headings{
+  border: 1px dashed #999;
+}
+ul#tasks li.suggested, ul#allocations li.allocation {
+  border: 1px solid #999;
+}
 .navbar .nav > li > a {
-  font-size: large;
+  padding: 15px 10px 15px 10px;
+}
+/*-----------------*/
+
+
+ul#tasks, ul#allocations {
+  margin: 0px;
+  padding: 0px;
 }
 
 li {
   list-style: none;
-  float: left;
-  padding: 10px;
-  margin: 10px;
 }
 
-ul#events li {
-  margin: 0px;
-  padding: 0px;
-}
-
-ul#tasks li span {
-  text-decoration: none;
-  color: #000;
-  margin: 10px;
-  width: 150px;
-  border: 3px dashed #999;
-  background: #eee;
-  padding: 10px;
-}
-
-*:-khtml-drag {
-  background-color: rgba(238,238,238, 0.5);
-}
-
-/*
-ul#tasks li span:hover:after {
-  content: ' (drag me)';
-}
-*/
-
-ul#people li div.person {
-  text-decoration: none;
-  color: #000;
-  margin: 10px;
-  width: 150px;
-  border: 3px solid #999;
-  background: rgb(137, 196, 165);
-  padding: 10px;
-}
-
-ul#people li span.over {
-  border-color: #333;
-  background: rgb(55, 255, 150);
-}
-
-ul.allocations {
-  margin-left: 0px;
-  padding-left: 10px;
-  padding-top: 10px;
-}
-
-li.allocation {
-  float: none;
-  text-decoration: none;
-  margin: 0px;
-  width: 100%;
-  border: 3px solid #999;
-  background: rgb(201, 130, 130);
-  padding: 0px;
+ul#allocations.ui-state-hover {
+  /*background: none repeat scroll 0 0 #00FFFF;*/
+  border: 3px solid red;
 }
 
 /* Prevent the text contents of draggable elements from being selectable. */
@@ -77,6 +36,6 @@ li.allocation {
   cursor: move;
 }
 
-ul#people li div.ui-state-hover {
-  background: none repeat scroll 0 0 #00FFFF;
+*:-khtml-drag {
+  background-color: rgba(238,238,238, 0.5);
 }
