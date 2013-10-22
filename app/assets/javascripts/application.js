@@ -12,7 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require foundation
 //= require jquery.ui.all
 //= require d3-v3-min
 //= require_tree .
 //= require jquery-ui-touch-punch-min
+
+$(function(){ $(document).foundation(); });
