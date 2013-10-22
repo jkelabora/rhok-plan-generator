@@ -6,18 +6,18 @@ function createAllocation(task_id, person_id) {
   xhr.onload = function(e) {
     if (this.status == 200) {
       var updated_allocations = JSON.parse(this.responseText);
-      elem = jQuery("ul#allocations");
+      elem = $("ul#allocations");
       var html = "";
       for (var a in updated_allocations.allocations) {
         html += "<li class='allocation' data-id='" + updated_allocations.allocations[a].id + "'>";
         html += updated_allocations.allocations[a].name;
         html += "</li>";
       }
-      jQuery(elem).html(html);
-      jQuery(elem).find('li').bind('click', deleteAllocation);
+      $(elem).html(html);
+      $(elem).find('li').bind('click', deleteAllocation);
     }
   };
-  current_event_id = jQuery('ul#events li.active').attr('data-id');
+  current_event_id = $('ul#events li.active').attr('data-id');
   xhr.send(JSON.stringify({id: current_event_id, allocation: {task_id: task_id, person_id: person_id}}));
 }
 
@@ -39,19 +39,20 @@ function deleteAllocation(e){
     }
   }
 
-jQuery(function($) { // document ready
+$(function($) { // document ready
   $('ul#allocations li').bind('click', deleteAllocation);
   $('ul#tasks li').draggable({
     opacity: 0.7, helper: "clone",
     appendTo: "body"
   });
+
   $( "ul#allocations" ).droppable({
     activeClass: "ui-state-default",
     hoverClass: "ui-state-hover",
     accept: ":not(.ui-sortable-helper)",
     drop: function( event, ui ) {
       task_id = ui.draggable.attr("data-id");
-      $( "<li class='allocation' data-id="+task_id+" ></li>" ).text( ui.draggable.text() ).appendTo( $( "ul.allocations") );
+      $( "<li class='allocation' data-id="+task_id+" ></li>" ).text( ui.draggable.text() ).appendTo( $( "ul#allocations") );
       person_id = $( "span.person" ).attr('data-id');
       createAllocation(task_id, person_id);
     }

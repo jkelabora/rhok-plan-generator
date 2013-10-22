@@ -1,37 +1,27 @@
-<div class="jumbotron top">
-  <div class="container">
-    <h3>
-      Check out what people are up to below or get a plan <%= link_to 'quickly', new_signup_url %>
-    </h3>
-  </div>
+<div>
+  <h3>
+    Check out what people are up to below or get a plan <%= link_to 'quickly', new_signup_url %>
+  </h3>
 </div>
 
-<div class='container'>
+<div id="chart"></div>
 
-  <div class="row">
-    <div class="span12">
-      <div id="chart"></div>
-      <%= javascript_include_tag "d3-v3-min.js" %>
-      <%= render 'visualisation' %>
-      <!-- <%= render 'collapsible_tree_visualisation' %> -->
-      <!-- <%= render 'tree_visualisation' %> -->
-    </div>
-  </div>
-<!--   <div class="row">
-    <div class="span8"></div>
-      <p class="span4"> -->
-       <!--  <%= link_to_function 'Force Directed', 'force_directed()' %> -->
-        <!-- <span class='link-spacer'/>|</span> -->
-        <!-- <%= link_to_function 'Force Directed', 'force_directed()' %> -->
-        <!-- <span class='link-spacer'/>|</span> -->
-        <!-- <%= link_to_function 'Collapsible Tree', 'collapsible_tree()' %> -->
-        <!-- <span class='link-spacer'/>|</span> -->
-        <!-- <%= link_to_function '(Static Tree)', 'static_tree()' %> -->
-      <!-- </p>
-  </div> -->
+<%= javascript_include_tag "d3-v3-min.js" %>
+<%= render 'visualisation' %>
 
-</div>
+<!-- <%= render 'collapsible_tree_visualisation' %> -->
+<!-- <%= render 'tree_visualisation' %> -->
+
+<!--  <%= link_to_function 'Force Directed', 'force_directed()' %> -->
+<!-- <span class='link-spacer'/>|</span> -->
+<!-- <%= link_to_function 'Force Directed', 'force_directed()' %> -->
+<!-- <span class='link-spacer'/>|</span> -->
+<!-- <%= link_to_function 'Collapsible Tree', 'collapsible_tree()' %> -->
+<!-- <span class='link-spacer'/>|</span> -->
+<!-- <%= link_to_function '(Static Tree)', 'static_tree()' %> -->
 
 <script type="text/javascript">
-  window.onload = force_directed();
+  $(function($) {
+    force_directed();
+  });
 </script>

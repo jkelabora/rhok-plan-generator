@@ -8,34 +8,7 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
+ *= require jquery.ui.all
  *= require_self
  *= require_tree .
 */
-
-@import "bootstrap";
-
-.jumbotron.top {
-  margin-bottom: 0px;
-  background-color: rgb(71, 136, 152);
-  padding-top: 65px;
-  padding-bottom: 20px;
-  color: white;
-}
-
-.jumbotron.second {
-  margin-bottom: 0px;
-  background-color: rgb(54, 106, 118);
-  padding-top: 20px;
-  padding-bottom: 20px;
-  color: white;
-}
-
-.brand a {
-  color: #E7E7E7;
-  text-decoration: none;
-
-  &:hover {
-    color: white;
-    text-decoration: none;
-  }
-}

@@ -10,9 +10,9 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
-//= require d3-v3-min
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap-custom
+//= require jquery.ui.all
+//= require d3-v3-min
 //= require_tree .
 //= require jquery-ui-touch-punch-min
