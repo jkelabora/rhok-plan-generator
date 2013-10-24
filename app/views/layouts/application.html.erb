@@ -23,9 +23,10 @@
 
   <body>
 
-    <%= render 'navbar' %>
-
-    <%= yield %>
+    <section class='main'>
+      <%= render 'navbar' %>
+      <%= yield %>
+    </section>
 
     <%= javascript_include_tag "application" %>
 
