@@ -1,24 +1,28 @@
 <section class='headline'>
   <div class='row'>
     <div class='twelve columns'>
-      <h1 class='text-center' >Let's get started!</h1>
+      <h1>Let's get started!</h1>
     </div>
   </div>
 </section>
 
+<section class='secondary'>
+  <div class='row'>
+    <div class='twelve columns'>
+      <h3>All we need is a plan name and your postcode (so we can help find plan templates that you may find useful)</h3>
+     </div>
+  </div>
+</section>
+
+
 <section class='main-page'>
   <div class='row'>
-    <%= form_tag signups_path, method: :post, class: "large-12 large-centered columns" do %>
-      <div>
-        <p>All we need is a plan name and your postcode (so we can help find plan templates that you may find useful)</p>
-      </div>
+    <%= form_tag signups_path, method: :post, class: "large-12 columns" do %>
 
-      <div>
-        <fieldset>
-          <%= text_field_tag "plan_name", nil, placeholder: "Plan Name", class: 'large-element' %>
-          <%= text_field_tag "postcode", nil, placeholder: "Household Postcode", class: 'large-element' %>
-        </fieldset>
-      </div>
+      <fieldset>
+        <%= text_field_tag "plan_name", nil, placeholder: "Plan Name", class: 'large-element' %>
+        <%= text_field_tag "postcode", nil, placeholder: "Household Postcode", class: 'large-element' %>
+      </fieldset>
 
       <div>
         <h2>Optional details</h2>
@@ -50,11 +54,15 @@
         </fieldset>
       </div>
 
-      <div>
-        <%= submit_tag "Next >>", class: 'button' %>
-      </div>
-
     <% end %>
 
+  </div>
+</section>
+
+<section>
+  <div class='row'>
+    <div class='large-12 columns'>
+      <%= submit_tag "Next >>", class: 'button' %>
+    </div>
   </div>
 </section>
