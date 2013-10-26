@@ -13,12 +13,18 @@ function createAllocation(task_id, person_id) {
         html += updated_allocations.allocations[a].name;
         html += "</li>";
       }
+      html += "<li class='add'>Add item</li>"
       $(elem).html(html);
-      $(elem).find('li').bind('click', deleteAllocation);
+      $(elem).find('li.allocation').bind('click', deleteAllocation);
+      // $(elem).find('li.add').bind('click', addAllocation);
     }
   };
   current_event_id = $('ul#events li.active').attr('data-id');
   xhr.send(JSON.stringify({id: current_event_id, allocation: {task_id: task_id, person_id: person_id}}));
+}
+
+function addAllocation(e){
+  ;
 }
 
 function deleteAllocation(e){
@@ -40,7 +46,7 @@ function deleteAllocation(e){
   }
 
 $(function($) { // document ready
-  $('ul#allocations li').bind('click', deleteAllocation);
+  $('li.allocation').bind('click', deleteAllocation);
   $('ul#tasks li').draggable({
     opacity: 0.7, helper: "clone",
     appendTo: "body"

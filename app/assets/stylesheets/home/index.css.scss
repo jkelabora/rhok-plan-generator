@@ -1,0 +1,51 @@
+  line.link {
+    fill: none;
+    stroke: #9ecae1;
+    stroke-width: 1.5px;
+  }
+  div#chart {
+    border-right: rgb(211, 211, 211) 1px solid;
+    border-left: rgb(211, 211, 211) 1px solid;
+    background: rgb(247, 247, 247);
+  }
+  .node circle {
+    cursor: pointer;
+    stroke: #3182bd;
+    stroke-width: 1.5px;
+  }
+  .node text {
+    font: 18px sans-serif;
+    pointer-events: none;
+    text-anchor: middle;
+  }
+
+  .view_node circle {
+    visibility: hidden;
+  }
+  .view_node text {
+    visibility: hidden;
+  }
+  .view_node a {
+    font: 23px sans-serif;
+    color: #3F9B0C;
+    text-decoration: none;
+  }
+
+  .root_node text {
+    stroke: #176E9B;
+    fill: #176E9B;
+    font: 20px sans-serif;
+  }
+
+  .postcode_node text {
+
+/*fill: none;*/
+fill: #6F6F6F;
+letter-spacing:2;
+stroke-width:1;
+stroke: #000000;
+  font: 30px sans-serif;
+    /*stroke: #176E9B;
+    fill: #176E9B;
+    font: 20px sans-serif; */
+  }

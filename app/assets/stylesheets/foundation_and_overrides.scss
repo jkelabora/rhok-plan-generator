@@ -64,8 +64,8 @@ $em-base: 16px !default;
 $default-float: left;
 
 $body-bg: rgb(231,231,231);
-// $body-font-color: #222;
-// $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+$body-font-color: rgb(102,102,102);
+$body-font-family: 'Open Sans', sans-serif;
 // $body-font-weight: normal;
 // $body-font-style: normal;
 
@@ -172,10 +172,10 @@ $body-bg: rgb(231,231,231);
 
 // Control header font styles
 
-// $header-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
-// $header-font-weight: bold;
+$header-font-family: 'Montserrat', sans-serif;
+$header-font-weight: normal;
 // $header-font-style: normal;
-// $header-font-color: #222;
+$header-font-color: white;
 // $header-line-height: 1.4;
 // $header-top-margin: .2em;
 // $header-bottom-margin: .5em;
@@ -183,9 +183,9 @@ $body-bg: rgb(231,231,231);
 
 // Control header font sizes
 
-// $h1-font-size: em-calc(44);
-// $h2-font-size: em-calc(37);
-// $h3-font-size: em-calc(27);
+$h1-font-size: em-calc(20);
+$h2-font-size: em-calc(17);
+$h3-font-size: em-calc(15);
 // $h4-font-size: em-calc(23);
 // $h5-font-size: em-calc(18);
 // $h6-font-size: 1em;

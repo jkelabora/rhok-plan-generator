@@ -1,27 +1,42 @@
-<div>
-  <h3><%= @plan.name %></h3>
-  <h4>Postcode: <%= @plan.postcode %></h4>
-</div>
+<section class='headline'>
+  <div class='row'>
+    <div class='twelve columns'>
+      <h1 class='docs header'><%= @plan.name %></h1>
+      <h2 class='docs subheader'>Postcode: <%= @plan.postcode %></h2>
+    </div>
+  </div>
+</section>
 
-<div>
-  <%= button_to 'COPY!', plan_duplicate_url(:public_guid => @plan.public_guid), method: :post %>
-</div>
 
-</div>
+<section class='main-page'>
 
   <% @plan.events.each do |event| %>
-            
-    <h3><%= event.name %></h3>
-            
-    <table>
+    <div class='row'>
+      <div class='large-5 columns'>
+        <h3><%= event.name %></h3>
+      </div>
+    </div>
+    
+    <div class='row'>
       <% @plan.tasks_for(event).each do |task| %>
-        <tr>
-          <td><%= @plan.people_for(task) %></td>
-          <td><%= task.name %></td>
-        </tr>      
+        <div class='large-2 columns'>
+          <%= @plan.people_for(task) %>
+        </div>
+        <div class='large-10 columns'>
+          <%= task.name %>
+        </div>
       <% end %>
-    </table>
+    </div>
 
   <% end %>
 
-</div>
+</section>
+
+
+<section>
+  <div class='row'>
+    <div class='large-12 columns'>
+      <%= button_to 'COPY!', plan_duplicate_url(:public_guid => @plan.public_guid), method: :post, class: 'button' %>
+    </div>
+  </div>
+</section>

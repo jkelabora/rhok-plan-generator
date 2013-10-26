@@ -10,9 +10,29 @@
  *
  *= require jquery.ui.all
  *= require allocations/allocations
+ *= require home/index
+ *= require signups/new
  *= require_self
  *= require foundation_and_overrides
 */
 
 ul { list-style: none; }
 html, body { height: 100%; }
+
+section.headline {
+  background: rgb(91,154,168);
+  // padding: 15px 0;
+  // overflow: hidden;
+}
+
+section.secondary {
+  background: rgb(71,125,136);
+  // padding: 15px 0;
+  // overflow: hidden;
+}
+
+section.main-page {
+  background: rgb(244,244,244);
+  // padding: 15px 0;
+  // overflow: hidden;
+}

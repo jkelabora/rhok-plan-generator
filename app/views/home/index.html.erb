@@ -1,24 +1,44 @@
-<div>
-  <h3>
-    Check out what people are up to below or get a plan <%= link_to 'quickly', new_signup_url %>
-  </h3>
-</div>
+<section class='headline'>
+  <div class='row'>
+    <div class='twelve columns'>
+      <h1 class='docs header'>
+        Check out what people are up to below or get a plan
+      </h1>
+    </div>
+  </div>
+</section>
 
-<div id="chart"></div>
+<section class='main-page'>
 
-<%= javascript_include_tag "d3-v3-min.js" %>
-<%= render 'visualisation' %>
+  <div class='row'>
+    <div class='twelve columns'>
+      <div id="chart"></div>
 
-<!-- <%= render 'collapsible_tree_visualisation' %> -->
-<!-- <%= render 'tree_visualisation' %> -->
+      <%= javascript_include_tag "d3-v3-min.js" %>
+      <%= render 'visualisation' %>
 
-<!--  <%= link_to_function 'Force Directed', 'force_directed()' %> -->
-<!-- <span class='link-spacer'/>|</span> -->
-<!-- <%= link_to_function 'Force Directed', 'force_directed()' %> -->
-<!-- <span class='link-spacer'/>|</span> -->
-<!-- <%= link_to_function 'Collapsible Tree', 'collapsible_tree()' %> -->
-<!-- <span class='link-spacer'/>|</span> -->
-<!-- <%= link_to_function '(Static Tree)', 'static_tree()' %> -->
+      <!-- <%= render 'collapsible_tree_visualisation' %> -->
+      <!-- <%= render 'tree_visualisation' %> -->
+
+      <!--  <%= link_to_function 'Force Directed', 'force_directed()' %> -->
+      <!-- <span class='link-spacer'/>|</span> -->
+      <!-- <%= link_to_function 'Force Directed', 'force_directed()' %> -->
+      <!-- <span class='link-spacer'/>|</span> -->
+      <!-- <%= link_to_function 'Collapsible Tree', 'collapsible_tree()' %> -->
+      <!-- <span class='link-spacer'/>|</span> -->
+      <!-- <%= link_to_function '(Static Tree)', 'static_tree()' %> -->
+    
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class='row'>
+    <div class='large-12 columns'>
+      <%= button_to 'GET A PLAN', new_signup_url, class: 'button' %>
+    </div>
+  </div>
+</section>
 
 <script type="text/javascript">
   window.onload = force_directed();

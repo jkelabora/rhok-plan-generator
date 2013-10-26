@@ -1,4 +1,4 @@
-<section id='headline'>
+<section class='headline'>
   <div class='row'>
     <div class='twelve columns'>
       <h1 class='docs header'><%= @plan.name %></h1>
@@ -7,16 +7,14 @@
   </div>
 </section>
 
-<section id='secondary'>
+<section class='secondary'>
   <div class='row'>
     <div class='twelve columns'>
-
-      <%= button_to 'PDF', plan_download_url(:private_guid => @plan.private_guid, :format => :pdf), method: :get %>
       <nav>
         <ul id="events">
           <% for e in @events %>
             <li class="<%= 'active' if e == @event %>" data-id="<%= e.id %>">
-              <%= link_to e.name, plan_allocations_url(:private_guid => @plan.private_guid, :id => e.id) %>
+              <%= link_to e.name.upcase, plan_allocations_url(:private_guid => @plan.private_guid, :id => e.id) %>
             </li>
           <% end %>
         </ul>
@@ -28,26 +26,35 @@
 <!-- using only one person for now -->
 <span class='hidden person' data-id="<%= @people.first.id %>"></span>
 
-<section id='main-page'>
+<section class='main-page'>
   <div class='row'>
     <div class='large-6 columns'>
-        <h5>YOUR LIST</h5>
+        <h3>YOUR LIST</h3>
         <ul id='allocations'>
           <% for a in @people.first.allocations.where(task_id: @custom_tasks) %>
             <li class='allocation' data-id="<%= a.id %>"><%= a.task.name %></li>
           <% end %>
+          <li class='add'>Add item</li>
         </ul>
     </div>
   <!-- </div> -->
 
   <!-- <div class="row"> -->
     <div class='large-6 columns'>
-      <h5>SUGGESTED LIST</h5>
+      <h3>SUGGESTED LIST</h3>
       <ul id="tasks">
         <% for task in @public_tasks %>
           <li class="suggested" data-id="<%= task.id %>"><%= task.name %></li>
         <% end %>
       </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class='row'>
+    <div class='large-12 columns'>
+      <%= button_to 'PDF', plan_download_url(:private_guid => @plan.private_guid, :format => :pdf), method: :get, class: 'button' %>
     </div>
   </div>
 </section>
