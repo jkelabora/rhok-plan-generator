@@ -7,43 +7,47 @@
   </div>
 </section>
 
-<div class='row bg-blue'>
-  <div class='large-12 columns'>
+<section id='secondary'>
+  <div class='row'>
+    <div class='twelve columns'>
 
-    <%= button_to 'PDF', plan_download_url(:private_guid => @plan.private_guid, :format => :pdf), method: :get %>
-    <nav>
-      <ul id="events">
-        <% for e in @events %>
-          <li class="<%= 'active' if e == @event %>" data-id="<%= e.id %>">
-            <%= link_to e.name, plan_allocations_url(:private_guid => @plan.private_guid, :id => e.id) %>
-          </li>
-        <% end %>
-      </ul>
-    </nav>
+      <%= button_to 'PDF', plan_download_url(:private_guid => @plan.private_guid, :format => :pdf), method: :get %>
+      <nav>
+        <ul id="events">
+          <% for e in @events %>
+            <li class="<%= 'active' if e == @event %>" data-id="<%= e.id %>">
+              <%= link_to e.name, plan_allocations_url(:private_guid => @plan.private_guid, :id => e.id) %>
+            </li>
+          <% end %>
+        </ul>
+      </nav>
+    </div>
   </div>
-</div>
+</section>
 
 <!-- using only one person for now -->
 <span class='hidden person' data-id="<%= @people.first.id %>"></span>
 
-<div class='row'>
-  <div class='large-12 columns'>
-      <h5>YOUR LIST</h5>
-      <ul id='allocations'>
-        <% for a in @people.first.allocations.where(task_id: @custom_tasks) %>
-          <li class='allocation' data-id="<%= a.id %>"><%= a.task.name %></li>
+<section id='main-page'>
+  <div class='row'>
+    <div class='large-6 columns'>
+        <h5>YOUR LIST</h5>
+        <ul id='allocations'>
+          <% for a in @people.first.allocations.where(task_id: @custom_tasks) %>
+            <li class='allocation' data-id="<%= a.id %>"><%= a.task.name %></li>
+          <% end %>
+        </ul>
+    </div>
+  <!-- </div> -->
+
+  <!-- <div class="row"> -->
+    <div class='large-6 columns'>
+      <h5>SUGGESTED LIST</h5>
+      <ul id="tasks">
+        <% for task in @public_tasks %>
+          <li class="suggested" data-id="<%= task.id %>"><%= task.name %></li>
         <% end %>
       </ul>
+    </div>
   </div>
-</div>
-
-<div class="row">
-  <div class='large-12 columns'>
-    <h5>SUGGESTED LIST</h5>
-    <ul id="tasks">
-      <% for task in @public_tasks %>
-        <li class="suggested" data-id="<%= task.id %>"><%= task.name %></li>
-      <% end %>
-    </ul>
-  </div>
-</div>
+</section>
