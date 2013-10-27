@@ -4,12 +4,10 @@ function force_directed(chart_width, chart_height) {
 
   d3.select("#chart").selectAll('svg').remove();
 
-
   var width = chart_width,
       height = chart_height,
       root;
 
-  debugger;
   var force = d3.layout.force()
       .linkDistance(200)
       .charge(-670)
