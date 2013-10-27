@@ -1,6 +1,6 @@
 <section class='headline'>
   <div class='row'>
-    <div class='twelve columns'>
+    <div class='small-12 columns'>
       <h1 class='docs header'>
         Check out what people are up to below or get a plan
       </h1>
@@ -11,11 +11,12 @@
 <section class='main-page'>
 
   <div class='row'>
-    <div class='twelve columns'>
+    <div class='small-12 columns'>
       <div id="chart"></div>
 
+      <%= javascript_include_tag "application.js" %>
       <%= javascript_include_tag "d3-v3-min.js" %>
-      <%= render 'visualisation' %>
+      <%= javascript_include_tag "home/visualisation.js" %>
 
       <!-- <%= render 'collapsible_tree_visualisation' %> -->
       <!-- <%= render 'tree_visualisation' %> -->
@@ -34,12 +35,8 @@
 
 <section>
   <div class='row'>
-    <div class='large-12 columns'>
+    <div class='small-12 columns'>
       <%= button_to 'GET A PLAN', new_signup_url, class: 'button', method: :get %>
     </div>
   </div>
 </section>
-
-<script type="text/javascript">
-  window.onload = force_directed();
-</script>
