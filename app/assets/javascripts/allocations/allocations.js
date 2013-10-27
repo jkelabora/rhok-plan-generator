@@ -5,26 +5,15 @@ function createAllocation(task_id, person_id) {
   xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
   xhr.onload = function(e) {
     if (this.status == 200) {
-      var updated_allocations = JSON.parse(this.responseText);
-      elem = $("ul#allocations");
-      var html = "";
-      for (var a in updated_allocations.allocations) {
-        html += "<li class='allocation' data-id='" + updated_allocations.allocations[a].id + "'>";
-        html += updated_allocations.allocations[a].name;
-        html += "</li>";
-      }
-      html += "<li class='add'>Add item</li>"
-      $(elem).html(html);
-      $(elem).find('li.allocation').bind('click', deleteAllocation);
-      // $(elem).find('li.add').bind('click', addAllocation);
+      var resp = JSON.parse(this.responseText);
+      $( "<li class='allocation' data-id="+resp.allocation_id+" >"+resp.task_name+"</li>" ).appendTo( $( "ul#allocations") );
+      $('ul#allocations').find('li#add').appendTo('ul#allocations'); // move the Add to the end of the list..
+      $('li#add').text('Add item'); // move the Add to the end of the list..
+      $("li.allocation[data-id='"+resp.allocation_id+"']").bind('click', deleteAllocation);
     }
   };
   current_event_id = $('ul#events li.active').attr('data-id');
   xhr.send(JSON.stringify({id: current_event_id, allocation: {task_id: task_id, person_id: person_id}}));
-}
-
-function addAllocation(e){
-  ;
 }
 
 function deleteAllocation(e){
@@ -47,17 +36,35 @@ function deleteAllocation(e){
 
 $(function($) { // document ready
 
-  // http://www.appelsiini.net/projects/jeditable
+  // START: http://www.appelsiini.net/projects/jeditable
   plan_private_guid = $( "span#private-guid" ).attr('data-id');
-  var update_endpoint = '/plans/private/'+plan_private_guid+'/update';
-  $('.edit#name').editable(update_endpoint, {
+  var update_plan_endpoint = '/plans/private/'+plan_private_guid+'/update';
+  $('.edit#name').editable(update_plan_endpoint, {
     indicator : 'Saving...',
     name      : 'name'
   });
-  $('.edit#postcode').editable(update_endpoint, {
+  $('.edit#postcode').editable(update_plan_endpoint, {
     indicator : 'Saving...',
     name      : 'postcode'
   });
+  $('.edit#add').editable('/allocations', {
+    indicator  : 'Saving...',
+    name       : 'name',
+    data       : ' ', // empty string doesn't work unfortunately
+    submitdata : function(value, settings) {
+      var person_id = $('span#person-id').attr('data-id');
+      var event_id  = $('ul#events li.active').attr('data-id');
+      return {person_id: person_id, event_id: event_id};
+    },
+    callback : function(value, settings) {
+      var resp = JSON.parse(value);
+      $( "<li class='allocation' data-id="+resp.allocation_id+" >"+resp.task_name+"</li>" ).appendTo( $( "ul#allocations") );
+      $('ul#allocations').find('li#add').appendTo('ul#allocations'); // move the Add to the end of the list..
+      $('li#add').text('Add item'); // work-around bad binding
+      $("li.allocation[data-id='"+resp.allocation_id+"']").bind('click', deleteAllocation);
+     }
+  });
+  // END
 
   $('li.allocation').bind('click', deleteAllocation);
 
@@ -72,7 +79,6 @@ $(function($) { // document ready
     accept: ":not(.ui-sortable-helper)",
     drop: function( event, ui ) {
       task_id = ui.draggable.attr("data-id");
-      $( "<li class='allocation' data-id="+task_id+" ></li>" ).text( ui.draggable.text() ).appendTo( $( "ul#allocations") );
       person_id = $( "span#person-id" ).attr('data-id');
       createAllocation(task_id, person_id);
     }

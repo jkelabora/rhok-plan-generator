@@ -44,10 +44,9 @@
           <% for a in @people.first.allocations.where(task_id: @custom_tasks) %>
             <li class='allocation' data-id="<%= a.id %>"><%= a.task.name %></li>
           <% end %>
-          <li class='add'>Add item</li>
+          <li class='add edit' id='add'>Add item</li>
         </ul>
     </div>
-  <!-- </div> -->
 
   <!-- <div class="row"> -->
     <div class='small-12 large-6 columns'>
