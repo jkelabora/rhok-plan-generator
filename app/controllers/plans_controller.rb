@@ -34,6 +34,7 @@ class PlansController < ApplicationController
     if params[:name] && @plan.update_attribute(:name, params[:name])
       render :json => params[:name]
     elsif params[:postcode] && @plan.update_attribute(:postcode, params[:postcode])
+      # todo: altering the postcode of a copied plan will mean the traversal in the visualisation will break..
       render :json => params[:postcode]
     else
       render :status => :unprocessable_entity, :json => {}
