@@ -1229,12 +1229,13 @@ $h3-font-size: em-calc(15);
 // Tooltip Variables
 //
 
-// $has-tip-border-bottom: dotted 1px #ccc;
-// $has-tip-font-weight: bold;
-// $has-tip-font-color: #333;
-// $has-tip-border-bottom-hover: dotted 1px darken($primary-color, 20%);
-// $has-tip-font-color-hover: $primary-color;
-// $has-tip-cursor-type: help;
+$has-tip-border-bottom: none;
+$has-tip-font-weight: bold;
+$has-tip-font-color: white;
+$has-tip-border-bottom-hover: none;
+// $has-tip-font-color-hover: darken(white, 20%);
+$has-tip-font-color-hover: white;
+$has-tip-cursor-type: help;
 
 // $tooltip-padding: em-calc(8);
 // $tooltip-bg: #000;

@@ -46,7 +46,21 @@ function deleteAllocation(e){
   }
 
 $(function($) { // document ready
+
+  // http://www.appelsiini.net/projects/jeditable
+  plan_private_guid = $( "span#private-guid" ).attr('data-id');
+  var update_endpoint = '/plans/private/'+plan_private_guid+'/update';
+  $('.edit#name').editable(update_endpoint, {
+    indicator : 'Saving...',
+    name      : 'name'
+  });
+  $('.edit#postcode').editable(update_endpoint, {
+    indicator : 'Saving...',
+    name      : 'postcode'
+  });
+
   $('li.allocation').bind('click', deleteAllocation);
+
   $('ul#tasks li').draggable({
     opacity: 0.7, helper: "clone",
     appendTo: "body"
@@ -59,7 +73,7 @@ $(function($) { // document ready
     drop: function( event, ui ) {
       task_id = ui.draggable.attr("data-id");
       $( "<li class='allocation' data-id="+task_id+" ></li>" ).text( ui.draggable.text() ).appendTo( $( "ul#allocations") );
-      person_id = $( "span.person" ).attr('data-id');
+      person_id = $( "span#person-id" ).attr('data-id');
       createAllocation(task_id, person_id);
     }
   });

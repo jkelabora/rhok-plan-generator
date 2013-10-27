@@ -29,13 +29,14 @@ class PlansController < ApplicationController
     @plan = Plan.find_by_public_guid(params[:public_guid]).decorate
   end
 
-  # leave as a json endpoint.. will need to edit plan details at some point
   def update
-    @plan = Plan.find(params[:id])
-    if @plan.update_attributes(params[:plan])
-      redirect_to @plan, :notice  => "Successfully updated plan."
+    @plan = Plan.find_by_private_guid(params[:private_guid])
+    if params[:name] && @plan.update_attribute(:name, params[:name])
+      render :json => params[:name]
+    elsif params[:postcode] && @plan.update_attribute(:postcode, params[:postcode])
+      render :json => params[:postcode]
     else
-      render :action => 'edit'
+      render :status => :unprocessable_entity, :json => {}
     end
   end
 
