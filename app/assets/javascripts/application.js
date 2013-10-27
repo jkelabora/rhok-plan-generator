@@ -16,8 +16,8 @@
 //= require jquery.ui.all
 //= require jquery-jeditable-mini
 //= require d3-v3-min
-//= require_tree .
 //= require jquery-ui-touch-punch-min
 //= require custom-modernizr
+//= require allocations/allocations
 
 $(function(){ $(document).foundation(); });
