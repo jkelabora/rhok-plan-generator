@@ -2,13 +2,9 @@ ul#allocations, ul#tasks {
   border: 1px solid rgb(68,68,68);
 }
 
-div#postcode {
-  width: 9.66667%;
-}
-
 ul#allocations.ui-state-hover {
   /*background: none repeat scroll 0 0 #00FFFF;*/
-  border: 1px solid red;
+  border: 1px solid green;
 }
 
 /* Prevent the text contents of draggable elements from being selectable. */
