@@ -186,7 +186,7 @@ $header-bottom-margin: .1em;
 $h1-font-size: em-calc(30);
 $h2-font-size: em-calc(27);
 $h3-font-size: em-calc(20);
-// $h4-font-size: em-calc(23);
+$h4-font-size: em-calc(18);
 // $h5-font-size: em-calc(18);
 // $h6-font-size: 1em;
 
@@ -1122,7 +1122,7 @@ $sub-nav-font-color: white;
 // We use these to control the active item styles
 
 // $sub-nav-active-font-weight: bold;
-// $sub-nav-active-bg: $primary-color;
+$sub-nav-active-bg: rgb(91,154,168);
 // $sub-nav-active-color: #fff;
 // $sub-nav-active-padding: em-calc(3 9);
 // $sub-nav-active-cursor: default;

@@ -1,26 +1,7 @@
-ul#allocations, ul#tasks {
-  border-top: 1px solid rgb(68,68,68);
-}
 
-li.allocation, li.add {
-  background-color: white;
-  padding: 7px;
-  border-bottom: 1px solid rgb(68,68,68);
-  border-left: 1px solid rgb(68,68,68);
-  border-right: 1px solid rgb(68,68,68);
-}
-
-li.suggested {
-  background-color: white;
-  padding: 7px;
-  border-bottom: 1px solid rgb(68,68,68);
-  border-left: 8px solid rgb(228,107,104);
-  border-right: 1px solid rgb(68,68,68);
-}
-
-ul#allocations.ui-state-hover {
+table#allocations.ui-state-hover {
   /*background: none repeat scroll 0 0 #00FFFF;*/
-  border: 1px solid green;
+  border: 2px solid green;
 }
 
 div#allocation-lists {
@@ -32,6 +13,46 @@ div#allocation-lists {
     margin-top: 15px;
   }
 }
+////////////////////////
+td.red-margin {
+  padding-left: .3em;
+  padding-right: .3em;
+  background: rgb(228,107,104);
+}
+
+td.suggested {
+  padding: .6em;
+}
+
+td.allocation-signature {
+  background: rgb(91,154,168);
+  text-align: center;
+  h4 {
+    color: rgb(147,185,194);
+  }
+}
+
+td.allocation {
+  background: rgb(205,205,205);
+  text-align: center;
+  // h4 {
+    // color: rgb(147,185,194);
+  // }
+}
+
+td.add-marker {
+  background: rgb(205,205,205);
+  text-align: center;
+}
+
+
+////////////////////////
+
+
+
+
+
+
 
 // not the greatest, but seems to work...
 dd a {
@@ -40,7 +61,7 @@ dd a {
   -webkit-background-size: auto;
   background-attachment: scroll;
   background-clip: border-box;
-  background-color: #104C5E;
+  background-color: #295D6D;
   background-image: none;
   background-origin: padding-box;
   background-size: auto;
@@ -66,22 +87,4 @@ dd a {
   padding-top: 2.625px;
   text-decoration: none;
   width: auto;
-}
-
-
-
-/* Prevent the text contents of draggable elements from being selectable. */
-[draggable] {
-  -moz-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  user-select: none;
-  /* Required to make elements draggable in old WebKit */
-  -khtml-user-drag: element;
-  -webkit-user-drag: element;
-  cursor: move;
-}
-
-*:-khtml-drag {
-  background-color: rgba(238,238,238, 0.5);
 }
