@@ -42,13 +42,6 @@
     <div class='small-12 large-6 columns'>
         <h3>YOUR LIST</h3>
         <p>Drag and drop to here</p>
-<!-- -        <ul id='allocations'>
--          <% for a in @people.first.allocations.where(task_id: @custom_tasks) %>
--            <li class='allocation' data-id="<%= a.id %>"><%= a.task.name %></li>
--          <% end %>
--          <li class='add edit' id='add'>Add item</li>
--        </ul>
- -->
         <table id='allocations'>
           <tbody>
             <% @people.first.allocations.where(task_id: @custom_tasks).each_with_index do |a, idx| %>
@@ -58,7 +51,7 @@
                 <td class='allocation' data-id="<%= a.id %>"><h4 class='delete'>x</h4></td>
               </tr>
             <% end %>
-            <tr>
+            <tr id="add-row">
               <td class='add-marker'><h4>+</h4></td>
               <td class='add edit' id='add'>Click here to add</td>
             </tr>
@@ -70,14 +63,6 @@
     <div class='small-12 large-6 columns'>
       <h3>SUGGESTED LIST</h3>
       <p>Drag and drop from here</p>
-
-<!--       <ul id="tasks">
-        <% for task in @public_tasks %>
-          <li class="suggested" data-id="<%= task.id %>"><%= task.name %></li>
-        <% end %>
-      </ul>
- -->
-
       <table id='tasks'>
         <tbody>
           <% for task in @public_tasks %>
