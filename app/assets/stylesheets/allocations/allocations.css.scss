@@ -1,5 +1,21 @@
 ul#allocations, ul#tasks {
-  border: 1px solid rgb(68,68,68);
+  border-top: 1px solid rgb(68,68,68);
+}
+
+li.allocation, li.add {
+  background-color: white;
+  padding: 7px;
+  border-bottom: 1px solid rgb(68,68,68);
+  border-left: 1px solid rgb(68,68,68);
+  border-right: 1px solid rgb(68,68,68);
+}
+
+li.suggested {
+  background-color: white;
+  padding: 7px;
+  border-bottom: 1px solid rgb(68,68,68);
+  border-left: 8px solid rgb(228,107,104);
+  border-right: 1px solid rgb(68,68,68);
 }
 
 ul#allocations.ui-state-hover {
@@ -7,7 +23,15 @@ ul#allocations.ui-state-hover {
   border: 1px solid green;
 }
 
-
+div#allocation-lists {
+  h3, p {
+    text-align: center;
+  }
+  h3 {
+    color: rgb(68, 68, 68);
+    margin-top: 15px;
+  }
+}
 
 // not the greatest, but seems to work...
 dd a {

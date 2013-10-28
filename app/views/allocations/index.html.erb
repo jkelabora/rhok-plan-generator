@@ -21,7 +21,6 @@
 
 <section class='secondary'>
   <div class='row'>
-    <!-- <dl class="sub-nav small-12 columns"> -->
     <div class='small-12 small-centered columns'>
     <dl class="sub-nav">
       <% for e in @events %>
@@ -39,9 +38,10 @@
 <span class='hidden' id='private-guid' data-id="<%= @plan.private_guid %>"></span>
 
 <section class='main-page'>
-  <div class='row'>
+  <div class='row' id='allocation-lists'>
     <div class='small-12 large-6 columns'>
         <h3>YOUR LIST</h3>
+        <p>Drag and drop to this list</p>
         <ul id='allocations'>
           <% for a in @people.first.allocations.where(task_id: @custom_tasks) %>
             <li class='allocation' data-id="<%= a.id %>"><%= a.task.name %></li>
@@ -50,9 +50,9 @@
         </ul>
     </div>
 
-  <!-- <div class="row"> -->
     <div class='small-12 large-6 columns'>
       <h3>SUGGESTED LIST</h3>
+      <p>Drag and drop from this list</p>
       <ul id="tasks">
         <% for task in @public_tasks %>
           <li class="suggested" data-id="<%= task.id %>"><%= task.name %></li>
