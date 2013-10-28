@@ -7,6 +7,43 @@ ul#allocations.ui-state-hover {
   border: 1px solid green;
 }
 
+// not the greatest, but seems to work...
+dd a {
+  -webkit-background-clip: border-box;
+  -webkit-background-origin: padding-box;
+  -webkit-background-size: auto;
+  background-attachment: scroll;
+  background-clip: border-box;
+  background-color: #104C5E;
+  background-image: none;
+  background-origin: padding-box;
+  background-size: auto;
+  border-bottom-left-radius: 1000px;
+  border-bottom-right-radius: 1000px;
+  border-top-left-radius: 1000px;
+  border-top-right-radius: 1000px;
+  box-sizing: border-box;
+  color: rgb(255, 255, 255);
+  cursor: default;
+  direction: ltr;
+  display: inline;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: bold;
+  height: auto;
+  line-height: 22px;
+  list-style-position: outside;
+  padding-bottom: 2.625px;
+  padding-left: 7.875px;
+  padding-right: 7.875px;
+  padding-top: 2.625px;
+  text-decoration: none;
+  width: auto;
+}
+
+
+
 /* Prevent the text contents of draggable elements from being selectable. */
 [draggable] {
   -moz-user-select: none;

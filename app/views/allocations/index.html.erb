@@ -1,34 +1,35 @@
 <section class='headline'>
+
   <div class='row'>
-    <div class='small-6 columns'>
+    <div class='small-12 columns'>
       <!-- 'edit' is for inline editing, 'has-tip' for foundation -->
       <h1 data-tooltip class='edit has-tip' id='name' title='Click to edit...' data-options="disable-for-touch:true"><%= @plan.name %></h1>
     </div>
-    <div class='small-6 columns'></div>
   </div>
+
   <div class='row'>
-    <div class='small-2 columns' id='postcode'>
-      <h2>Postcode:</h2>
+    <div class='small-12 columns'>
+      <ul class="inline-list">
+        <li><h2>Postcode:</h2></li>
+        <li>
+          <h2 data-tooltip class='edit has-tip' id='postcode' title='Click to edit...' data-options="disable-for-touch:true" ><%= @plan.postcode %></h2>
+        </li>
+      </ul>
     </div>
-    <div class='small-2 columns'>
-      <h2 data-tooltip class='edit has-tip' id='postcode' title='Click to edit...' data-options="disable-for-touch:true"><%= @plan.postcode %></h2>
-    </div>
-    <div class='small-8 columns'></div>
   </div>
 </section>
 
 <section class='secondary'>
   <div class='row'>
-    <div class='small-12 columns'>
-      <nav>
-        <ul id="events" class='inline-list'>
-          <% for e in @events %>
-            <li class="<%= 'active' if e == @event %>" data-id="<%= e.id %>">
-              <%= link_to e.name.upcase, plan_allocations_url(:private_guid => @plan.private_guid, :id => e.id) %>
-            </li>
-          <% end %>
-        </ul>
-      </nav>
+    <!-- <dl class="sub-nav small-12 columns"> -->
+    <div class='small-12 small-centered columns'>
+    <dl class="sub-nav">
+      <% for e in @events %>
+        <dd class="nav-link <%= 'active' if e == @event %>" data-id="<%= e.id %>">
+          <%= link_to e.name.upcase, plan_allocations_url(:private_guid => @plan.private_guid, :id => e.id) %>
+        </dd>
+      <% end %>
+    </dl>
     </div>
   </div>
 </section>
