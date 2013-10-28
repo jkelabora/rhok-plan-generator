@@ -17,7 +17,7 @@ function createAllocation(task_id, person_id) {
       $( html ).appendTo( $( "table#allocations") );
 
       $('table#allocations').find('tr#add-row').appendTo('table#allocations'); // move the Add to the end of the list..
-      $('td#add').text('Click here to add'); // work-around bad binding
+      $('td#add').text('Click here to add your own task'); // work-around bad binding
 
       $("td.allocation[data-id='"+resp.allocation_id+"']").bind('click', deleteAllocation);
     }
@@ -82,7 +82,7 @@ $(function($) { // document ready
       $( html ).appendTo( $( "table#allocations") );
 
       $('table#allocations').find('tr#add-row').appendTo('table#allocations'); // move the Add to the end of the list..
-      $('td#add').text('Click here to add'); // work-around bad binding
+      $('td#add').text('Click here to add your own task'); // work-around bad binding
 
       $("td.allocation[data-id='"+resp.allocation_id+"']").bind('click', deleteAllocation);
      }
