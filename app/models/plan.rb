@@ -3,6 +3,7 @@ class Plan < ActiveRecord::Base
 
   validates_uniqueness_of :private_guid
   validates_uniqueness_of :public_guid, unless: Proc.new { |p| p.public_guid == nil || p.public_guid.empty? }
+  validates_numericality_of :postcode
 
   has_many :people
 

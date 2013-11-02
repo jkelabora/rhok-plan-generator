@@ -33,7 +33,7 @@ class PlansController < ApplicationController
     @plan = Plan.find_by_private_guid(params[:private_guid])
     if params[:name] && @plan.update_attribute(:name, params[:name])
       render :json => params[:name]
-    elsif params[:postcode] && @plan.update_attribute(:postcode, params[:postcode])
+    elsif params[:postcode] && (@plan.postcode = params[:postcode]; @plan.save)
       # todo: altering the postcode of a copied plan will mean the traversal in the visualisation will break..
       render :json => params[:postcode]
     else

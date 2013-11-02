@@ -64,11 +64,11 @@ $(function($) { // document ready
     indicator : 'Saving...',
     name      : 'name'
   });
+
   $('.edit#postcode').editable(update_plan_endpoint, {
     indicator : 'Saving...',
     name      : 'postcode'
   });
-
 
   $('.edit#add').editable('/allocations', {
     indicator  : 'Saving...',
