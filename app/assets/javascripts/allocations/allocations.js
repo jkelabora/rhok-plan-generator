@@ -6,11 +6,10 @@ function createAllocation(task_id, person_id) {
   xhr.onload = function(e) {
     if (this.status == 200) {
       var resp = JSON.parse(this.responseText);
-      var position = $('table#allocations tbody > tr').length.toString();
-      var padded_position = position.length === 1 ? '0' + position : position;
+      var position = $('table#allocations tbody > tr').length;
       var html = ""
         html +="<tr>";
-        html +=  "<td class='allocation-signature'><h4>"+padded_position+"</h4></td>"
+        html +=  "<td class='allocation-signature'><h4>"+paddedPosition(position)+"</h4></td>"
         html +=  "<td>"+resp.task_name+"</td>";
         html +=  "<td class='allocation' data-id="+resp.allocation_id+"><h4 class='delete'>x</h4></td>"
         html +="</tr>"
@@ -27,22 +26,34 @@ function createAllocation(task_id, person_id) {
 }
 
 function deleteAllocation(e){
-    var elem = this;
-    if(confirm("Are you sure?")){
-      $.ajax({
-        url: '/allocations/' + elem.getAttribute('data-id'),
-        type: 'post',
-        dataType: 'script',
-        data: { '_method': 'delete' },
-        success: function() {
-          $(elem.parentNode).remove();
-        }
-      });
-      return false;
-    } else {
-      return false;
-    }
+  var elem = this;
+  if(confirm("Are you sure you want to delete this task?")){
+    $.ajax({
+      url: '/allocations/' + elem.getAttribute('data-id'),
+      type: 'post',
+      dataType: 'script',
+      data: { '_method': 'delete' },
+      success: function() {
+        $(elem.parentNode).remove();
+        updateTaskNumbering();
+      }
+    });
+    return false;
+  } else {
+    return false;
   }
+}
+
+function paddedPosition(position) {
+  return position.toString().length === 1 ? '0' + position : position;
+}
+
+function updateTaskNumbering() {
+  $('td.allocation-signature h4').each(function( index ) {
+    $( this ).text(paddedPosition(index + 1));
+  });
+}
+
 
 $(function($) { // document ready
 
