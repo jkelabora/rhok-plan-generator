@@ -102,19 +102,20 @@ $(function($) { // document ready
 
   $('td.allocation').bind('click', deleteAllocation);
 
-  $('table#tasks td.suggested').draggable({
-    opacity: 0.7, helper: "clone",
+  $('table#tasks td.red-margin').draggable({
+    opacity: 0.7,
     cursor: "crosshair",
-    cursorAt: { top: 0, left: 0 }
+    cursorAt: { top: 0, left: 0 },
+    helper: function() { return $(this.parentElement).find('td.suggested').clone()[0]; }
   });
 
   $( "table#allocations" ).droppable({
     activeClass: "ui-state-highlight",
     hoverClass: "ui-state-hover",
-    accept: "table#tasks td.suggested",
+    accept: "table#tasks td.red-margin",
     tolerance: 'pointer',
     drop: function( event, ui ) {
-      task_id = ui.draggable.attr("data-id");
+      task_id = ui.helper.attr("data-id");
       person_id = $( "span#person-id" ).attr('data-id');
       createAllocation(task_id, person_id);
     }

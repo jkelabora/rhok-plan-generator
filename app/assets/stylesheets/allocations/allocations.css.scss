@@ -15,11 +15,17 @@ div#allocation-lists {
     margin-top: 15px;
   }
 }
-////////////////////////
+
 td.red-margin {
-  padding-left: .3em;
-  padding-right: .3em;
+  padding-left: .8em;
+  padding-right: .8em;
   background: rgb(228,107,104);
+  h4 {
+    color: white;
+  }
+  &:hover {
+    background: #9B4543;
+  }
 }
 
 td.suggested {
@@ -37,24 +43,12 @@ td.allocation-signature {
 td.allocation {
   background: rgb(205,205,205);
   text-align: center;
-  // h4 {
-    // color: rgb(147,185,194);
-  // }
 }
 
 td.add-marker {
   background: rgb(205,205,205);
   text-align: center;
 }
-
-
-////////////////////////
-
-
-
-
-
-
 
 // not the greatest, but seems to work...
 dd a {
