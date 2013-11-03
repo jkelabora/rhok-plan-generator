@@ -16,16 +16,16 @@ pdf.move_down(30)
     pdf.text "#{event.name}", :size => 20, :style => :bold
     pdf.move_down(10)
 
-    items = [["Assignee", "Task to complete", "Done?"]]
+    items = [["Assignee(s)", "Task to complete", "Done?"]]
     items += @plan.tasks_for(event).collect do |task|
         [
-            @plan.people_for(task),
+            '',
             task.name,
             ''
         ]
     end
 
-    pdf.table items, :row_colors => ["CBCBCB", "F0F0F0"], :column_widths => [100, 390, 50] do # full possible table width = 540
+    pdf.table items, :row_colors => ["CBCBCB", "F0F0F0"], :column_widths => [90, 400, 50] do # full possible table width = 540
         row(0).font_style = :bold
     end
 
