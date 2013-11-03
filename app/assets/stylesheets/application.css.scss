@@ -19,6 +19,9 @@
 ul { list-style: none; }
 html, body { height: 100%; }
 
+// fix for main title getting cropped on iphone
+nav.top-bar .name h1 a { width: auto; }
+
 section.headline {
   background: rgb(91,154,168);
   // padding: 15px 0;
