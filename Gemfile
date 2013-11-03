@@ -21,6 +21,7 @@ group :assets do
   gem 'jquery-ui-rails', "~> 4.0.5"
   gem 'compass-rails', "~> 1.0.3"
   gem 'zurb-foundation', "~> 4.3.2" 
+  gem 'foundation-icons-sass-rails', "~> 3.0.0"
 end
 
 gem 'virtus'

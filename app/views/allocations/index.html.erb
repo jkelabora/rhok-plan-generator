@@ -48,11 +48,11 @@
               <tr>
                 <td class='allocation-signature'><h4><%= "%02d" % (idx+1) %></h4></td>
                 <td><%= a.task.name %></td>
-                <td class='allocation' data-id="<%= a.id %>"><h4 class='delete'>x</h4></td>
+                <td class='allocation-delete' data-id="<%= a.id %>"><i class="fi-x"></i></td>
               </tr>
             <% end %>
             <tr id="add-row">
-              <td class='add-marker'><h4>+</h4></td>
+              <td class='add-task'><i class="fi-plus"></i></td>
               <td class='add edit' id='add'>Click here to add your own task</td>
             </tr>
           </tbody>
@@ -67,7 +67,7 @@
         <tbody>
           <% for task in @public_tasks %>
             <tr>
-              <td class="red-margin"><h4>::</h4></td>
+              <td class="red-margin"><i class="fi-thumbnails"></i></td>
               <td class='suggested' data-id="<%= task.id %>"><%= task.name %></td>
             </tr>
           <% end %>

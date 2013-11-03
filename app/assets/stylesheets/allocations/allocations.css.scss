@@ -1,9 +1,10 @@
 
 table#allocations.ui-state-highlight {
-  border: 2px dashed grey;
+  border: 1px dashed grey;
 }
+
 table#allocations.ui-state-hover {
-  border: 2px solid green;
+  border: 1px solid green;
 }
 
 div#allocation-lists {
@@ -16,15 +17,18 @@ div#allocation-lists {
   }
 }
 
+i {
+  font-size: x-large;
+  color: white;
+}
+
+
+$red-margin: rgb(228,107,104);
+
 td.red-margin {
-  padding-left: .8em;
-  padding-right: .8em;
-  background: rgb(228,107,104);
-  h4 {
-    color: white;
-  }
+  background: $red-margin;
   &:hover {
-    background: #9B4543;
+    background: darken($red-margin, 15%);
   }
 }
 
@@ -40,14 +44,19 @@ td.allocation-signature {
   }
 }
 
-td.allocation {
-  background: rgb(205,205,205);
+$action: rgb(205,205,205);
+
+td.allocation-delete {
   text-align: center;
+  background: $action;
+  &:hover {
+    background: darken($action, 15%);
+  }
 }
 
-td.add-marker {
-  background: rgb(205,205,205);
+td.add-task {
   text-align: center;
+  background: $action;
 }
 
 // not the greatest, but seems to work...

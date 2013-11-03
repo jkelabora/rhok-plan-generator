@@ -11,14 +11,14 @@ function createAllocation(task_id, person_id) {
         html +="<tr>";
         html +=  "<td class='allocation-signature'><h4>"+paddedPosition(position)+"</h4></td>"
         html +=  "<td>"+resp.task_name+"</td>";
-        html +=  "<td class='allocation' data-id="+resp.allocation_id+"><h4 class='delete'>x</h4></td>"
+        html +=  "<td class='allocation-delete' data-id="+resp.allocation_id+"><i class='fi-x'></i></td>"
         html +="</tr>"
       $( html ).appendTo( $( "table#allocations") );
 
       $('table#allocations').find('tr#add-row').appendTo('table#allocations'); // move the Add to the end of the list..
       $('td#add').text('Click here to add your own task'); // work-around bad binding
 
-      $("td.allocation[data-id='"+resp.allocation_id+"']").bind('click', deleteAllocation);
+      $("td.allocation-delete[data-id='"+resp.allocation_id+"']").bind('click', deleteAllocation);
     }
   };
   current_event_id = $('dl.sub-nav dd.active').attr('data-id');
@@ -88,19 +88,19 @@ $(function($) { // document ready
         html +="<tr>";
         html +=  "<td class='allocation-signature'><h4>"+padded_position+"</h4></td>"
         html +=  "<td>"+resp.task_name+"</td>";
-        html +=  "<td class='allocation' data-id="+resp.allocation_id+"><h4 class='delete'>x</h4></td>"
+        html +=  "<td class='allocation-delete' data-id="+resp.allocation_id+"><i class='fi-x'></i></td>"
         html +="</tr>"
       $( html ).appendTo( $( "table#allocations") );
 
       $('table#allocations').find('tr#add-row').appendTo('table#allocations'); // move the Add to the end of the list..
       $('td#add').text('Click here to add your own task'); // work-around bad binding
 
-      $("td.allocation[data-id='"+resp.allocation_id+"']").bind('click', deleteAllocation);
+      $("td.allocation-delete[data-id='"+resp.allocation_id+"']").bind('click', deleteAllocation);
      }
   });
   // END
 
-  $('td.allocation').bind('click', deleteAllocation);
+  $('td.allocation-delete').bind('click', deleteAllocation);
 
   $('table#tasks td.red-margin').draggable({
     opacity: 0.7,
