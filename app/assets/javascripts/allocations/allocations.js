@@ -104,15 +104,15 @@ $(function($) { // document ready
 
   $('table#tasks td.suggested').draggable({
     opacity: 0.7, helper: "clone",
-    appendTo: "body",
     cursor: "crosshair",
-    cursorAt: { top: 0 }
+    cursorAt: { top: 0, left: 0 }
   });
 
   $( "table#allocations" ).droppable({
-    activeClass: "ui-state-default",
+    activeClass: "ui-state-highlight",
     hoverClass: "ui-state-hover",
-    accept: ":not(.ui-sortable-helper)",
+    accept: "table#tasks td.suggested",
+    tolerance: 'pointer',
     drop: function( event, ui ) {
       task_id = ui.draggable.attr("data-id");
       person_id = $( "span#person-id" ).attr('data-id');
