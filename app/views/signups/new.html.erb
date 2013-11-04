@@ -17,7 +17,7 @@
 
 <section class='main-page'>
   <div class='row'>
-    <%= form_tag signups_path, method: :post, class: "large-12 columns" do %>
+    <%= form_for @signup, class: "large-12 columns" do |f| %>
 
       <% if @signup.errors.any? %>
         <div data-alert class='alert-box'>
@@ -27,37 +27,37 @@
       <% end %>
 
       <fieldset>
-        <%= text_field_tag "plan_name", nil, placeholder: "Plan Name", class: 'large-element' %>
-        <%= text_field_tag "postcode", nil, placeholder: "Household Postcode", class: 'large-element' %>
+        <%= f.text_field :plan_name, placeholder: "Plan Name", class: 'large-element' %>
+        <%= f.text_field :postcode, placeholder: "Household Postcode", class: 'large-element' %>
       </fieldset>
 
-      <div>
+<!--       <div>
         <h2>Optional details</h2>
       </div>
 
       <div>
         <fieldset>
-          <%= text_field_tag "name", nil, placeholder: "Name or Nickname", class: 'large-element' %>
-          <%= email_field_tag "email", nil, placeholder: "Email", class: 'large-element' %>
-          <%= text_field_tag "mobile", nil, placeholder: "Mobile", class: 'large-element' %>
+          <%= f.text_field :name, placeholder: "Name or Nickname", class: 'large-element' %>
+          <%= f.email_field :email, placeholder: "Email", class: 'large-element' %>
+          <%= f.text_field :mobile, placeholder: "Mobile", class: 'large-element' %>
+        </fieldset>
+      </div>
+ -->
+      <div>
+        <fieldset>
+            <%= f.check_box :opt_out, {checked: true} %> Keep your plan private?
         </fieldset>
       </div>
 
       <div>
         <fieldset>
-            <%= check_box_tag :opt_out, 'yes', true %> Keep your plan private?
+            <%= f.check_box :alone %> Do you live alone?
         </fieldset>
       </div>
 
       <div>
         <fieldset>
-            <%= check_box_tag :alone %> Do you live alone?
-        </fieldset>
-      </div>
-
-      <div>
-        <fieldset>
-            <%= check_box_tag :pets %> Do you have pets?
+            <%= f.check_box :pets %> Do you have pets?
         </fieldset>
       </div>
 
@@ -68,7 +68,7 @@
 <section>
   <div class='row'>
     <div class='large-12 columns'>
-      <%= submit_tag "Next >>", class: 'button' %>
+      <%= f.submit "Next >>", class: 'button' %>
     <% end %>
     </div>
   </div>

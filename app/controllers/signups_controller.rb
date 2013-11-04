@@ -5,7 +5,7 @@ class SignupsController < ApplicationController
   end
 
   def create
-    @signup = Signup.new(params)
+    @signup = Signup.new(params[:signup])
 
     if @signup.save
       @event = Event.first
