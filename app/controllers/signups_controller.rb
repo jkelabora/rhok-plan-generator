@@ -1,5 +1,9 @@
 class SignupsController < ApplicationController
 
+  def new
+    @signup = Signup.new
+  end
+
   def create
     @signup = Signup.new(params)
 
@@ -17,7 +21,7 @@ class SignupsController < ApplicationController
 
       redirect_to plan_allocations_path(@plan.private_guid)
     else
-      render "new", :notice  => "Problem saving.. possibly missing plan name and postcode?"
+      render "new"
     end
   end
 end

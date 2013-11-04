@@ -19,9 +19,16 @@
   <div class='row'>
     <%= form_tag signups_path, method: :post, class: "large-12 columns" do %>
 
+      <% if @signup.errors.any? %>
+        <div data-alert class='alert-box'>
+          <%= "Errors: '" + @signup.errors.full_messages.join("' and '") + "'" %>
+          <a href="#" class="close">&times;</a>
+        </div>
+      <% end %>
+
       <fieldset>
         <%= text_field_tag "plan_name", nil, placeholder: "Plan Name", class: 'large-element' %>
-        <%= text_field_tag "postcode", nil, placeholder: "Household Postcode", class: 'large-element', type: :number %>
+        <%= text_field_tag "postcode", nil, placeholder: "Household Postcode", class: 'large-element' %>
       </fieldset>
 
       <div>
