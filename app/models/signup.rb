@@ -45,11 +45,11 @@ class Signup
 
   def persist!
     ActiveRecord::Base.transaction do
-      if name.empty? and email.empty? and mobile.empty?
+      # if name.empty? and email.empty? and mobile.empty?
         @person = Person.anon
-      else
-        @person = Person.new(name: name, email: email, mobile: mobile)
-      end
+      # else
+      #   @person = Person.new(name: name, email: email, mobile: mobile)
+      # end
       @person.save
 
       # https://github.com/mbleigh/acts-as-taggable-on

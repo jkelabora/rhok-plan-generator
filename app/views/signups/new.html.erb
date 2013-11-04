@@ -1,6 +1,6 @@
 <section class='headline'>
   <div class='row'>
-    <div class='twelve columns'>
+    <div class='small-12 columns'>
       <h1>Let's get started!</h1>
     </div>
   </div>
@@ -8,28 +8,34 @@
 
 <section class='secondary'>
   <div class='row'>
-    <div class='twelve columns'>
+    <div class='small-12 columns'>
       <h3>All we need is a plan name and your postcode (so we can help find plan templates that you may find useful)</h3>
      </div>
   </div>
 </section>
 
-
 <section class='main-page'>
-  <div class='row'>
-    <%= form_for @signup, class: "large-12 columns" do |f| %>
+    <%= form_for @signup do |f| %>
 
-      <% if @signup.errors.any? %>
-        <div data-alert class='alert-box'>
-          <%= "Errors: '" + @signup.errors.full_messages.join("' and '") + "'" %>
-          <a href="#" class="close">&times;</a>
+    <% if @signup.errors.any? %>
+      <div class='row'>
+        <div class="small-12 columns">
+          <div data-alert class='alert-box'>
+            <%= "Errors: '" + @signup.errors.full_messages.join("' and '") + "'" %>
+            <a href="#" class="close">&times;</a>
+          </div>
         </div>
-      <% end %>
+      </div>
+    <% end %>
 
+    <div class='row'>
+      <div class="small-12 columns">
       <fieldset>
         <%= f.text_field :plan_name, placeholder: "Plan Name", class: 'large-element' %>
         <%= f.text_field :postcode, placeholder: "Household Postcode", class: 'large-element' %>
       </fieldset>
+      </div>
+    </div>
 
 <!--       <div>
         <h2>Optional details</h2>
@@ -43,31 +49,35 @@
         </fieldset>
       </div>
  -->
-      <div>
+
+    <div class='row'>
+      <div class="small-4 columns">
         <fieldset>
-            <%= f.check_box :opt_out, {checked: true} %> Keep your plan private?
+            <%= f.check_box :opt_out %> Keep your plan private?
         </fieldset>
       </div>
+    </div>
 
-      <div>
+    <div class='row'>
+      <div class="small-4 columns">
         <fieldset>
             <%= f.check_box :alone %> Do you live alone?
         </fieldset>
       </div>
+    </div>
 
-      <div>
+    <div class='row'>
+      <div class="small-4 columns">
         <fieldset>
             <%= f.check_box :pets %> Do you have pets?
         </fieldset>
       </div>
-
-
-  </div>
+    </div>
 </section>
 
 <section>
   <div class='row'>
-    <div class='large-12 columns'>
+    <div class='small-12 columns'>
       <%= f.submit "Next >>", class: 'button' %>
     <% end %>
     </div>
