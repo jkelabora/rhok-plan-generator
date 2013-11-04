@@ -104,7 +104,7 @@ $(function($) { // document ready
 
   $('table#tasks td.red-margin').draggable({
     opacity: 0.7,
-    cursor: "crosshair",
+    cursor: "pointer",
     cursorAt: { top: 0, left: 0 },
     helper: function() { return $(this.parentElement).find('td.suggested').clone()[0]; }
   });
