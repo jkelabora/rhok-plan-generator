@@ -43,6 +43,14 @@ class Signup
 
   private
 
+  def tag_list
+    [ 'pets', 'not_pets', 'alone', 'not_alone', 'children', 'not_children' ]
+  end
+
+  def all_untagged_suggested_tasks
+    Task.tagged_with(tag_list, :exclude => true).where(custom: false)
+  end
+
   def persist!
     ActiveRecord::Base.transaction do
       # if name.empty? and email.empty? and mobile.empty?
@@ -53,7 +61,13 @@ class Signup
       @person.save
 
       # https://github.com/mbleigh/acts-as-taggable-on
-      tasks = Task.tagged_with(tag_list, :any => true).where(custom: false)
+      tasks = all_untagged_suggested_tasks
+      tasks += Task.tagged_with('pets') if pets
+      tasks += Task.tagged_with('not_pets') unless pets
+      # there isn't an explicit question about children yet so !alone = children
+      tasks += Task.tagged_with(['alone', 'not_children']) if alone
+      tasks += Task.tagged_with(['not_alone', 'children']) unless alone
+
       tasks.each do |original|
         duplicate = original.dup
         duplicate.custom = true
@@ -69,14 +83,6 @@ class Signup
       @plan.people << @person
     end
 
-  end
-
-  def tag_list
-    arr = ["general"]
-    arr << "alone" if alone
-    arr << "pets" if pets
-    puts arr
-    arr
   end
 
 end
