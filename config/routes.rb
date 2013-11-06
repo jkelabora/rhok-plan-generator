@@ -22,6 +22,7 @@ RhokPlanGenerator::Application.routes.draw do
 
   resources :allocations, only: [:create, :destroy]
   resources :signups, only: [:new, :create]
+  get '/signups', to: redirect('/signups/new')
 
   resources :people
 end
