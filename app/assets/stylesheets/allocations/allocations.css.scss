@@ -1,3 +1,4 @@
+@import 'variables';
 
 table#allocations.ui-state-highlight {
   border: 1px dashed grey;
@@ -7,23 +8,10 @@ table#allocations.ui-state-hover {
   border: 1px solid green;
 }
 
-div#allocation-lists {
-  h3, p {
-    text-align: center;
-  }
-  h3 {
-    color: rgb(68, 68, 68);
-    margin-top: 15px;
-  }
-}
-
 i {
   font-size: x-large;
   color: white;
 }
-
-
-$red-margin: rgb(228,107,104);
 
 td.red-margin {
   background: $red-margin;

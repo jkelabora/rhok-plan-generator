@@ -1,0 +1,13 @@
+@import 'variables';
+
+section { 
+  .introduction {
+    h3, p {
+      text-align: center;
+    }
+    h3 {
+      color: $title-colour;
+      margin-top: 15px;
+    }
+  }
+}

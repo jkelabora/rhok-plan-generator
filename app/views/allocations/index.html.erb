@@ -38,42 +38,44 @@
 <span class='hidden' id='private-guid' data-id="<%= @plan.private_guid %>"></span>
 
 <section class='main-page'>
-  <div class='row' id='allocation-lists'>
-    <div class='small-12 large-6 columns'>
-        <h3>YOUR LIST</h3>
-        <p>Drag and drop to here</p>
-        <table id='allocations'>
+  <div class='introduction'>
+    <div class='row' id='allocation-lists'>
+      <div class='small-12 large-6 columns'>
+          <h3>YOUR LIST</h3>
+          <p>Drag and drop to here</p>
+          <table id='allocations'>
+            <tbody>
+              <% @people.first.allocations.where(task_id: @custom_tasks).each_with_index do |a, idx| %>
+                <tr>
+                  <td class='allocation-signature'><h4><%= "%02d" % (idx+1) %></h4></td>
+                  <td><%= a.task.name %></td>
+                  <td class='allocation-delete' data-id="<%= a.id %>"><i class="fi-x"></i></td>
+                </tr>
+              <% end %>
+              <tr id="add-row">
+                <td class='add-task'><i class="fi-plus"></i></td>
+                <td class='add edit' id='add'>Click here to add your own task</td>
+              </tr>
+            </tbody>
+          </table>
+
+      </div>
+
+      <div class='small-12 large-6 columns'>
+        <h3>SUGGESTED LIST</h3>
+        <p>Drag and drop from here</p>
+        <table id='tasks'>
           <tbody>
-            <% @people.first.allocations.where(task_id: @custom_tasks).each_with_index do |a, idx| %>
+            <% for task in @public_tasks %>
               <tr>
-                <td class='allocation-signature'><h4><%= "%02d" % (idx+1) %></h4></td>
-                <td><%= a.task.name %></td>
-                <td class='allocation-delete' data-id="<%= a.id %>"><i class="fi-x"></i></td>
+                <td class="red-margin"><i class="fi-thumbnails"></i></td>
+                <td class='suggested' data-id="<%= task.id %>"><%= task.name %></td>
               </tr>
             <% end %>
-            <tr id="add-row">
-              <td class='add-task'><i class="fi-plus"></i></td>
-              <td class='add edit' id='add'>Click here to add your own task</td>
-            </tr>
           </tbody>
         </table>
 
-    </div>
-
-    <div class='small-12 large-6 columns'>
-      <h3>SUGGESTED LIST</h3>
-      <p>Drag and drop from here</p>
-      <table id='tasks'>
-        <tbody>
-          <% for task in @public_tasks %>
-            <tr>
-              <td class="red-margin"><i class="fi-thumbnails"></i></td>
-              <td class='suggested' data-id="<%= task.id %>"><%= task.name %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-
+      </div>
     </div>
   </div>
 </section>

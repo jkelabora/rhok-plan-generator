@@ -1,25 +1,32 @@
 <section class='headline'>
-  <div class='row'>
-    <div class='small-12 columns'>
-      <h1>Let's get started!</h1>
+    <div class='row'>
+      <div class='small-12 columns'>
+        <h3>Get a plan</h3>
+       </div>
+    </div>
+  </section>
+<section class='main-page'>
+
+  <div class='introduction'>
+    <div class='row'>
+      <div class='small-12 large-7 large-centered columns'>
+        <h3>LET'S GET STARTED!</h3>
+      </div>
+    </div>
+
+    <div class='row'>
+      <div class='small-12 large-7 large-centered columns'>
+        <p>All we need is a plan name and your postcode. <br/>
+        Just so we can help find plan templates that you may find useful.</p>
+       </div>
     </div>
   </div>
-</section>
 
-<section class='secondary'>
-  <div class='row'>
-    <div class='small-12 columns'>
-      <h3>All we need is a plan name and your postcode (so we can help find plan templates that you may find useful)</h3>
-     </div>
-  </div>
-</section>
-
-<section class='main-page'>
     <%= form_for @signup do |f| %>
 
     <% if @signup.errors.any? %>
       <div class='row'>
-        <div class="small-12 columns">
+        <div class="small-12 large-7 large-centered columns">
           <div data-alert class='alert-box'>
             <%= "Errors: '" + @signup.errors.full_messages.join("' and '") + "'" %>
             <a href="#" class="close">&times;</a>
@@ -29,7 +36,7 @@
     <% end %>
 
     <div class='row'>
-      <div class="small-12 columns">
+      <div class="small-12 large-7 large-centered columns">
       <fieldset>
         <%= f.text_field :plan_name, placeholder: "Plan Name", class: 'large-element' %>
         <%= f.text_field :postcode, placeholder: "Household Postcode", class: 'large-element' %>
@@ -37,50 +44,36 @@
       </div>
     </div>
 
-<!--       <div>
-        <h2>Optional details</h2>
-      </div>
-
-      <div>
-        <fieldset>
-          <%= f.text_field :name, placeholder: "Name or Nickname", class: 'large-element' %>
-          <%= f.email_field :email, placeholder: "Email", class: 'large-element' %>
-          <%= f.text_field :mobile, placeholder: "Mobile", class: 'large-element' %>
-        </fieldset>
-      </div>
- -->
-
-    <div class='row'>
-      <div class="small-12 large-4 columns">
-        <fieldset>
-             <label for="signup_opt_out"><%= check_box_tag "signup[opt_out]" %> Keep your plan private?</label>
-        </fieldset>
+    <div class='introduction'>
+      <div class='row'>
+        <div class='small-12 large-7 large-centered columns'>
+          <h3>HELP US TAILOR YOUR PLAN</h3>
+        </div>
       </div>
     </div>
 
     <div class='row'>
-      <div class="small-12 large-4 columns">
-        <fieldset>
-            <label for="signup_alone"><%= check_box_tag "signup[alone]" %> Do you live alone?</label>
-        </fieldset>
-      </div>
+      <div class="small-12 large-7 large-centered columns">
+        <div class='row'>
+          <div class="small-6 columns">
+            <p>Do you live alone?</p>
+            <label for="signup_alone"><%= check_box_tag "signup[alone]" %> Yes</label> 
+          </div>
+          <div class="small-6 columns">
+            <p>Do you have pets?</p>
+            <label for="signup_pets"><%= check_box_tag "signup[pets]" %> Yes</label>
+          </div>
+        </div>
+      </div>      
     </div>
 
     <div class='row'>
-      <div class="small-12 large-4 columns">
-        <fieldset>
-            <label for="signup_pets"><%= check_box_tag "signup[pets]" %> Do you have pets?</label>
-        </fieldset>
-      </div>
-    </div>
-
-    <div class='row'>
-      <div class="small-12 large-4 columns">
+      <div class="small-12 large-7 large-centered columns">
         <img title="Fire Danger Rating wheel" alt="Fire Danger Rating wheel" src="http://www.cfa.vic.gov.au/fm_files/img/warnings-restrictions/fdr-chart.gif">
       </div>
     </div>
     <div class='row'>
-      <div class="small-12 large-4 columns">
+      <div class="small-12 large-7 large-centered columns">
         <fieldset class='fire-danger'>
           <label for="signup_rating_code_red"><%= radio_button_tag "signup[rating]", "code_red" %><span class="custom radio"></span> Code Red</label>
           <label for="signup_rating_extreme"><%= radio_button_tag "signup[rating]", "extreme" %><span class="custom radio"></span> Extreme</label>
@@ -93,7 +86,7 @@
 
 <section>
   <div class='row'>
-    <div class='small-12 columns'>
+    <div class='small-12 large-7 large-centered columns'>
       <%= f.submit "Next >>", class: 'button' %>
     <% end %>
     </div>
