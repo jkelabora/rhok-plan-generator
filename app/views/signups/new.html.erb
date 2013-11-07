@@ -53,7 +53,7 @@
     <div class='row'>
       <div class="small-12 large-4 columns">
         <fieldset>
-            <%= check_box_tag "signup[opt_out]" %> Keep your plan private?
+             <label for="signup_opt_out"><%= check_box_tag "signup[opt_out]" %> Keep your plan private?</label>
         </fieldset>
       </div>
     </div>
@@ -61,7 +61,7 @@
     <div class='row'>
       <div class="small-12 large-4 columns">
         <fieldset>
-            <%= check_box_tag "signup[alone]" %> Do you live alone?
+            <label for="signup_alone"><%= check_box_tag "signup[alone]" %> Do you live alone?</label>
         </fieldset>
       </div>
     </div>
@@ -69,28 +69,25 @@
     <div class='row'>
       <div class="small-12 large-4 columns">
         <fieldset>
-            <%= check_box_tag "signup[pets]" %> Do you have pets?
+            <label for="signup_pets"><%= check_box_tag "signup[pets]" %> Do you have pets?</label>
         </fieldset>
       </div>
     </div>
 
     <div class='row'>
       <div class="small-12 large-4 columns">
-        <img title="Fire Danger Rating wheel" alt="Fire Danger Rating wheel" src="http://www.cfa.vic.gov.au/fm_files/img/warnings-restrictions/fdr-chart.gif" height="169" width="280">
+        <img title="Fire Danger Rating wheel" alt="Fire Danger Rating wheel" src="http://www.cfa.vic.gov.au/fm_files/img/warnings-restrictions/fdr-chart.gif">
       </div>
     </div>
     <div class='row'>
-      <div class="large-4 columns">
-        <fieldset>
-          <label for="signup_rating_code_red"><%= radio_button_tag "signup[rating]", "code_red" %><span class="custom radio"></span>Code Red</label>
-          <label for="signup_rating_extreme"><%= radio_button_tag "signup[rating]", "extreme" %><span class="custom radio"></span>Extreme</label>
-          <label for="signup_rating_severe"><%= radio_button_tag "signup[rating]", "severe" %><span class="custom radio"></span>Severe</label>
-          <label for="signup_rating_very_high"><%= radio_button_tag "signup[rating]", "very_high" %><span class="custom radio"></span>Very High</label>
+      <div class="small-12 large-4 columns">
+        <fieldset class='fire-danger'>
+          <label for="signup_rating_code_red"><%= radio_button_tag "signup[rating]", "code_red" %><span class="custom radio"></span> Code Red</label>
+          <label for="signup_rating_extreme"><%= radio_button_tag "signup[rating]", "extreme" %><span class="custom radio"></span> Extreme</label>
+          <label for="signup_rating_severe"><%= radio_button_tag "signup[rating]", "severe" %><span class="custom radio"></span> Severe</label>
+          <label for="signup_rating_very_high"><%= radio_button_tag "signup[rating]", "very_high" %><span class="custom radio"></span> Very High</label>
         </fieldset>
       </div>
-      <!-- <div class="small-12 large-4 columns">
-        <img title="Fire Danger Rating wheel" alt="Fire Danger Rating wheel" src="http://www.cfa.vic.gov.au/fm_files/img/warnings-restrictions/fdr-chart.gif" height="169" width="280">
-      </div> -->
     </div>
 </section>
 
