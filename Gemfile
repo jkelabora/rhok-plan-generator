@@ -38,3 +38,10 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
 end
+
+group :development, :test do
+  gem 'rspec-rails', '~> 2.14'
+  gem 'capybara'
+  gem 'poltergeist'
+  gem 'phantomjs', :require => 'phantomjs/poltergeist'  
+end

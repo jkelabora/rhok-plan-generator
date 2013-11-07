@@ -62,6 +62,12 @@ GEM
       sass (>= 3.2.0)
       thor
     builder (3.0.4)
+    capybara (2.1.0)
+      mime-types (>= 1.16)
+      nokogiri (>= 1.3.3)
+      rack (>= 1.0.0)
+      rack-test (>= 0.5.4)
+      xpath (~> 2.0)
     chunky_png (1.2.9)
     coderay (1.0.9)
     coffee-rails (3.2.2)
@@ -86,6 +92,7 @@ GEM
       railties (>= 3.2.6, < 5)
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
+    diff-lcs (1.2.4)
     draper (1.2.1)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
@@ -94,6 +101,8 @@ GEM
     eventmachine (1.0.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    faye-websocket (0.4.7)
+      eventmachine (>= 0.12.0)
     formtastic (2.2.1)
       actionpack (>= 3.0)
     foundation-icons-sass-rails (3.0.0)
@@ -105,6 +114,7 @@ GEM
       activesupport (>= 3.2, < 5)
     hashery (2.1.0)
     hike (1.2.3)
+    http_parser.rb (0.5.3)
     i18n (0.6.5)
     inherited_resources (1.4.1)
       has_scope (~> 0.6.0.rc)
@@ -143,6 +153,12 @@ GEM
       hashery (~> 2.0)
       ruby-rc4
       ttfunk
+    phantomjs (1.8.1.1)
+      poltergeist
+    poltergeist (1.3.0)
+      capybara (~> 2.1.0)
+      faye-websocket (>= 0.4.4, < 0.5.0)
+      http_parser.rb (~> 0.5.3)
     polyamorous (0.5.0)
       activerecord (~> 3.0)
     polyglot (0.3.3)
@@ -188,6 +204,17 @@ GEM
     request_store (1.0.5)
     responders (1.0.0)
       railties (>= 3.2, < 5)
+    rspec-core (2.14.7)
+    rspec-expectations (2.14.4)
+      diff-lcs (>= 1.1.3, < 2.0)
+    rspec-mocks (2.14.4)
+    rspec-rails (2.14.0)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      railties (>= 3.0)
+      rspec-core (~> 2.14.0)
+      rspec-expectations (~> 2.14.0)
+      rspec-mocks (~> 2.14.0)
     ruby-rc4 (0.1.5)
     sass (3.2.7)
     sass-rails (3.2.6)
@@ -229,6 +256,8 @@ GEM
       descendants_tracker (~> 0.0.1)
     warden (1.2.3)
       rack (>= 1.0)
+    xpath (2.0.0)
+      nokogiri (~> 1.3)
     zurb-foundation (4.3.2)
       sass (>= 3.2.0)
 
@@ -241,6 +270,7 @@ DEPENDENCIES
   aws-sdk
   better_errors
   binding_of_caller
+  capybara
   coffee-rails (~> 3.2.1)
   compass-rails (~> 1.0.3)
   draper (~> 1.0)
@@ -250,11 +280,14 @@ DEPENDENCIES
   meta_search (~> 1.0)
   mysql2
   nifty-generators
+  phantomjs
+  poltergeist
   prawn
   prawnto
   pry-nav
   pry-rails
   rails (= 3.2.12)
+  rspec-rails (~> 2.14)
   sass-rails (~> 3.2.3)
   simple_form
   thin
