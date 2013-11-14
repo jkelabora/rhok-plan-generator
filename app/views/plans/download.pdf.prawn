@@ -16,7 +16,7 @@ pdf.move_down(30)
     pdf.text "#{event.name}", :size => 20, :style => :bold
     pdf.move_down(10)
 
-    items = [["Assignee(s)", "Task to complete", "Done?"]]
+    items = table_header_values(event.name)
     items += @plan.tasks_for(event).collect do |task|
         [
             '',
