@@ -20,3 +20,4 @@ development:
 test: &test
   <<: *base
   database: <%= ENV['RDS_DB_NAME'] %>_test
+  
