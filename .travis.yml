@@ -3,5 +3,4 @@ rvm:
   - 1.9.3
 
 before-script:
-  - source .profile
   - mysql -utravis < init.sql

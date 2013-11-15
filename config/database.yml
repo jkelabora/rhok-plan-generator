@@ -20,7 +20,7 @@ development:
 test: &test
   <<: *base
   database: <%= ENV['RDS_DB_NAME'] %>_test
-  <% if ENV[TRAVIS] %>
+  <% if ENV['TRAVIS'] %>
   host: localhost
   port: 3306
   <% end %>
