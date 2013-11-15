@@ -4,4 +4,4 @@ rvm:
 
 before-script:
   - source .profile
-  - mysql -e 'create database rhok_test;'
+  - mysql -utravis < init.sql
