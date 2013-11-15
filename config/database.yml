@@ -4,7 +4,10 @@ base: &base
   database: <%= ENV['RDS_DB_NAME'] %>
   username: <%= ENV['RDS_USERNAME'] %>
   password: <%= ENV['RDS_PASSWORD'] %>
-  <% if ENV['DB_SOCKET'] %>
+  <% if ENV['TRAVIS'] %>
+  host: localhost
+  port: 3306
+  <% elsif ENV['DB_SOCKET'] %>
   socket: <%= ENV['DB_SOCKET'] %>
   <% else %>
   host: <%= ENV['RDS_HOSTNAME'] %>
@@ -20,7 +23,4 @@ development:
 test: &test
   <<: *base
   database: <%= ENV['RDS_DB_NAME'] %>_test
-  <% if ENV['TRAVIS'] %>
-  host: localhost
-  port: 3306
-  <% end %>
+  
