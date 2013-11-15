@@ -3,4 +3,5 @@ rvm:
   - 1.9.3
 
 before-script:
-  - mysql -utravis < init.sql
+  - mysql -e 'create database rhok_test;'
+  
