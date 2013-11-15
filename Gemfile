@@ -43,5 +43,6 @@ group :development, :test do
   gem 'rspec-rails', '~> 2.14'
   gem 'capybara'
   gem 'poltergeist'
-  gem 'phantomjs', :require => 'phantomjs/poltergeist'  
+  gem 'phantomjs', :require => 'phantomjs/poltergeist' 
+  gem 'dotenv-rails' 
 end
