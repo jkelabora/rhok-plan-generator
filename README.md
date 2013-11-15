@@ -3,7 +3,7 @@ rhok-plan-generator
 
 Generate Bushfire Survival Plans that include notification functionality
 
-[![Build Status](https://travis-ci.org/jkelabora/rhok-plan-generator.png)](https://travis-ci.org/jkelabora/rhok-plan-generator)
+Travis [![Build Status](https://travis-ci.org/jkelabora/rhok-plan-generator.png)](https://travis-ci.org/jkelabora/rhok-plan-generator)
 
 ###### Getting setup:
 
