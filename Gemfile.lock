@@ -112,6 +112,9 @@ GEM
       railties (>= 3.1.1)
       sass-rails (>= 3.1.1)
     fssm (0.2.10)
+    gon (4.1.1)
+      actionpack (>= 2.3.0)
+      json
     has_scope (0.6.0.rc)
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
@@ -280,6 +283,7 @@ DEPENDENCIES
   dotenv-rails
   draper (~> 1.0)
   foundation-icons-sass-rails (~> 3.0.0)
+  gon
   jquery-rails (= 2.3.0)
   jquery-ui-rails (~> 4.0.5)
   meta_search (~> 1.0)

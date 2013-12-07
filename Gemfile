@@ -8,6 +8,7 @@ gem 'twilio-ruby'
 gem 'draper', '~> 1.0'
 gem 'prawn'
 gem 'prawnto'
+gem 'gon'
 
 gem 'rack-timeout', '~> 0.0.4'
 
@@ -22,7 +23,7 @@ group :assets do
   gem 'jquery-rails', "2.3.0"
   gem 'jquery-ui-rails', "~> 4.0.5"
   gem 'compass-rails', "~> 1.0.3"
-  gem 'zurb-foundation', "~> 4.3.2" 
+  gem 'zurb-foundation', "~> 4.3.2"
   gem 'foundation-icons-sass-rails', "~> 3.0.0"
 end
 
@@ -45,6 +46,6 @@ group :development, :test do
   gem 'rspec-rails', '~> 2.14'
   gem 'capybara'
   gem 'poltergeist'
-  gem 'phantomjs', :require => 'phantomjs/poltergeist' 
-  gem 'dotenv-rails' 
+  gem 'phantomjs', :require => 'phantomjs/poltergeist'
+  gem 'dotenv-rails'
 end

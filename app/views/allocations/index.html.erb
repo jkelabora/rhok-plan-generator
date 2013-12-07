@@ -1,89 +1,89 @@
-<section class='headline'>
-
-  <div class='row'>
-    <div class='small-12 columns'>
-      <!-- 'edit' is for inline editing, 'has-tip' for foundation -->
-      <h1 data-tooltip class='edit has-tip' id='name' title='Click to edit' data-options="disable-for-touch:true"><%= @plan.name %></h1>
-    </div>
-  </div>
-
-  <div class='row'>
-    <div class='small-12 columns'>
-      <ul class="inline-list">
-        <li><h2>Postcode:</h2></li>
-        <li>
-          <h2 data-tooltip class='edit has-tip' id='postcode' title='Click to edit (numbers only)' data-options="disable-for-touch:true" ><%= @plan.postcode %></h2>
-        </li>
-      </ul>
-    </div>
-  </div>
+<%= include_gon %>
+<section class='headline' id='ractive-allocations'>
 </section>
 
-<section class='secondary'>
-  <div class='row'>
-    <div class='small-12 small-centered columns'>
-    <dl class="sub-nav">
-      <% for e in @events %>
-        <dd class="nav-link <%= 'active' if e == @event %>" data-id="<%= e.id %>">
-          <%= link_to e.name.upcase, plan_allocations_url(:private_guid => @plan.private_guid, :id => e.id) %>
-        </dd>
-      <% end %>
-    </dl>
-    </div>
-  </div>
-</section>
+<script id='allocationsTemplate' type='text/ractive'>
+  <%= render "allocations/allocation_template" %>
+</script>
+<%#<section class='headline'>%>
 
-<!-- using only one person for now -->
-<span class='hidden' id='person-id' data-id="<%= @people.first.id %>"></span>
-<span class='hidden' id='private-guid' data-id="<%= @plan.private_guid %>"></span>
+  <%#<div class='row'>%>
+    <%#<div class='small-12 columns'>%>
+      <%#<ul class="inline-list">%>
+        <%#<li><h2>Postcode:</h2></li>%>
+        <%#<li>%>
+          <%#<h2 data-tooltip class='edit has-tip' id='postcode' title='Click to edit (numbers only)' data-options="disable-for-touch:true" ><%= @plan.postcode %></h2>%>
+        <%#</li>%>
+      <%#</ul>%>
+    <%#</div>%>
+  <%#</div>%>
+<%#</section>%>
 
-<section class='main-page'>
-  <div class='introduction'>
-    <div class='row' id='allocation-lists'>
-      <div class='small-12 large-6 columns'>
-          <h3>YOUR LIST</h3>
-          <p>Drag and drop to here</p>
-          <table id='allocations'>
-            <tbody>
-              <% @people.first.allocations.where(task_id: @custom_tasks).each_with_index do |a, idx| %>
-                <tr>
-                  <td class='allocation-signature'><h4><%= "%02d" % (idx+1) %></h4></td>
-                  <td class='allocation-task'><%= a.task.name %></td>
-                  <td class='allocation-delete' data-id="<%= a.id %>"><i class="fi-x"></i></td>
-                </tr>
-              <% end %>
-              <tr id="add-row">
-                <td class='add-task'><i class="fi-plus"></i></td>
-                <td class='add edit' id='add'>Click here to add your own task</td>
-              </tr>
-            </tbody>
-          </table>
+<%#<section class='secondary'>%>
+  <%#<div class='row'>%>
+    <%#<div class='small-12 small-centered columns'>%>
+    <%#<dl class="sub-nav">%>
+      <%#<% for e in @events %>%>
+        <%#<dd class="nav-link <%#= 'active' if e == @event %>" data-id="<%#= e.id %>">%>
+          <%#<%= link_to e.name.upcase, plan_allocations_url(:private_guid => @plan.private_guid, :id => e.id) %>
+        <%#</dd>%>
+      <%#<% end %>
+    <%#</dl>%>
+    <%#</div>%>
+  <%#</div>%>
+<%#</section>%>
 
-      </div>
+ <%#using only one person for now%>
+<%#<span class='hidden' id='person-id' data-id="<%= @people.first.id %>"></span>%>
+<%#<span class='hidden' id='private-guid' data-id="<%= @plan.private_guid %>"></span>%>
 
-      <div class='small-12 large-6 columns'>
-        <h3>SUGGESTED LIST</h3>
-        <p>Drag and drop from here</p>
-        <table id='tasks'>
-          <tbody>
-            <% for task in @public_tasks %>
-              <tr>
-                <td class="red-margin"><i class="fi-thumbnails"></i></td>
-                <td class='suggested' data-id="<%= task.id %>"><%= task.name %></td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
+<%#<section class='main-page'>%>
+  <%#<div class='introduction'>%>
+    <%#<div class='row' id='allocation-lists'>%>
+      <%#<div class='small-12 large-6 columns'>%>
+          <%#<h3>YOUR LIST</h3>%>
+          <%#<p>Drag and drop to here</p>%>
+          <%#<table id='allocations'>%>
+            <%#<tbody>%>
+              <%#<% @people.first.allocations.where(task_id: @custom_tasks).each_with_index do |a, idx| %>%>
+                <%#<tr>%>
+                  <%#<td class='allocation-signature'><h4><%= "%02d" % (idx+1) %></h4></td>%>
+                  <%#<td><%= a.task.name %></td>%>
+                  <%#<td class='allocation-delete' data-id="<%= a.id %>"><i class="fi-x"></i></td>%>
+                <%#</tr>%>
+              <%#<% end %>%>
+              <%#<tr id="add-row">%>
+                <%#<td class='add-task'><i class="fi-plus"></i></td>%>
+                <%#<td class='add edit' id='add'>Click here to add your own task</td>%>
+              <%#</tr>%>
+            <%#</tbody>%>
+          <%#</table>%>
 
-      </div>
-    </div>
-  </div>
-</section>
+      <%#</div>%>
 
-<section>
-  <div class='row'>
-    <div class='small-12 columns'>
-      <%= button_to 'PDF', plan_download_url(:private_guid => @plan.private_guid, :format => :pdf), method: :get, class: 'button' %>
-    </div>
-  </div>
-</section>
+      <%#<div class='small-12 large-6 columns'>%>
+        <%#<h3>SUGGESTED LIST</h3>%>
+        <%#<p>Drag and drop from here</p>%>
+        <%#<table id='tasks'>%>
+          <%#<tbody>%>
+            <%#<% for task in @public_tasks %>%>
+              <%#<tr>%>
+                <%#<td class="red-margin"><i class="fi-thumbnails"></i></td>%>
+                <%#<td class='suggested' data-id="<%#= task.id %>"><%#= task.name %></td>%>
+              <%#</tr>%>
+            <%#<% end %>
+          <%#</tbody>%>
+        <%#</table>%>
+
+      <%#</div>%>
+    <%#</div>%>
+  <%#</div>%>
+<%#</section>%>
+
+<%#<section>%>
+  <%#<div class='row'>%>
+    <%#<div class='small-12 columns'>%>
+      <%#<%= button_to 'PDF', plan_download_url(:private_guid => @plan.private_guid, :format => :pdf), method: :get, class: 'button' %>
+    <%#</div>%>
+  <%#</div>%>
+<%#</section>%>
