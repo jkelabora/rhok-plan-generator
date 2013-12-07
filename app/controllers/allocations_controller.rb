@@ -23,7 +23,7 @@ class AllocationsController < ApplicationController
     kits = events.select {|event| event.name.match other_matcher }
     kits.each do |event|
       @plan[:kits] << {
-        kit: event,
+        event: event,
         custom_tasks: plan.decorate.tasks_for(event),
         public_tasks: event.tasks.where(custom: false)
       }

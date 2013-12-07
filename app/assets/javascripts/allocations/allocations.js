@@ -1,64 +1,66 @@
-var Allocations = Ractive.extend({
-  el: "ractive-allocations",
-  template: "#allocationsTemplate",
-  data: {
-    plan: gon.plan.plan,
-    events: gon.plan.events,
-    kits: gon.plan.kits,
-    plural: function(count) { return (count === 1) ? "" : "s"; }
-  },
-  init: function() {
-    var self = this;
+if ($("#ractive-allocations").length) {
+  var Allocations = Ractive.extend({
+    el: "ractive-allocations",
+    template: "#allocationsTemplate",
+    data: {
+      plan: gon.plan.plan,
+      events: gon.plan.events,
+      kits: gon.plan.kits,
+      plural: function(count) { return (count === 1) ? "" : "s"; }
+    },
+    init: function() {
+      var self = this;
 
-    self.set("selectedEvent", self.get("events.0"));
-    self.set("newTask", "");
+      self.set("selectedEvent", self.get("events.0"));
+      self.set("newTask", "");
 
-    self.on("select-event", function(event) {
-      self.set("selectedEvent", event.context);
-      $.scrollTo(".main-page", 750);
-    });
+      self.on("select-event", function(event) {
+        self.set("selectedEvent", event.context);
+        $.scrollTo(".main-page", 750);
+      });
 
-    self.on("key", function(event) {
-      if (event.original.keyCode === 13) {
+      self.on("key", function(event) {
+        if (event.original.keyCode === 13) {
+          self.addTask(event.context.newTask);
+        }
+      });
+
+      self.on("add-task", function(event) {
         self.addTask(event.context.newTask);
+      });
+
+      self.on("remove-task", function(event) {
+        self.removeTask(event.index.i);
+      });
+
+      self.on("move-task", function(event) {
+        self.moveTask(event.context);
+      });
+    },
+
+    addTask: function(task) {
+      if (task.trim() !== "") {
+        this.get("selectedEvent.custom_tasks").push({name: task});
+        this.set("newTask", "");
+        // TODO: Save the new task
       }
-    });
+    },
 
-    self.on("add-task", function(event) {
-      self.addTask(event.context.newTask);
-    });
+    removeTask: function(index) {
+      var tasks = this.get("selectedEvent.custom_tasks");
+      tasks.splice(index, 1);
+      this.update();
+    },
 
-    self.on("remove-task", function(event) {
-      self.removeTask(event.index.i);
-    });
-
-    self.on("move-task", function(event) {
-      self.moveTask(event.context);
-    });
-  },
-
-  addTask: function(task) {
-    if (task.trim() !== "") {
-      this.get("selectedEvent.custom_tasks").push({name: task});
-      this.set("newTask", "");
-      // TODO: Save the new task
+    moveTask: function(task) {
+      this.get("selectedEvent.custom_tasks").push(task);
+      this.update();
+      // TODO Save this public task into the custom list
     }
-  },
+  });
 
-  removeTask: function(index) {
-    var tasks = this.get("selectedEvent.custom_tasks");
-    tasks.splice(index, 1);
-    this.update();
-  },
-
-  moveTask: function(task) {
-    this.get("selectedEvent.custom_tasks").push(task);
-    this.update();
-    // TODO Save this public task into the custom list
-  }
-});
-
-var allocations = new Allocations();
+  var allocations = new Allocations();
+}
 
 
 //function createAllocation(task_id, person_id) {
