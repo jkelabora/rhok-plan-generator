@@ -18,9 +18,9 @@ grant all on rhok_test.* to 'rhok'@localhost identified by 'rhok';
 
 git clone https://github.com/jkelabora/rhok-plan-generator.git
 
-source .profile
-
 cd rhok-plan-generator/
+
+source .profile
 
 bundle install
 bundle exec rake db:create
