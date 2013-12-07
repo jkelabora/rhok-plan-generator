@@ -9,6 +9,8 @@ gem 'draper', '~> 1.0'
 gem 'prawn'
 gem 'prawnto'
 
+gem 'rack-timeout', '~> 0.0.4'
+
 gem 'acts-as-taggable-on', '~> 2.4.1'
 
 # Gems used only for assets and not required
