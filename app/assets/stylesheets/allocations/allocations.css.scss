@@ -8,6 +8,14 @@ table#allocations.ui-state-hover {
   border: 1px solid green;
 }
 
+table#allocations tr td {
+  word-break: break-word;
+}
+
+table#tasks tr td {
+  word-break: break-word;
+}
+
 i {
   font-size: x-large;
   color: white;
