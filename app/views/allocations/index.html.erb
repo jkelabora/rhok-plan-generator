@@ -48,7 +48,7 @@
               <% @people.first.allocations.where(task_id: @custom_tasks).each_with_index do |a, idx| %>
                 <tr>
                   <td class='allocation-signature'><h4><%= "%02d" % (idx+1) %></h4></td>
-                  <td><%= a.task.name %></td>
+                  <td class='allocation-task'><%= a.task.name %></td>
                   <td class='allocation-delete' data-id="<%= a.id %>"><i class="fi-x"></i></td>
                 </tr>
               <% end %>
