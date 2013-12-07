@@ -1,18 +1,37 @@
 @import 'variables';
 
+.list-title {
+  margin-bottom: 20px;
+}
+
 i {
   font-size: x-large;
   color: white;
 }
 
-td {
-  line-height: 19px;
+table {
+  border-collapse: collapse;
+  tr {
+    border: 1px solid white;
+    td {
+      line-height: 19px;
+    }
+  }
 }
 
-td.red-margin {
-  background: $red-margin;
+.bullet {
+  background: #5a9aa8;
+  i {
+    color: white;
+  }
+}
+
+$green: #7CAA7A;
+td.move-task {
+  background: $green;
   &:hover {
-    background: darken($red-margin, 15%);
+    cursor: pointer;
+    background: darken($green, 15%);
   }
 }
 
@@ -28,14 +47,12 @@ td.allocation-signature {
   }
 }
 
-$action: rgb(205,205,205);
-
 td.allocation-delete {
   text-align: center;
-  background: $action;
+  background: rgb(205,205,205);
   &:hover {
     cursor: pointer;
-    background: darken($action, 15%);
+    background: #d82b27;
   }
 }
 

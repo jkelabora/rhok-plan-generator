@@ -24,6 +24,10 @@ var Allocations = Ractive.extend({
     self.on("remove-task", function(event) {
       self.removeTask(event.index.i);
     });
+
+    self.on("move-task", function(event) {
+      self.moveTask(event.context);
+    });
   },
 
   addTask: function(task) {
@@ -38,6 +42,11 @@ var Allocations = Ractive.extend({
     var tasks = this.get("selectedEvent.custom_tasks");
     tasks.splice(index, 1);
   },
+
+  moveTask: function(task) {
+    this.get("selectedEvent.custom_tasks").push(task);
+    // TODO Save this public task into the custom list
+  }
 });
 
 var allocations = new Allocations();
