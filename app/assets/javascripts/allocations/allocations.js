@@ -1,14 +1,21 @@
 var Allocations = Ractive.extend({
   el: "ractive-allocations",
   template: "#allocationsTemplate",
-  data: gon.plan,
+  data: {
+    plan: gon.plan.plan,
+    events: gon.plan.events,
+    kits: gon.plan.kits,
+    plural: function(count) { return (count === 1) ? "" : "s"; }
+  },
   init: function() {
     var self = this;
 
     self.set("selectedEvent", self.get("events.0"));
     self.set("newTask", "");
+
     self.on("select-event", function(event) {
       self.set("selectedEvent", event.context);
+      $.scrollTo(".main-page", 750);
     });
 
     self.on("key", function(event) {
@@ -41,10 +48,12 @@ var Allocations = Ractive.extend({
   removeTask: function(index) {
     var tasks = this.get("selectedEvent.custom_tasks");
     tasks.splice(index, 1);
+    this.update();
   },
 
   moveTask: function(task) {
     this.get("selectedEvent.custom_tasks").push(task);
+    this.update();
     // TODO Save this public task into the custom list
   }
 });
@@ -110,7 +119,7 @@ var allocations = new Allocations();
 
 //$(function($) { // document ready
 
-   START: http://www.appelsiini.net/projects/jeditable
+   //START: http://www.appelsiini.net/projects/jeditable
   //plan_private_guid = $( "span#private-guid" ).attr('data-id');
   //var update_plan_endpoint = '/plans/private/'+plan_private_guid+'/update';
   //$('.edit#name').editable(update_plan_endpoint, {
