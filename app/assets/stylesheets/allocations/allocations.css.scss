@@ -1,24 +1,12 @@
 @import 'variables';
 
-table#allocations.ui-state-highlight {
-  border: 1px dashed grey;
-}
-
-table#allocations.ui-state-hover {
-  border: 1px solid green;
-}
-
-table#allocations tr td.allocation-task {
-  word-break: break-word;
-}
-
-table#tasks tr td.suggested {
-  word-break: break-word;
-}
-
 i {
   font-size: x-large;
   color: white;
+}
+
+td {
+  line-height: 19px;
 }
 
 td.red-margin {
@@ -46,13 +34,13 @@ td.allocation-delete {
   text-align: center;
   background: $action;
   &:hover {
+    cursor: pointer;
     background: darken($action, 15%);
   }
 }
 
-td.add-task {
-  text-align: center;
-  background: $action;
+.add-task {
+  margin: 0 !important;
 }
 
 // not the greatest, but seems to work...

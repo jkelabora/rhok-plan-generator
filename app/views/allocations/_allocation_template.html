@@ -39,22 +39,27 @@
     <div class="row">
       <div class="small-12 large-6 columns">
         <h3>YOUR LIST</h3>
-        <table>
+        <table class="allocations">
           <tbody>
             {{#selectedEvent.custom_tasks:i}}
               <tr>
-                <td class="allocation-signature">
-                  <h4>{{i + 1}}</h4>
-                </td>
                 <td>{{name}}</td>
                 <!--TODO: Delete-->
-                <td class="allocation-delete"><i class="fi-x"></i></td>
+                <td on-click="remove-task" class="allocation-delete"><i class="fi-x"></i></td>
               </tr>
             {{/selectedEvent.custom_tasks}}
 
             <tr>
-              <td class="add-task"><i class="fi-plus"></i></td>
-              <input type="text" value="{{newTask}}" placeholder="Type here to add a new task" on-keypress="key"/>
+              <td colspan="2">
+                <div class="row collapse">
+                  <div class="small-10 columns">
+                    <input class="add-task" type="text" value="{{newTask}}" placeholder="Type here to add a new task" on-keypress="key"/>
+                  </div>
+                  <div class="small-2 columns">
+                    <button class="button prefix add-task" on-click="add-task" disabled="{{newTask.length == 0}}">Add new task</button>
+                  </div>
+                </div>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -62,7 +67,7 @@
 
       <div class="small-12 large-6 columns">
         <h3>SUGGESTED LIST</h3>
-        <table>
+        <table id="tasks">
           <tbody>
             {{#selectedEvent.public_tasks}}
               <tr>

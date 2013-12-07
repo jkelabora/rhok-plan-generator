@@ -6,18 +6,38 @@ var Allocations = Ractive.extend({
     var self = this;
 
     self.set("selectedEvent", self.get("events.0"));
+    self.set("newTask", "");
     self.on("select-event", function(event) {
       self.set("selectedEvent", event.context);
     });
 
     self.on("key", function(event) {
-      if (event.original.keyCode === 13 && event.context.newTask.trim() !== "") {
-        self.get("selectedEvent.custom_tasks").push({name: event.context.newTask});
-        self.set("newTask", "");
-        // TODO: Save the new task
+      if (event.original.keyCode === 13) {
+        self.addTask(event.context.newTask);
       }
     });
-  }
+
+    self.on("add-task", function(event) {
+      self.addTask(event.context.newTask);
+    });
+
+    self.on("remove-task", function(event) {
+      self.removeTask(event.index.i);
+    });
+  },
+
+  addTask: function(task) {
+    if (task.trim() !== "") {
+      this.get("selectedEvent.custom_tasks").push({name: task});
+      this.set("newTask", "");
+      // TODO: Save the new task
+    }
+  },
+
+  removeTask: function(index) {
+    var tasks = this.get("selectedEvent.custom_tasks");
+    tasks.splice(index, 1);
+  },
 });
 
 var allocations = new Allocations();
