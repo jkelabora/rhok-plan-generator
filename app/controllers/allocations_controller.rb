@@ -3,23 +3,33 @@ class AllocationsController < ApplicationController
   respond_to :json
 
   def index
-    @event = begin
-      if params[:id] then
-        Event.find(params[:id]) rescue Event.first
-      else
-        Event.first
-      end
+    @plan = Plan.find_by_private_guid(params[:private_guid])
+    plan = {plan: @plan, events: [], kits: []}
+
+    # Sorry about this.
+    # This should really be a different category or something, flagged in the datadase
+    other_matcher = "Kit|Contact"
+    events = @plan.decorate.events
+
+    normal_events = events.select {|event| not event.name.match other_matcher }
+    normal_events.each do |event|
+      plan[:events] << {
+        event: event,
+        custom_tasks: @plan.decorate.tasks_for(event),
+        public_tasks: event.tasks.where(custom: false)
+      }
     end
-    @events = Event.all
 
-    @plan = Plan.find_by_private_guid params[:private_guid]
-    @people = Person.where(plan_id: @plan)
+    kits = events.select {|event| event.name.match other_matcher }
+    kits.each do |event|
+      plan[:kits] << {
+        event: event,
+        custom_tasks: @plan.decorate.tasks_for(event),
+        public_tasks: event.tasks.where(custom: false)
+      }
+    end
 
-    @custom_tasks = Task.where(event_id: @event).where(custom: true)  #TODO: should be a scope
-    @public_tasks = Task.where(event_id: @event).where(custom: false)  #TODO: should be a scope
-
-    @allocations = Allocation.where(task_id: @custom_tasks).where(people_id: @people)
-
+    gon.plan = plan
     render :action => 'index'
   end
 

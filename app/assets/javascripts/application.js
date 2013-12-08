@@ -17,7 +17,9 @@
 //= require jquery-jeditable-mini
 //= require d3-v3-min
 //= require jquery-ui-touch-punch-min
+//= require jquery.scrollTo
 //= require custom-modernizr
+//= require Ractive-legacy
 //= require allocations/allocations
 
 $(function(){ $(document).foundation(); });

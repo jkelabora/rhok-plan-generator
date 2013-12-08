@@ -1,0 +1,115 @@
+<section class="secondary meta">
+  <div class="row">
+    <div class="small-12 columns plan-name">
+      <h1>Plan Name: <span class="edit">{{plan.name}}</span></h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12 columns plan-postcode">
+      <h1>Plan Postcode: <span class="edit">{{plan.postcode}}</span></h1>
+    </div>
+  </div>
+</section>
+
+<div class="row">
+  <div class="small-12 columns plan-create">
+    <h2>Create your plan</h2>
+  </div>
+</div>
+
+<div class="row">
+  <div class="small-8 small-centered columns">
+    <h5>EVENTS</h5>
+    <table class="events">
+      {{#events:i}}
+      <tr on-click="select-event" class="{{#selectedEvent === .}}active{{/selectedEvent}}">
+        <td class="event-number">
+          {{i+1}}
+        </td>
+        <td class="event-name">
+          {{event.name}}
+        </td>
+      </tr>
+      {{/events}}
+    </table>
+  </div>
+</div>
+
+<div class="row">
+  <div class="small-8 small-centered columns">
+    <h5>SURVIVAL KITS</h5>
+    <table class="events">
+      {{#kits:i}}
+      <tr on-click="select-event" class="{{#selectedEvent === .}}active{{/selectedEvent}}">
+        <td class="event-number">
+          {{events.length + i + 1}}
+        </td>
+        <td class="event-name">
+          {{event.name}}
+        </td>
+      </tr>
+      {{/kits}}
+    </table>
+  </div>
+</div>
+
+<section class="main-page">
+
+  <div class="row">
+    <div class="small-12 below-event-name">
+      <h1>{{selectedEvent.event.name}}</h1>
+    </div>
+  </div>
+  <div class="introduction">
+    <div class="row">
+      <div class="small-12 large-6 columns">
+        <h3 class="list-title">YOUR LIST ({{selectedEvent.custom_tasks.length}} item{{plural(selectedEvent.custom_tasks.length)}})</h3>
+        <table class="allocations">
+          <tbody>
+            {{#selectedEvent.custom_tasks:i}}
+            <tr>
+              <td class="bullet"><i class="fi-thumbnails"></i></td>
+              <td class="content">{{name}}</td>
+              <td on-click="remove-task" class="allocation-delete"><i class="fi-x"></i></td>
+            </tr>
+            {{/selectedEvent.custom_tasks}}
+
+            <tr>
+              <td class="bullet"><i class="fi-thumbnails"></i></td>
+              <td colspan="2">
+                <div class="row collapse">
+                  <div class="small-10 columns">
+                    <input class="add-task" type="text" value="{{newTask}}" placeholder="Type here to add a new task" on-keypress="key"/>
+                  </div>
+                  <div class="small-2 columns">
+                    <button class="button prefix add-task" on-click="add-task" disabled="{{newTask.length == 0}}">Add new task</button>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="small-12 large-6 columns">
+        <h3 class="list-title">SUGGESTED LIST ({{selectedEvent.public_tasks.length}} item{{plural(selectedEvent.public_tasks.length)}})</h3>
+        <table class="allocations">
+          <tbody>
+            {{#selectedEvent.public_tasks}}
+            <tr on-click="move-task">
+              <td class="move-task has-tip tip-left" data-tooltip title="Add this task to your list"><i class="fi-plus"></i></td>
+              <td class="suggested content">{{name}}</td>
+            </tr>
+            {{/selectedEvent.public_tasks}}
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section>
+</section>
+

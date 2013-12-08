@@ -1,91 +1,136 @@
 @import 'variables';
 
-table#allocations.ui-state-highlight {
-  border: 1px dashed grey;
-}
 
-table#allocations.ui-state-hover {
-  border: 1px solid green;
-}
+#ractive-allocations {
+  .edit form {
+    display: inline;
+  }
 
-table#allocations tr td.allocation-task {
-  word-break: break-word;
-}
+  .edit:hover {
+    cursor: text;
+    border-bottom: 1px dotted white;
+  }
 
-table#tasks tr td.suggested {
-  word-break: break-word;
-}
+  section.meta {
+    padding: 20px 0;
+    margin-bottom: 30px;
+    .row {
+      padding: 20px 0;
+    }
+  }
 
-i {
-  font-size: x-large;
-  color: white;
-}
+  .plan-name,
+  .plan-postcode,
+  .plan-create,
+  .below-event-name {
+    text-align: center;
+  }
 
-td.red-margin {
-  background: $red-margin;
-  &:hover {
-    background: darken($red-margin, 15%);
+  .plan-create {
+    margin-bottom: 20px;
+  }
+
+  .list-title {
+    margin-bottom: 20px;
+  }
+
+  .events {
+    width: 100%;
+    border-collapse: collapse;
+    tr:nth-of-type(even),
+    tr {
+      background: #6ba4b1;
+      border: 1px solid #5a9aa8;
+      cursor: pointer;
+    }
+
+    tr.active {
+      background: #4b8490;
+    }
+
+    .event-number {
+      text-align: center;
+      font-size: 40px;
+      color: white;
+      padding: 10 20px;
+    }
+    .event-name {
+      width: 100%;
+      color: white;
+      font-weight: bold;
+      padding: 10px;
+    }
+  }
+
+  i {
+    font-size: x-large;
+    color: white;
+  }
+
+  .below-event-name {
+    h1 {
+      color: #222;
+    }
+    padding: 30px 50px;
+  }
+
+  table.allocations {
+    width: 100%;
+    border-collapse: collapse;
+    tr {
+      border: 1px solid white;
+      td {
+        line-height: 19px;
+        &.content {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .bullet {
+    background: #5a9aa8;
+    i {
+      color: white;
+    }
+  }
+
+  $green: #7CAA7A;
+  td.move-task {
+    background: $green;
+    &:hover {
+      cursor: pointer;
+      background: darken($green, 15%);
+    }
+  }
+
+  td.suggested {
+    padding: .6em;
+  }
+
+  td.allocation-signature {
+    background: rgb(91,154,168);
+    text-align: center;
+    h4 {
+      color: rgb(147,185,194);
+    }
+  }
+
+  td.allocation-delete {
+    text-align: center;
+    background: rgb(205,205,205);
+    &:hover {
+      cursor: pointer;
+      background: #d82b27;
+    }
+  }
+
+  .add-task {
+    margin: 0 !important;
   }
 }
 
-td.suggested {
-  padding: .6em;
-}
-
-td.allocation-signature {
-  background: rgb(91,154,168);
+.download {
   text-align: center;
-  h4 {
-    color: rgb(147,185,194);
-  }
-}
-
-$action: rgb(205,205,205);
-
-td.allocation-delete {
-  text-align: center;
-  background: $action;
-  &:hover {
-    background: darken($action, 15%);
-  }
-}
-
-td.add-task {
-  text-align: center;
-  background: $action;
-}
-
-// not the greatest, but seems to work...
-dd a {
-  -webkit-background-clip: border-box;
-  -webkit-background-origin: padding-box;
-  -webkit-background-size: auto;
-  background-attachment: scroll;
-  background-clip: border-box;
-  background-color: #295D6D;
-  background-image: none;
-  background-origin: padding-box;
-  background-size: auto;
-  border-bottom-left-radius: 1000px;
-  border-bottom-right-radius: 1000px;
-  border-top-left-radius: 1000px;
-  border-top-right-radius: 1000px;
-  box-sizing: border-box;
-  color: rgb(255, 255, 255);
-  cursor: default;
-  direction: ltr;
-  display: inline;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: bold;
-  height: auto;
-  line-height: 22px;
-  list-style-position: outside;
-  padding-bottom: 2.625px;
-  padding-left: 7.875px;
-  padding-right: 7.875px;
-  padding-top: 2.625px;
-  text-decoration: none;
-  width: auto;
+  margin-top: 10px;
 }
