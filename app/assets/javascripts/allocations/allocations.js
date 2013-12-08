@@ -30,7 +30,7 @@ if ($("#ractive-allocations").length) {
       });
 
       self.on("remove-task", function(event) {
-        self.removeTask(event.index.i);
+        self.removeTask(event.context, event.index.i);
       });
 
       self.on("move-task", function(event) {
@@ -38,24 +38,47 @@ if ($("#ractive-allocations").length) {
       });
     },
 
-    addTask: function(task) {
-      if (task.trim() !== "") {
-        this.get("selectedEvent.custom_tasks").push({name: task});
-        this.set("newTask", "");
-        // TODO: Save the new task
+    addTask: function(name) {
+      if (name.trim() !== "") {
+        $.ajax({
+          url: "/tasks/",
+          type: "post",
+          dataType: "script",
+          data: { name: name },
+          success: function(data) {
+            this.get("selectedEvent.custom_tasks").push(data);
+            this.set("newTask", "");
+          }
+        });
       }
     },
 
-    removeTask: function(index) {
-      var tasks = this.get("selectedEvent.custom_tasks");
-      tasks.splice(index, 1);
-      this.update();
+    removeTask: function(task, index) {
+      console.log(task);
+      $.ajax({
+        url: "/tasks/" + task.id,
+        type: "post",
+        dataType: "script",
+        data: { "_method": "delete" },
+        success: function() {
+          var tasks = this.get("selectedEvent.custom_tasks");
+          tasks.splice(index, 1);
+          this.update();
+        }
+      });
     },
 
     moveTask: function(task) {
-      this.get("selectedEvent.custom_tasks").push(task);
-      this.update();
-      // TODO Save this public task into the custom list
+      $.ajax({
+        url: "/tasks/",
+        type: "post",
+        dataType: "script",
+        data: { task_id: task.id },
+        success: function(data) {
+          this.get("selectedEvent.custom_tasks").push(data);
+          this.update();
+        }
+      });
     }
   });
 
