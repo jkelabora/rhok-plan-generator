@@ -3,33 +3,33 @@ class AllocationsController < ApplicationController
   respond_to :json
 
   def index
-    plan = Plan.find_by_private_guid(params[:private_guid])
-    @plan = {plan: plan, events: [], kits: []}
+    @plan = Plan.find_by_private_guid(params[:private_guid])
+    plan = {plan: @plan, events: [], kits: []}
 
     # Sorry about this.
     # This should really be a different category or something, flagged in the datadase
     other_matcher = "Kit|Contact"
-    events = plan.decorate.events
+    events = @plan.decorate.events
 
     normal_events = events.select {|event| not event.name.match other_matcher }
     normal_events.each do |event|
-      @plan[:events] << {
+      plan[:events] << {
         event: event,
-        custom_tasks: plan.decorate.tasks_for(event),
+        custom_tasks: @plan.decorate.tasks_for(event),
         public_tasks: event.tasks.where(custom: false)
       }
     end
 
     kits = events.select {|event| event.name.match other_matcher }
     kits.each do |event|
-      @plan[:kits] << {
+      plan[:kits] << {
         event: event,
-        custom_tasks: plan.decorate.tasks_for(event),
+        custom_tasks: @plan.decorate.tasks_for(event),
         public_tasks: event.tasks.where(custom: false)
       }
     end
 
-    gon.plan = @plan
+    gon.plan = plan
     render :action => 'index'
   end
 
