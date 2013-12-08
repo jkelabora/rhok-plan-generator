@@ -1,28 +1,36 @@
 <section class='headline'>
   <div class='row'>
-    <div class='small-6 columns'>
-      <h1><%= @plan.name %></h1>
+    <div class='small-8 columns'>
+      <div class="plan-name">
+        <h4>PLAN NAME</h4>
+        <h1><%= @plan.name %></h1>
+      </div>
+
+      <div class="postcode">
+        <h3><i class="fi-marker"></i> Postcode <%= @plan.postcode %></h3>
+      </div>
     </div>
-    <div class='small-6 columns'></div>
   </div>
   <div class='row'>
-    <div class='small-6 columns'>
-      <h2>Postcode: <%= @plan.postcode %></h2>
+    <div class='small-8 columns description'>
+      <p>This is a fire survival plan.</p>
+      <p>Click "Use this plan" to customise it to suit your situation.</p>
     </div>
-    <div class='small-6 columns'/></div>
+    <div class='small-4 columns use-plan'/>
+      <%= button_to 'USE THIS PLAN', plan_duplicate_url(:public_guid => @plan.public_guid), method: :post, class: 'button' %>
+    </div>
   </div>
 </section>
 
 <section class='main-page'>
-
   <div class='row'>
     <div class='small-12 columns'>
       <% @plan.events.each do |event| %>
+        <div class="event-name">
+          <h2><%= event.name %></h2>
+        </div>
 
-        <table>
-          <thead>
-            <th><%= event.name %></th>
-          </thead>
+        <table class="tasks">
           <tbody>
             <% @plan.tasks_for(event).each do |task| %>
               <tr>
@@ -38,10 +46,11 @@
 
 </section>
 
-<section>
+<section class="download">
   <div class='row'>
     <div class='small-12 columns'>
-      <%= button_to 'COPY!', plan_duplicate_url(:public_guid => @plan.public_guid), method: :post, class: 'button' %>
+      <%= button_to 'USE THIS PLAN', plan_duplicate_url(:public_guid => @plan.public_guid), method: :post, class: 'button' %>
     </div>
   </div>
 </section>
+

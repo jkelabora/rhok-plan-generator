@@ -1,0 +1,49 @@
+.plan-name {
+  border-bottom: 1px solid #6ba4b1;
+  margin-bottom: 20px;
+  h1 {
+    margin-top: 0;
+  }
+}
+
+.postcode {
+  i {
+    vertical-align: middle;
+    font-size: 40px;
+    margin-right: 10px;
+  }
+}
+
+.description {
+  color: #ddd;
+}
+
+.use-plan {
+  text-align: center;
+}
+
+.event-name {
+  padding: 30px 0;
+  text-align: center;
+  h2 {
+    color: black;
+  }
+}
+
+.tasks {
+  border: none;
+  width: 100%;
+
+  td {
+    padding: 12px;
+    line-height: 18px;
+  }
+}
+
+section.download {
+  text-align: center;
+  padding: 80px 0;
+  input {
+    margin: 0;
+  }
+}
