@@ -1,4 +1,4 @@
-nbase: &base
+base: &base
   adapter: mysql2
   encoding: utf8
   database: <%= ENV['RDS_DB_NAME'] %>
