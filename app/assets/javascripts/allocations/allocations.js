@@ -36,6 +36,17 @@ if ($("#ractive-allocations").length) {
       self.on("move-task", function(event) {
         self.moveTask(event.context);
       });
+
+      var update_plan_endpoint = '/plans/private/' + self.get("plan.private_guid") + '/update';
+      $('.plan-name .edit').editable(update_plan_endpoint, {
+        indicator : 'Saving...',
+        name      : 'name'
+      });
+
+      $('.plan-postcode .edit').editable(update_plan_endpoint, {
+        indicator : 'Saving...',
+        name      : 'postcode'
+      });
     },
 
     addTask: function(name) {

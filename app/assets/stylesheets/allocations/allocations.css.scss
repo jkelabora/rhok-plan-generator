@@ -2,6 +2,15 @@
 
 
 #ractive-allocations {
+  .edit form {
+    display: inline;
+  }
+
+  .edit:hover {
+    cursor: text;
+    border-bottom: 1px dotted white;
+  }
+
   section.meta {
     padding: 20px 0;
     margin-bottom: 30px;

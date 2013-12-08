@@ -1,15 +1,13 @@
 <section class="secondary meta">
   <div class="row">
     <div class="small-12 columns plan-name">
-      <!-- TODO: Editing-->
-      <h1>Plan Name: {{plan.name}}</h1>
+      <h1>Plan Name: <span class="edit">{{plan.name}}</span></h1>
     </div>
   </div>
 
   <div class="row">
     <div class="small-12 columns plan-postcode">
-      <!-- TODO: Editing-->
-      <h1>Plan Postcode: {{plan.postcode}}</h1>
+      <h1>Plan Postcode: <span class="edit">{{plan.postcode}}</span></h1>
     </div>
   </div>
 </section>
@@ -73,7 +71,6 @@
             <tr>
               <td class="bullet"><i class="fi-thumbnails"></i></td>
               <td class="content">{{name}}</td>
-              <!--TODO: Delete-->
               <td on-click="remove-task" class="allocation-delete"><i class="fi-x"></i></td>
             </tr>
             {{/selectedEvent.custom_tasks}}
