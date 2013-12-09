@@ -1,6 +1,5 @@
 @import 'variables';
 
-
 #ractive-allocations {
   .edit form {
     display: inline;
@@ -88,6 +87,7 @@
     tr {
       border: 1px solid white;
       td {
+        word-break: break-word;
         line-height: 19px;
         &.content {
           width: 100%;
@@ -114,6 +114,7 @@
 
   td.suggested {
     padding: .6em;
+    word-break: break-word;
   }
 
   td.allocation-signature {
