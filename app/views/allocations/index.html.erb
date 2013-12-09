@@ -1,15 +1,15 @@
 <%= include_gon %>
-<section class='headline' id='ractive-allocations'>
+<section id='ractive-allocations'>
 </section>
 
-<section class='main-page'>
+<script id='allocationsTemplate' type='text/ractive'>
+  <%= render "allocations/allocation_template" %>
+</script>
+
+<section>
   <div class="row">
     <div class="small-12 columns download">
       <%= button_to 'Download PDF', plan_download_url(:private_guid => @plan.private_guid, :format => :pdf), method: :get, class: 'button' %>
     </div>
   </div>
 </section>
-
-<script id='allocationsTemplate' type='text/ractive'>
-  <%= render "allocations/allocation_template" %>
-</script>

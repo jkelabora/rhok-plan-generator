@@ -1,58 +1,62 @@
+
 <section class="secondary meta">
+
+  <div class="row">
+    <div class="small-12 columns plan-create">
+      <h1>Customise your plan</h1>
+    </div>
+  </div>
+
   <div class="row">
     <div class="small-12 columns plan-name">
-      <h1>Plan Name: <span class="edit">{{plan.name}}</span></h1>
+      <h2>Name: <span class="edit">{{plan.name}}</span></h2>
     </div>
   </div>
 
   <div class="row">
     <div class="small-12 columns plan-postcode">
-      <h1>Plan Postcode: <span class="edit">{{plan.postcode}}</span></h1>
+      <h2>Postcode: <span class="edit">{{plan.postcode}}</span></h2>
     </div>
   </div>
+
+
+  <div class="row">
+    <div class="small-10 small-centered columns">
+      <h5>EVENTS</h5>
+      <table class="events">
+        {{#events:i}}
+        <tr on-click="select-event" class="{{#selectedEvent === .}}active{{/selectedEvent}}">
+          <td class="event-number">
+            {{i+1}}
+          </td>
+          <td class="event-name">
+            {{event.name}}
+          </td>
+        </tr>
+        {{/events}}
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-10 small-centered columns">
+      <h5>SURVIVAL KITS</h5>
+      <table class="events">
+        {{#kits:i}}
+        <tr on-click="select-event" class="{{#selectedEvent === .}}active{{/selectedEvent}}">
+          <td class="event-number">
+            {{events.length + i + 1}}
+          </td>
+          <td class="event-name">
+            {{event.name}}
+          </td>
+        </tr>
+        {{/kits}}
+      </table>
+    </div>
+  </div>
+
 </section>
-
-<div class="row">
-  <div class="small-12 columns plan-create">
-    <h2>Create your plan</h2>
-  </div>
-</div>
-
-<div class="row">
-  <div class="small-8 small-centered columns">
-    <h5>EVENTS</h5>
-    <table class="events">
-      {{#events:i}}
-      <tr on-click="select-event" class="{{#selectedEvent === .}}active{{/selectedEvent}}">
-        <td class="event-number">
-          {{i+1}}
-        </td>
-        <td class="event-name">
-          {{event.name}}
-        </td>
-      </tr>
-      {{/events}}
-    </table>
-  </div>
-</div>
-
-<div class="row">
-  <div class="small-8 small-centered columns">
-    <h5>SURVIVAL KITS</h5>
-    <table class="events">
-      {{#kits:i}}
-      <tr on-click="select-event" class="{{#selectedEvent === .}}active{{/selectedEvent}}">
-        <td class="event-number">
-          {{events.length + i + 1}}
-        </td>
-        <td class="event-name">
-          {{event.name}}
-        </td>
-      </tr>
-      {{/kits}}
-    </table>
-  </div>
-</div>
 
 <section class="main-page">
 
@@ -110,6 +114,4 @@
   </div>
 </section>
 
-<section>
-</section>
 

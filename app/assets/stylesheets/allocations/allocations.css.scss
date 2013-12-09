@@ -11,13 +11,17 @@
     border-bottom: 1px dotted white;
   }
 
+  $events_background: rgb(90,154,168);
+
   section.meta {
-    padding: 20px 0;
-    margin-bottom: 30px;
+    background-color: $events_background;
+    // padding: 20px 0;
+    // margin-bottom: 30px;
     .row {
-      padding: 20px 0;
+      // padding: 20px 0;
     }
   }
+
 
   .plan-name,
   .plan-postcode,
@@ -42,6 +46,9 @@
       background: #6ba4b1;
       border: 1px solid #5a9aa8;
       cursor: pointer;
+      &:hover {
+        background: rgb(123,174,185);
+      }
     }
 
     tr.active {
@@ -52,13 +59,14 @@
       text-align: center;
       font-size: 40px;
       color: white;
-      padding: 10 20px;
+      padding: 10px 20px;
     }
     .event-name {
       width: 100%;
       color: white;
+      line-height: 2;
       font-weight: bold;
-      padding: 10px;
+      padding: 10px 40px 10px 0px;
     }
   }
 
