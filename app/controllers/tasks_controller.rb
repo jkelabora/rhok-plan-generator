@@ -1,12 +1,32 @@
 class TasksController < ApplicationController
 
+  respond_to :json
+
   def create
-    @task = Task.new(params[:task])
-    if @task.save
-      redirect_to @task, :notice => "Successfully created task."
+    original = Task.find_by_id params[:task_id]
+    duplicate = original.dup
+    duplicate.custom = true
+    if duplicate.save
+      # alloc = Allocation.create!(person_id: params[:allocation][:person_id], task_id: duplicate.id)
+      render :json => {
+        created_at: duplicate.created_at,
+        # custom: true
+        id: duplicate.id,
+        name: duplicate.name,
+        updated_at: duplicate.updated_at
+      }
     else
-      render :action => 'new'
+      render :status => :unprocessable_entity, :json => {}
     end
+
+
+
+    # @task = Task.new(params[:task])
+    # if @task.save
+    #   redirect_to @task, :notice => "Successfully created task."
+    # else
+    #   render :action => 'new'
+    # end
   end
 
   def update

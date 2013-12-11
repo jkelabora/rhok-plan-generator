@@ -34,7 +34,7 @@ if ($("#ractive-allocations").length) {
       });
 
       self.on("move-task", function(event) {
-        self.moveTask(event.context);
+        self.moveTask(event.context, self);
       });
 
       var update_plan_endpoint = '/plans/private/' + self.get("plan.private_guid") + '/update';
@@ -79,18 +79,18 @@ if ($("#ractive-allocations").length) {
       });
     },
 
-    moveTask: function(task) {
+    moveTask: function(task, self) {
       $.ajax({
+        type: "POST",
         url: "/tasks/",
-        type: "post",
-        dataType: "script",
         data: { task_id: task.id },
         success: function(data) {
-          this.get("selectedEvent.custom_tasks").push(data);
-          this.update();
+          self.get("selectedEvent.custom_tasks").push(data);
+          self.update();
         }
       });
     }
+
   });
 
   var allocations = new Allocations();
