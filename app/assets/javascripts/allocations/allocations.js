@@ -31,7 +31,7 @@ if ($("#ractive-allocations").length) {
       });
 
       self.on("remove-task", function(event) {
-        self.removeTask(event.context, event.index.i);
+        self.removeTask(event.context, event.index.i, self);
       });
 
       self.on("move-task", function(event) {
@@ -69,17 +69,15 @@ if ($("#ractive-allocations").length) {
       }
     },
 
-    removeTask: function(task, index) {
-      console.log(task);
+    removeTask: function(task, index, self) {
       $.ajax({
+        type: "POST",
         url: "/tasks/" + task.id,
-        type: "post",
-        dataType: "script",
         data: { "_method": "delete" },
         success: function() {
-          var tasks = this.get("selectedEvent.custom_tasks");
+          var tasks = self.get("selectedEvent.custom_tasks");
           tasks.splice(index, 1);
-          this.update();
+          self.update();
         }
       });
     },

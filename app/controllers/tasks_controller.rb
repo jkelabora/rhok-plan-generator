@@ -35,22 +35,16 @@ class TasksController < ApplicationController
       end
     end
 
-
-
-    # @task = Task.new(params[:task])
-    # if @task.save
-    #   redirect_to @task, :notice => "Successfully created task."
-    # else
-    #   render :action => 'new'
-    # end
   end
 
-  def update
-    @task = Task.find(params[:id])
-    if @task.update_attributes(params[:task])
-      redirect_to @task, :notice  => "Successfully updated task."
+  def destroy
+    task = Task.find(params[:id])
+    allocs = Allocation.where(task_id: params[:id])
+    if task.delete && allocs.destroy_all
+      render :json => {}
     else
-      render :action => 'edit'
+      render :status => :unprocessable_entity, :json => {}
     end
   end
+
 end

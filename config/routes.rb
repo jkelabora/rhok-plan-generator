@@ -10,7 +10,7 @@ RhokPlanGenerator::Application.routes.draw do
   resources :home, only: [:index]
   get "home/visualisation", to: "home#visualisation", as: 'home_visualisation'
 
-  resources :tasks, only: [:create, :update]
+  resources :tasks, only: [:create, :destroy]
 
   resources :plans, only: [:create]
   get  "plans/:public_guid/show", to: "plans#show", as: 'plan'
