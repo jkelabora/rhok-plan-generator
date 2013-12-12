@@ -7,7 +7,7 @@ class TasksController < ApplicationController
     duplicate = original.dup
     duplicate.custom = true
     if duplicate.save
-      # alloc = Allocation.create!(person_id: params[:allocation][:person_id], task_id: duplicate.id)
+      alloc = Allocation.create!(person_id: params[:owner_id], task_id: duplicate.id)
       render :json => {
         created_at: duplicate.created_at,
         # custom: true

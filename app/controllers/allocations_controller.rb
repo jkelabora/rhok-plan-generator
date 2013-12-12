@@ -4,7 +4,7 @@ class AllocationsController < ApplicationController
 
   def index
     @plan = Plan.find_by_private_guid(params[:private_guid])
-    plan = {plan: @plan, events: [], kits: []}
+    plan = {owner: @plan.people.first, plan: @plan, events: [], kits: []}
 
     # Sorry about this.
     # This should really be a different category or something, flagged in the datadase

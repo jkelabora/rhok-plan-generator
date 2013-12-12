@@ -6,6 +6,7 @@ if ($("#ractive-allocations").length) {
       plan: gon.plan.plan,
       events: gon.plan.events,
       kits: gon.plan.kits,
+      owner: gon.plan.owner,
       plural: function(count) { return (count === 1) ? "" : "s"; }
     },
     init: function() {
@@ -83,7 +84,7 @@ if ($("#ractive-allocations").length) {
       $.ajax({
         type: "POST",
         url: "/tasks/",
-        data: { task_id: task.id },
+        data: { task_id: task.id, owner_id: self.get("owner.id") },
         success: function(data) {
           self.get("selectedEvent.custom_tasks").push(data);
           self.update();
