@@ -108,7 +108,7 @@
     background: $green;
     &:hover {
       cursor: pointer;
-      background: darken($green, 15%);
+      background: saturate($green, 30%);
     }
   }
 
