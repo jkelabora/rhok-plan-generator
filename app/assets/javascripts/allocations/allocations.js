@@ -22,12 +22,12 @@ if ($("#ractive-allocations").length) {
 
       self.on("key", function(event) {
         if (event.original.keyCode === 13) {
-          self.addTask(event.context.newTask);
+          self.addTask(event.context.newTask, self);
         }
       });
 
       self.on("add-task", function(event) {
-        self.addTask(event.context.newTask);
+        self.addTask(event.context.newTask, self);
       });
 
       self.on("remove-task", function(event) {
@@ -50,16 +50,20 @@ if ($("#ractive-allocations").length) {
       });
     },
 
-    addTask: function(name) {
+    addTask: function(name, self) {
       if (name.trim() !== "") {
         $.ajax({
+          type: "POST",
           url: "/tasks/",
-          type: "post",
-          dataType: "script",
-          data: { name: name },
+          data: {
+            name: name,
+            event_id: this.get("selectedEvent.event.id"),
+            owner_id: this.get("owner.id")
+          },
           success: function(data) {
-            this.get("selectedEvent.custom_tasks").push(data);
-            this.set("newTask", "");
+            self.get("selectedEvent.custom_tasks").push(data);
+            self.set("newTask", "");
+            self.update();
           }
         });
       }
