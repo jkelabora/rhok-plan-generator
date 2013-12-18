@@ -5,11 +5,6 @@
     display: inline;
   }
 
-  .edit:hover {
-    cursor: text;
-    border-bottom: 1px dotted white;
-  }
-
   $events_background: rgb(90,154,168);
 
   section.meta {
@@ -103,13 +98,8 @@
     }
   }
 
-  $green: #7CAA7A;
   td.move-task {
-    background: $green;
-    &:hover {
-      cursor: pointer;
-      background: saturate($green, 30%);
-    }
+    background: #7CAA7A;
   }
 
   td.suggested {
@@ -128,14 +118,26 @@
   td.allocation-delete {
     text-align: center;
     background: rgb(205,205,205);
-    &:hover {
-      cursor: pointer;
-      background: #d82b27;
-    }
   }
 
   .add-task {
     margin: 0 !important;
+  }
+}
+
+// http://jon.haslett.id.au/post/37391562488/fixing-the-hover-problem-on-touch-screens-with-feature
+.no-touch #ractive-allocations {
+  td.allocation-delete:hover {
+    cursor: pointer;
+    background: #d82b27;
+  }
+  td.move-task:hover {
+    cursor: pointer;
+    background: saturate(#7CAA7A, 30%);
+  }
+  .edit:hover {
+    cursor: text;
+    border-bottom: 1px dotted white;
   }
 }
 

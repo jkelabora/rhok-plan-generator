@@ -1,3 +1,8 @@
+// http://jon.haslett.id.au/post/37391562488/fixing-the-hover-problem-on-touch-screens-with-feature
+if (!("ontouchstart" in document.documentElement)) {
+  document.documentElement.className += " no-touch";
+}
+
 if ($("#ractive-allocations").length) {
   var Allocations = Ractive.extend({
     el: "ractive-allocations",
@@ -90,6 +95,7 @@ if ($("#ractive-allocations").length) {
         success: function(data) {
           self.get("selectedEvent.custom_tasks").push(data);
           self.update();
+          debugger;
         }
       });
     }
