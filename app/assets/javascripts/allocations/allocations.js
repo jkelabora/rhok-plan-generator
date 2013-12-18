@@ -69,7 +69,6 @@ if ($("#ractive-allocations").length) {
             self.get("selectedEvent.custom_tasks").push(data);
             self.set("newTask", "");
             self.update();
-            self.get("selectedEvent.custom_tasks").last().effect( "bounce", "slow" );
           }
         });
       }
