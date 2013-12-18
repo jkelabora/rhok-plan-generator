@@ -102,7 +102,7 @@
           <tbody>
             {{#selectedEvent.public_tasks}}
             <tr on-click="move-task">
-              <td class="move-task has-tip tip-left" data-tooltip title="Add this task to your list"><i class="fi-plus"></i></td>
+              <td class="move-task has-tip tip-left" data-tooltip data-options="disable-for-touch:true" title="Add this task to your list"><i class="fi-plus"></i></td>
               <td class="suggested content">{{name}}</td>
             </tr>
             {{/selectedEvent.public_tasks}}
