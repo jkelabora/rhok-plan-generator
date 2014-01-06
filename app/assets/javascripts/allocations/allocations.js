@@ -22,7 +22,9 @@ if ($("#ractive-allocations").length) {
 
       self.on("select-event", function(event) {
         self.set("selectedEvent", event.context);
-        $.scrollTo(".main-page", 750);
+        $.scrollTo(".main-page", 750, {
+          'axis':'y'
+        });
       });
 
       self.on("key", function(event) {
