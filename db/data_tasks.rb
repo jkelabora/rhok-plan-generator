@@ -1,17 +1,31 @@
-# rails runner -S db/warrandyte_template_seed.rb
 
 # find:    ^((?!event).*)\n
 # replace: Task.find_or_create_by_custom_and_name_and_event_id(false, "$1", event.id)\n
 
-class DestructiveTemplateLoad
-  def clear_out_all_data_and_load_warrandyte_template_plan
+class WhiteListedDataDestroyer
 
-    Allocation.destroy_all
-    Person.destroy_all
-    Plan.destroy_all
-    Task.destroy_all
-    Event.destroy_all
+  def clear_out_all_plans_and_data_except_for_these_plans
 
+    candidate_ids = Plan.pluck(:id) - yield
+    Plan.find_all_by_id(candidate_ids).each do |plan|
+        plan.people.each { |person|
+            person.tasks.destroy_all
+            person.allocations.destroy_all
+            person.destroy
+            plan.destroy
+        }
+    end
+
+  end
+
+end
+
+class OnceOffTemplateLoad
+
+  # designed to only persist data once (despite subsequent executions) to preserve updates via ActiveAdmin 
+  def load_template_plan name, postcode
+
+    return unless Plan.where(name: name, postcode: postcode).empty?
 
     events = []
     events << Event.find_or_create_by_name("Before the bushfire season")
@@ -181,9 +195,10 @@ class DestructiveTemplateLoad
       end
     end
 
-    @plan = Plan.new(name: 'Warrandyte Template', postcode: '3113', opt_out: false)
+    @plan = Plan.new(name: name, postcode: postcode, opt_out: false)
     @plan.save
     @plan.people << @person
 
   end
+
 end
