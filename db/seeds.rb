@@ -9,3 +9,9 @@ WhiteListedDataDestroyer.new.clear_out_all_plans_and_data_except_for_these_plans
     Plan.find_by_name_and_postcode('Warrandyte Template', '3113')
   ].compact.map(&:id)
 end
+
+# remove all tags from these tasks
+Task.find_all_by_id([2973,2974,2975,2976,2977,2978]).each do |t|
+  t.tag_list = []
+  t.save
+end
