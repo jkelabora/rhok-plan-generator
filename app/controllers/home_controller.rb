@@ -48,7 +48,7 @@ class HomeController < ApplicationController
       end
 
       def children node
-        if node.private?
+        if !node.is_public?
           {}
         else
           { children:

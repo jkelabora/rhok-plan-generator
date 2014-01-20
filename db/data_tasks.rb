@@ -195,7 +195,7 @@ class OnceOffTemplateLoad
       end
     end
 
-    @plan = Plan.new(name: name, postcode: postcode, opt_out: false)
+    @plan = Plan.new(name: name, postcode: postcode, is_public: true)
     @plan.save
     @plan.people << @person
 

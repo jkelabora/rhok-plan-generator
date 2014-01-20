@@ -1,8 +1,8 @@
 class Plan < ActiveRecord::Base
-  attr_accessible :name, :postcode, :public_guid, :private_guid, :opt_out, :plan_id
+  attr_accessible :name, :postcode, :public_guid, :private_guid, :is_public, :plan_id
 
   validates_uniqueness_of :private_guid
-  validates_uniqueness_of :public_guid, unless: Proc.new { |p| p.public_guid == nil || p.public_guid.empty? }
+  validates_uniqueness_of :public_guid, if: Proc.new { |p| p.is_public? }
   validates_numericality_of :postcode
 
   has_many :people
@@ -14,38 +14,22 @@ class Plan < ActiveRecord::Base
   before_create :init_guids
 
   # using *_plan names for these so as not to clash with existing AR methods
-  scope :public_plans,  -> { where( "public_guid is not null and public_guid <> ''" ) }
-  scope :private_plans, -> { where( :public_guid => [nil, ''] ) } # a way to get to a working OR clause
+  scope :public_plans,  -> { where( is_public: true  ) }
+  scope :private_plans, -> { where( is_public: false ) }
 
   scope :top_level,     -> { where(plan_id: nil) }
   scope :for_postcode,  ->(postcode) { where(postcode: postcode) }
 
-  def opt_out
-    @opt_out
-  end
-
-  def opt_out= transient_check_box_flag
-    @opt_out = transient_check_box_flag
-  end
-
   def display_name
-    if public?
+    if is_public?
       self.name
     else
-      '(details withheld)'
+      '(private plan)'
     end
   end
 
-  def public?
-    !!self.public_guid
-  end
-
-  def private?
-    !public?
-  end
-
   def duplicate
-    @duplicate = Plan.new(name: "#{self.name}-COPY", postcode: self.postcode, plan_id: self.id)
+    @duplicate = Plan.new(name: "#{self.name}-COPY", postcode: self.postcode, plan_id: self.id, is_public: false)
     anon = Person.anon
     transaction do
       anon.save
@@ -67,7 +51,7 @@ class Plan < ActiveRecord::Base
   protected
     def init_guids
       self.private_guid = SecureRandom.hex 4
-      self.public_guid = SecureRandom.hex 4 unless self.opt_out
+      self.public_guid  = SecureRandom.hex 4
     end
 
 end

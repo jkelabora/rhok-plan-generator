@@ -17,7 +17,6 @@ class Signup
   attribute :name, String
   attribute :email, String
   attribute :mobile, String
-  attribute :opt_out, Boolean
 
   # survey style questions
   attribute :alone, Boolean
@@ -73,7 +72,7 @@ class Signup
         end
       end
 
-      @plan = Plan.new(name: plan_name, postcode: postcode, opt_out: opt_out)
+      @plan = Plan.new(name: plan_name, postcode: postcode, is_public: false)
       @plan.save
 
       @plan.people << @person

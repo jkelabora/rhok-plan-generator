@@ -1,7 +1,7 @@
 class SignupsController < ApplicationController
 
   def new
-    @signup = Signup.new(opt_out: true)
+    @signup = Signup.new
   end
 
   def create
