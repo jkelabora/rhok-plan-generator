@@ -54,12 +54,13 @@
 
     <div class='row' id='questions'>
       <div class="small-12 large-7 large-centered columns">
-        <div class="small-6 columns">
+        <div class="small-6 columns content-svg">
           <p>Do you live alone?</p>
           <label for="signup_alone"><%= check_box_tag "signup[alone]" %> Yes</label>
 
-          <div id='content'>
-            <%= image_tag 'signups/live-alone.svg' %>
+          <div id='content-svg'>
+            <!-- <h1>here is the logo...</h1> -->
+            <!-- <%= image_tag 'signups/live-alone-cropped.svg' %> -->
           </div>
 
         </div>
@@ -67,7 +68,7 @@
           <p>Do you have pets?</p>
           <label for="signup_pets"><%= check_box_tag "signup[pets]" %> Yes</label>
         </div>
-      </div>      
+      </div>
     </div>
 
 <!--     <div class='row'>
