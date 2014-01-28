@@ -45,6 +45,10 @@ if ($("#ractive-allocations").length) {
         self.moveTask(event.context, self);
       });
 
+      self.on("update-task", function(event) {
+        self.updateTask(event.context, event.index.i, self);
+      });
+
       var update_plan_endpoint = '/plans/private/' + self.get("plan.private_guid") + '/update';
       $('.plan-name .edit').editable(update_plan_endpoint, {
         indicator : 'Saving...',
@@ -54,6 +58,15 @@ if ($("#ractive-allocations").length) {
       $('.plan-postcode .edit').editable(update_plan_endpoint, {
         indicator : 'Saving...',
         name      : 'postcode'
+      });
+    },
+
+    updateTask: function(task, index, self) {
+      var update_task_endpoint = '/tasks/' + task.id + '/update';
+      var selector = 'table.allocations td.content.' + index;
+      $(selector).editable(update_task_endpoint, {
+        indicator : 'Saving...',
+        name      : 'name'
       });
     },
 

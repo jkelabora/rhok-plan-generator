@@ -74,7 +74,7 @@
             {{#selectedEvent.custom_tasks:i}}
             <tr>
               <td class="bullet"><i class="fi-thumbnails"></i></td>
-              <td class="content">{{name}}</td>
+              <td on-click="update-task" class="content {{i}}">{{name}}</td>
               <td on-click="remove-task" class="allocation-delete"><i class="fi-x"></i></td>
             </tr>
             {{/selectedEvent.custom_tasks}}
