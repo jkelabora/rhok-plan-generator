@@ -16,7 +16,7 @@
 
     <div class='row'>
       <div class='small-12 large-7 large-centered columns'>
-        <p>All we need is a plan name and your postcode. <br/>
+        <p class='signups'>All we need is a plan name and your postcode. <br/>
         Just so we can help find plan templates that you may find useful.</p>
        </div>
     </div>
@@ -48,26 +48,24 @@
       <div class='row'>
         <div class='small-12 large-7 large-centered columns'>
           <h3>HELP US TAILOR YOUR PLAN</h3>
+          <p class='signups'>Do you..</p>
         </div>
       </div>
     </div>
 
     <div class='row' id='questions'>
-      <div class="small-12 large-7 large-centered columns">
-        <div class="small-6 columns content-svg">
-          <p>Do you live alone?</p>
-          <label for="signup_alone"><%= check_box_tag "signup[alone]" %> Yes</label>
-
-          <div id='content-svg'>
+      <!-- <div class="small-12 large-7 large-centered columns"> -->
+        <div class="small-12 large-4 large-centered columns content-svg">
+          <label for="signup_alone"><%= check_box_tag "signup[alone]" %>live alone?</label>
+          <!-- <div id='content-svg'> -->
             <!-- <h1>here is the logo...</h1> -->
             <!-- <%= image_tag 'signups/live-alone-cropped.svg' %> -->
-          </div>
+          <!-- </div> -->
 
+<!--         <div class="small-6 columns">
+          <label for="signup_pets"><%= check_box_tag "signup[pets]" %>have pets?</label>
         </div>
-        <div class="small-6 columns">
-          <p>Do you have pets?</p>
-          <label for="signup_pets"><%= check_box_tag "signup[pets]" %> Yes</label>
-        </div>
+ -->
       </div>
     </div>
 
@@ -90,9 +88,11 @@
 
 <section>
   <div class='row'>
-    <div class='small-12 large-7 large-centered columns'>
-      <%= f.submit "Next >>", class: 'button' %>
+    <div class='small-12 large-3 large-centered columns'>
+      <%= f.submit "Next >>", class: 'button centered' %>
     <% end %>
     </div>
   </div>
 </section>
+
+
