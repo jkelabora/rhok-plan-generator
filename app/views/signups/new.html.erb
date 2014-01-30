@@ -53,19 +53,21 @@
       </div>
     </div>
 
-    <div class='row' id='questions'>
-      <!-- <div class="small-12 large-7 large-centered columns"> -->
-        <div class="small-12 large-4 large-centered columns content-svg">
-          <label for="signup_alone"><%= check_box_tag "signup[alone]" %>live alone?</label>
-          <!-- <div id='content-svg'> -->
-            <!-- <h1>here is the logo...</h1> -->
-            <!-- <%= image_tag 'signups/live-alone-cropped.svg' %> -->
-          <!-- </div> -->
+    <div class='row questions'>
+      <div class="small-9 small-offset-3 large-8 large-offset-4 columns content-svg" id='live-alone'>
+        <label for="signup_alone"><%= check_box_tag "signup[alone]" %>live alone?</label>
+      </div>
+    </div>
 
-<!--         <div class="small-6 columns">
-          <label for="signup_pets"><%= check_box_tag "signup[pets]" %>have pets?</label>
-        </div>
- -->
+    <div class='row questions'>
+      <div class="small-9 small-offset-3 large-8 large-offset-4 columns content-svg" id='with-children'>
+        <label for="signup_children"><%= check_box_tag "signup[children]" %>live with children?</label>
+      </div>
+    </div>
+
+    <div class='row questions'>
+      <div class="small-9 small-offset-3 large-8 large-offset-4 columns content-svg" id='with-pets'>
+        <label for="signup_pets"><%= check_box_tag "signup[pets]" %>live with pets?</label>
       </div>
     </div>
 
