@@ -21,5 +21,6 @@
 //= require custom-modernizr
 //= require Ractive-legacy
 //= require allocations/allocations
+//= require signups/new
 
 $(function(){ $(document).foundation(); });

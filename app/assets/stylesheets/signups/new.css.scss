@@ -8,7 +8,11 @@ div.questions {
   border: 1px solid rgb(221,221,221);
   margin-left: 15px;
   margin-right: 15px;
+  margin-bottom: 15px;
   height: 90px;
+  &.highlight {
+    background: rgb(221,221,221);
+  }
 }
 
 div#content-svg {
