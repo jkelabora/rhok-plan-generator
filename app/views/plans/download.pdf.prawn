@@ -12,7 +12,7 @@ pdf.text "Return to edit this plan online <u>#{link_to plan_allocations_url(:pri
 
 pdf.move_down(30)
 
-@plan.events.each_with_index do |event, idx|
+@plan.events.each do |event|
     pdf.text "#{event.name}", :size => 20, :style => :bold
     pdf.move_down(10)
 
@@ -30,8 +30,10 @@ pdf.move_down(30)
     end
 
     pdf.move_down(20)
-    pdf.start_new_page unless (idx + 1 == @plan.events.size)
+    pdf.start_new_page
 end
+
+pdf.text disclaimer, :size => 10, :style => :italic
 
 pdf.repeat(:each) do
     pdf.number_pages "Page <page> of <total>#{' '*15}Fire Plan - #{@plan.name}", :at => pdf.bounds.bottom_left, :style => :italic, :size => 10
