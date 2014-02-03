@@ -119,6 +119,7 @@ GEM
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
     hashery (2.1.0)
+    high_voltage (2.1.0)
     hike (1.2.3)
     http_parser.rb (0.5.3)
     i18n (0.6.9)
@@ -283,6 +284,7 @@ DEPENDENCIES
   draper (~> 1.0)
   foundation-icons-sass-rails (~> 3.0.0)
   gon
+  high_voltage (~> 2.1.0)
   jquery-rails (= 2.3.0)
   jquery-ui-rails (~> 4.0.5)
   meta_search (~> 1.0)

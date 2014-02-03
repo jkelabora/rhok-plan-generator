@@ -33,6 +33,8 @@ gem 'simple_form'
 gem 'activeadmin',    '0.6.2'
 gem "meta_search",    '~> 1.0'
 
+gem 'high_voltage', '~> 2.1.0'
+
 group :development do
   gem 'thin'
   gem 'nifty-generators'
