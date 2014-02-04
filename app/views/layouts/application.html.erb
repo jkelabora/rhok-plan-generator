@@ -1,3 +1,5 @@
+<![if (gt IE 8)|!(IE)]>
+
 <!DOCTYPE html>
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
 <!--[if lt IE 7 ]> <html class="ie6" lang="en"> <![endif]-->
@@ -6,7 +8,6 @@
 <!--[if IE 9 ]>    <html class="ie9" lang="en"> <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
 
-<![if (gt IE 8)|!(IE)]>
   <head>
     <meta charset="utf-8" />
 
@@ -39,11 +40,11 @@
     <%= javascript_include_tag "application" %>
 
   </body>
+</html>
 
 <![endif]>
 
 <!--[if (lt IE 9)]>
-  <%= render 'please_upgrade' %>
+  <%= render :file => "public/browse_happy.html" %>
 <![endif]-->
 
-</html>
