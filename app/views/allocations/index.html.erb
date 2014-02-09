@@ -6,10 +6,10 @@
   <%= render "allocations/allocation_template" %>
 </script>
 
-<section>
+<section class='headline'>
   <div class="row">
-    <div class="small-12 columns download">
-      <%= button_to 'Download PDF', plan_download_url(:private_guid => @plan.private_guid, :format => :pdf), method: :get, class: 'button' %>
+    <div class="small-12 large-12 small-centered large-centered columns submit">
+      <%= button_to "I'm done, download this plan as a PDF", plan_download_url(:private_guid => @plan.private_guid, :format => :pdf), method: :get, class: 'button' %>
     </div>
   </div>
 </section>
