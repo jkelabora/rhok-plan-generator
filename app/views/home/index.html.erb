@@ -1,9 +1,18 @@
-<section class='headline'>
+<section class='headline plan-details'>
   <div class='row'>
-    <div class='small-12 columns'>
-      <h1 class='docs header'>
-        Explore available plans or start your own straight away
-      </h1>
+    <div class='large-8 columns description'>
+      <div class="plan-name">
+        <h1>Explore available plans or start your own</h1>
+      </div>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='large-8 columns description'>
+      <p>Below is a representation of all the plans in the system grouped by postcode. You can find template plans for you area and see which of those people have used as a starting point for their own plans. If you choose to 'View' a template, and you like what it contains, you can copy it for yourself and edit it to suit your needs.</p>
+      <p>Not interested in all that? No worries - just click 'Quickly get me a plan' and you'll be a couple of quick questions away from a downloadable, editable plan of your own.</p>
+    </div>
+    <div class='large-4 columns use-plan'/>
+      <%= button_to "Quickly get me a plan", new_signup_url, class: 'button', method: :get %>
     </div>
   </div>
 </section>
@@ -36,7 +45,7 @@
 <section class='headline'>
   <div class='row'>
     <div class='small-12 large-12 small-centered large-centered columns submit'>
-      <%= button_to "Let's make a plan", new_signup_url, class: 'button', method: :get %>
+      <%= button_to "Quickly get me a plan", new_signup_url, class: 'button', method: :get %>
     </div>
   </div>
 </section>
