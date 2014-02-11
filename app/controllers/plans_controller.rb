@@ -9,8 +9,8 @@ class PlansController < ApplicationController
 
     if @duplicate.save
       respond_to do |format|
-        format.html { redirect_to plan_allocations_path(@duplicate.private_guid) }
-        format.json { render :js => "#{plan_allocations_path(@duplicate.private_guid)}" }
+        format.html { redirect_to plan_edit_path(@duplicate.private_guid) }
+        format.json { render :js => "#{plan_edit_path(@duplicate.private_guid)}" }
       end
 
     else
