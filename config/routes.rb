@@ -18,10 +18,9 @@ RhokPlanGenerator::Application.routes.draw do
   post "plans/:public_guid/duplicate", to: "plans#duplicate", as: 'plan_duplicate'
 
   get  "plans/private/:private_guid/download", to: "plans#download", as: 'plan_download'
-  get  "plans/private/:private_guid/allocations", to: "allocations#index", as: 'plan_allocations'
+  get  "plans/private/:private_guid/edit", to: "plans#edit", as: 'plan_edit'
   post "plans/private/:private_guid/update", to: "plans#update", as: 'plan_update'
 
-  resources :allocations, only: [:create, :destroy]
   resources :signups, only: [:new, :create]
   get '/signups', to: redirect('/signups/new')
 

@@ -19,7 +19,7 @@ class SignupsController < ApplicationController
 
       @allocations = Allocation.where(task_id: @custom_tasks).where(people_id: @people)
 
-      redirect_to plan_allocations_path(@plan.private_guid)
+      redirect_to plan_edit_path(@plan.private_guid)
     else
       render "new"
     end

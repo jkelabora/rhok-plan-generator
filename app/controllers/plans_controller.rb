@@ -20,13 +20,44 @@ class PlansController < ApplicationController
 
   def download
     @plan = Plan.find_by_private_guid(params[:private_guid]).decorate
-    respond_to do |format|    
+    respond_to do |format|
       format.pdf { render :layout => false}
     end
-  end  
+  end
 
   def show
     @plan = Plan.find_by_public_guid(params[:public_guid]).decorate
+  end
+
+  def edit
+    @plan = Plan.find_by_private_guid(params[:private_guid])
+    plan = {owner: @plan.people.first, plan: @plan, events: [], kits: []}
+
+    # Sorry about this.
+    # This should really be a different category or something, flagged in the datadase
+    other_matcher = "Kit|Contact"
+    events = @plan.decorate.events
+
+    normal_events = events.select {|event| not event.name.match other_matcher }
+    normal_events.each do |event|
+      plan[:events] << {
+        event: event,
+        custom_tasks: @plan.decorate.tasks_for(event),
+        public_tasks: event.tasks.where(custom: false)
+      }
+    end
+
+    kits = events.select {|event| event.name.match other_matcher }
+    kits.each do |event|
+      plan[:kits] << {
+        event: event,
+        custom_tasks: @plan.decorate.tasks_for(event),
+        public_tasks: event.tasks.where(custom: false)
+      }
+    end
+
+    gon.plan = plan
+    render :action => 'edit'
   end
 
   def update
