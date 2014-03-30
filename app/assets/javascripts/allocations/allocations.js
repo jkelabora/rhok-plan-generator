@@ -3,10 +3,10 @@ if (!("ontouchstart" in document.documentElement)) {
   document.documentElement.className += " no-touch";
 }
 
-if ($("#ractive-plan-edit").length) {
-  var PlanEdit = Ractive.extend({
-    el: "ractive-plan-edit",
-    template: "#editTemplate",
+if ($("#ractive-allocations").length) {
+  var Allocations = Ractive.extend({
+    el: "ractive-allocations",
+    template: "#allocationsTemplate",
     data: {
       plan: gon.plan.plan,
       events: gon.plan.events,
@@ -116,5 +116,5 @@ if ($("#ractive-plan-edit").length) {
 
   });
 
-  var planEdit = new PlanEdit();
+  var allocations = new Allocations();
 }

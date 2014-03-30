@@ -20,8 +20,7 @@
 //= require jquery.scrollTo
 //= require custom-modernizr
 //= require Ractive-legacy
-//= require home/visualisation
-//= require plans/edit
+//= require allocations/allocations
 //= require signups/new
 
 $(function(){ $(document).foundation(); });

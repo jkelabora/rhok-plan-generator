@@ -1,6 +1,6 @@
 @import 'variables';
 
-#ractive-plan-edit {
+#ractive-allocations {
   .edit form {
     display: inline;
   }
@@ -130,7 +130,7 @@
 }
 
 // http://jon.haslett.id.au/post/37391562488/fixing-the-hover-problem-on-touch-screens-with-feature
-.no-touch #ractive-plan-edit {
+.no-touch #ractive-allocations {
   td.allocation-delete:hover {
     cursor: pointer;
     background: #d82b27;
