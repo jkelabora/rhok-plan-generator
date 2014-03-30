@@ -28,6 +28,11 @@ class Plan < ActiveRecord::Base
     end
   end
 
+  def escaped_name
+    require 'uri'
+    URI.escape self.name
+  end
+
   def duplicate
     @duplicate = Plan.new(name: "#{self.name}-COPY", postcode: self.postcode, plan_id: self.id, is_public: false)
     anon = Person.anon

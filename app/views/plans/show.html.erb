@@ -17,7 +17,9 @@
       <p>Yes, there's a lot of text here, but have a glance and if it seems close to what you'd like, click the button to make a copy which you can customise to suit your situation.</p>
     </div>
     <div class='large-4 columns use-plan'/>
-      <%= button_to 'Edit a copy of this plan', plan_duplicate_url(:public_guid => @plan.public_guid), method: :post, class: 'button' %>
+      <%= link_to plan_duplicate_url(:public_guid => @plan.public_guid), method: :post, class: 'button' do %>
+        <i class="fi-page-edit"></i>Edit a copy of this plan
+      <% end %>
     </div>
   </div>
 </section>
@@ -49,7 +51,9 @@
 <section class='headline'>
   <div class='row'>
     <div class='small-12 large-12 small-centered large-centered columns submit'>
-      <%= button_to 'Edit a copy of this plan', plan_duplicate_url(:public_guid => @plan.public_guid), method: :post, class: 'button' %>
+      <%= link_to plan_duplicate_url(:public_guid => @plan.public_guid), method: :post, class: 'button' do %>
+        <i class="fi-page-edit"></i>Edit a copy of this plan
+      <% end %>
     </div>
   </div>
 </section>

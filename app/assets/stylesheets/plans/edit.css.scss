@@ -148,3 +148,20 @@
   text-align: center;
   margin-top: 10px;
 }
+
+span.mailto-button {
+  a { color: white }
+}
+
+// http://foundation.zurb.com/forum/posts/1567-hide-by-screen-size-issues
+@media (max-width: 768px) {
+  span.mailto-button {
+    display: none;
+  }
+}
+
+.button i {
+  // font-size: 1.5em;
+  padding-left: 0px;
+  padding-right: 10px;
+}
