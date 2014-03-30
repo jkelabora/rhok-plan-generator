@@ -9,8 +9,8 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require jquery.ui.all
- *= require allocations/allocations
  *= require plans/show
+ *= require plans/edit
  *= require home/index
  *= require signups/new
  *= require footer
