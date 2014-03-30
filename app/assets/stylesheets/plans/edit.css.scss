@@ -135,9 +135,11 @@
     cursor: pointer;
     background: saturate(#7CAA7A, 30%);
   }
-  .edit:hover {
-    cursor: text;
+  .edit {
     border-bottom: 1px dotted white;
+    &:hover {
+      cursor: text;
+    }
   }
 }
 
