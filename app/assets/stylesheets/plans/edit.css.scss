@@ -125,6 +125,10 @@
   }
 }
 
+.edit {
+  border-bottom: 1px dotted white;
+}
+
 // http://jon.haslett.id.au/post/37391562488/fixing-the-hover-problem-on-touch-screens-with-feature
 .no-touch #ractive-plan-edit {
   td.allocation-delete:hover {
@@ -135,11 +139,8 @@
     cursor: pointer;
     background: saturate(#7CAA7A, 30%);
   }
-  .edit {
-    border-bottom: 1px dotted white;
-    &:hover {
-      cursor: text;
-    }
+  .edit:hover {
+    cursor: text;
   }
 }
 
