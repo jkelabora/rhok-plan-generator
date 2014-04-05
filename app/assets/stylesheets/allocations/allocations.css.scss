@@ -154,11 +154,11 @@ span.mailto-button {
 }
 
 // http://foundation.zurb.com/forum/posts/1567-hide-by-screen-size-issues
-// @media (max-width: 768px) {
-//   span.mailto-button {
-//     display: none;
-//   }
-// }
+@media (max-width: 768px) {
+  span.mailto-button {
+    display: none;
+  }
+}
 
 .button i {
   // font-size: 1.5em;
