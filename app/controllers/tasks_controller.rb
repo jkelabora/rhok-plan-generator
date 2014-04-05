@@ -7,6 +7,7 @@ class TasksController < ApplicationController
       original = Task.find_by_guid params[:original_guid]
       duplicate = original.dup
       duplicate.custom = true
+      duplicate.parent_task = original
       if duplicate.save
         alloc = Allocation.create!(person_id: params[:owner_id], task_id: duplicate.id)
         render :json => {
