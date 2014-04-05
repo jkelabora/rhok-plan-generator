@@ -10,8 +10,9 @@ RhokPlanGenerator::Application.routes.draw do
   resources :home, only: [:index]
   get "home/visualisation", to: "home#visualisation", as: 'home_visualisation'
 
-  resources :tasks, only: [:create, :destroy]
-  post "tasks/:id/update", to: "tasks#update" # explicit to allow update using post
+  resources :tasks, only: [:create]
+  delete "tasks/:guid",        to: "tasks#destroy"
+  post   "tasks/:guid/update", to: "tasks#update" # explicit to allow update using post
 
   resources :plans, only: [:create]
   get  "plans/:public_guid/show", to: "plans#show", as: 'plan'

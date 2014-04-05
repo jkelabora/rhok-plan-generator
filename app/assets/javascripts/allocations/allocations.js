@@ -62,7 +62,7 @@ if ($("#ractive-allocations").length) {
     },
 
     updateTask: function(task, index, self) {
-      var update_task_endpoint = '/tasks/' + task.id + '/update';
+      var update_task_endpoint = '/tasks/' + task.guid + '/update';
       var selector = 'table.allocations td.content.' + index;
       $(selector).editable(update_task_endpoint, {
         indicator : 'Saving...',
@@ -92,7 +92,7 @@ if ($("#ractive-allocations").length) {
     removeTask: function(task, index, self) {
       $.ajax({
         type: "POST",
-        url: "/tasks/" + task.id,
+        url: "/tasks/" + task.guid,
         data: { "_method": "delete" },
         success: function() {
           var tasks = self.get("selectedEvent.custom_tasks");
@@ -106,7 +106,7 @@ if ($("#ractive-allocations").length) {
       $.ajax({
         type: "POST",
         url: "/tasks/",
-        data: { task_id: task.id, owner_id: self.get("owner.id") },
+        data: { original_guid: task.guid, owner_id: self.get("owner.id") },
         success: function(data) {
           self.get("selectedEvent.custom_tasks").push(data);
           self.update();

@@ -3,8 +3,8 @@ class TasksController < ApplicationController
   respond_to :json
 
   def create
-    if params[:task_id] # via moveTask
-      original = Task.find_by_id params[:task_id]
+    if params[:original_guid] # via moveTask
+      original = Task.find_by_guid params[:original_guid]
       duplicate = original.dup
       duplicate.custom = true
       if duplicate.save
@@ -12,7 +12,7 @@ class TasksController < ApplicationController
         render :json => {
           created_at: duplicate.created_at,
           custom: true,
-          id: duplicate.id,
+          guid: duplicate.guid,
           name: duplicate.name,
           updated_at: duplicate.updated_at
         }
@@ -26,7 +26,7 @@ class TasksController < ApplicationController
         render :json => {
           created_at: task.created_at,
           custom: true,
-          id: task.id,
+          guid: task.guid,
           name: task.name,
           updated_at: task.updated_at
         }
@@ -38,8 +38,8 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    task = Task.find(params[:id])
-    allocs = Allocation.where(task_id: params[:id])
+    task = Task.find_by_guid(params[:guid])
+    allocs = Allocation.where(task_id: task.id)
     if task.delete && allocs.destroy_all
       render :json => {}
     else
@@ -48,7 +48,7 @@ class TasksController < ApplicationController
   end
 
   def update
-    task = Task.find(params[:id])
+    task = Task.find_by_guid(params[:guid])
     task.name = params[:name]
     if task.save
       render :json => params[:name]
