@@ -66,6 +66,7 @@ class Signup
       tasks.each do |original|
         duplicate = original.dup
         duplicate.custom = true
+        duplicate.parent_task = original
 
         if duplicate.save
           Allocation.create!(person_id: @person.id, task_id: duplicate.id)
