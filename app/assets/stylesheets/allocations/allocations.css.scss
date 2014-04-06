@@ -5,20 +5,7 @@
     display: inline;
   }
 
-  $events_background: rgb(90,154,168);
-
-  section.meta {
-    background-color: $events_background;
-    // padding: 20px 0;
-    // margin-bottom: 30px;
-    .row {
-      // padding: 20px 0;
-    }
-  }
-
-
-  .plan-name,
-  .plan-postcode,
+  .plan-editable,
   .plan-create,
   .below-event-name {
     text-align: center;
