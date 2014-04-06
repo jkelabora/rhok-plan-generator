@@ -44,6 +44,7 @@ class Plan < ActiveRecord::Base
           tasks = person.tasks.where(event_id: ev)
           tasks.each do |t|
             dup_task = t.dup
+            dup_task.custom = true
             dup_task.save
             Allocation.create!(person_id: anon.id, task_id: dup_task.id)
           end
