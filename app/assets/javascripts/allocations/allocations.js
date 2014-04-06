@@ -50,12 +50,12 @@ if ($("#ractive-allocations").length) {
       });
 
       var update_plan_endpoint = '/plans/private/' + self.get("plan.private_guid") + '/update';
-      $('.plan-name .edit').editable(update_plan_endpoint, {
+      $('.plan-editable .edit-name').editable(update_plan_endpoint, {
         indicator : 'Saving...',
         name      : 'name'
       });
 
-      $('.plan-postcode .edit').editable(update_plan_endpoint, {
+      $('.plan-editable .edit-postcode').editable(update_plan_endpoint, {
         indicator : 'Saving...',
         name      : 'postcode'
       });
