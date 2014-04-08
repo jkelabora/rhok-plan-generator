@@ -7,8 +7,8 @@
 </script>
 
 <section class='headline'>
-  <div class="row">
-    <div class="small-12 large-12 small-centered large-centered columns submit">
+  <div class="row show-for-medium-up">
+    <div class="large-12 large-centered columns submit">
       <%= link_to plan_download_url(:private_guid => @plan.private_guid, :format => :pdf), method: :get, class: 'button' do %>
         <i class="fi-download"></i>Download this plan as a PDF
       <% end %>
@@ -16,6 +16,19 @@
       <span class='button mailto-button'>
         <% link = "mailto:?Subject=Link%20to%20the%20plan%20%27#{@plan.escaped_name}%27&Body=#{plan_edit_url(:private_guid => @plan.private_guid)}" %>
         <i class="fi-mail"></i><a href=<%= link %> target="_top">Email a link to this page</a>
+      </span>
+
+    </div>
+  </div>
+  <div class="row show-for-medium-down">
+    <div class="small-12 small-centered columns submit">
+      <%= link_to plan_download_url(:private_guid => @plan.private_guid, :format => :pdf), method: :get, class: 'button' do %>
+        <i class="fi-page-pdf"></i>
+      <% end %>
+
+      <span class='button mailto-button'>
+        <% link = "mailto:?Subject=Link%20to%20the%20plan%20%27#{@plan.escaped_name}%27&Body=#{plan_edit_url(:private_guid => @plan.private_guid)}" %>
+        <a href=<%= link %> target="_top"><i class="fi-mail"></i></a>
       </span>
 
     </div>

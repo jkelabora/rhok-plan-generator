@@ -137,10 +137,10 @@ span.mailto-button {
   a { color: white }
 }
 
-// http://foundation.zurb.com/forum/posts/1567-hide-by-screen-size-issues
-@media (max-width: 768px) {
-  span.mailto-button {
-    display: none;
+div.row.show-for-medium-down {
+  i { font-size: 40px; }
+  .button {
+    padding: 8px, 4px, 8px, 4px;
   }
 }
 
