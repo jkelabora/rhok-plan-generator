@@ -18,6 +18,12 @@ class PlanDecorator < Draper::Decorator
     tasks.flatten.uniq
   end
 
+  def suggested_tasks_for(event)
+    suggested_tasks_already_on_plan = tasks_for(event).collect{|t| t.parent_task }.compact
+    event_tasks = event.tasks.where(custom: false)
+    event_tasks - suggested_tasks_already_on_plan
+  end
+
   def people_for(task)
     task.people.collect(&:name).join(', ')
   end

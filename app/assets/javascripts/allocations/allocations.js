@@ -42,7 +42,7 @@ if ($("#ractive-allocations").length) {
       });
 
       self.on("move-task", function(event) {
-        self.moveTask(event.context, self);
+        self.moveTask(event.context, event.index.i, self);
       });
 
       self.on("update-task", function(event) {
@@ -102,13 +102,15 @@ if ($("#ractive-allocations").length) {
       });
     },
 
-    moveTask: function(task, self) {
+    moveTask: function(task, index, self) {
       $.ajax({
         type: "POST",
         url: "/tasks/",
         data: { original_guid: task.guid, owner_id: self.get("owner.id") },
         success: function(data) {
           self.get("selectedEvent.custom_tasks").push(data);
+          var suggested = self.get("selectedEvent.public_tasks");
+          suggested.splice(index, 1);
           self.update();
         }
       });

@@ -104,7 +104,7 @@
         <h3 class="list-title">SUGGESTED LIST ({{selectedEvent.public_tasks.length}} item{{plural(selectedEvent.public_tasks.length)}})</h3>
         <table class="allocations">
           <tbody>
-            {{#selectedEvent.public_tasks}}
+            {{#selectedEvent.public_tasks:i}}
             <tr on-click="move-task">
               <td class="move-task has-tip tip-left" data-tooltip data-options="disable-for-touch:true" title="Add this task to your list"><i class="fi-plus"></i></td>
               <td class="suggested content">{{name}}</td>

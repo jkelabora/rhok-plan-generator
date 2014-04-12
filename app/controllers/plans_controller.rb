@@ -43,7 +43,7 @@ class PlansController < ApplicationController
       plan[:events] << {
         event: event,
         custom_tasks: @plan.decorate.tasks_for(event),
-        public_tasks: event.tasks.where(custom: false)
+        public_tasks: @plan.decorate.suggested_tasks_for(event)
       }
     end
 
@@ -52,7 +52,7 @@ class PlansController < ApplicationController
       plan[:kits] << {
         event: event,
         custom_tasks: @plan.decorate.tasks_for(event),
-        public_tasks: event.tasks.where(custom: false)
+        public_tasks: @plan.decorate.suggested_tasks_for(event)
       }
     end
 
