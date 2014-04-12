@@ -2,6 +2,10 @@ class PlanDecorator < Draper::Decorator
 
   delegate_all
 
+  def display_name
+    "Fire Plan - #{object.name}"
+  end
+
   def events
     events = []
     object.people.each do |person|

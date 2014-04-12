@@ -20,6 +20,14 @@ class PlansController < ApplicationController
 
   def download
     @plan = Plan.find_by_private_guid(params[:private_guid]).decorate
+
+    prawnto :filename => "#{@plan.display_name}.pdf",
+            :prawn    => { :info => {
+                           :Title => "#{@plan.display_name}",
+                           :Creator => "whatstheplan.net",
+                           :CreationDate => Time.now }
+                         }
+
     respond_to do |format|
       format.pdf { render :layout => false}
     end

@@ -2,7 +2,7 @@ pdf.repeat(:all) do
     pdf.draw_text "Generated at: #{Time.now}", :at => [pdf.bounds.right - 180, -8], :style => :italic, :justify => :right, :size => 10
 end
 
-pdf.text "Fire Plan - #{@plan.name}", :size => 30, :style => :bold
+pdf.text "#{@plan.display_name}", :size => 30, :style => :bold
 pdf.text "Postcode  #{@plan.postcode}", :size => 20, :style => :bold
 
 pdf.move_down(10)
@@ -36,9 +36,9 @@ end
 pdf.text disclaimer, :size => 10, :style => :italic
 
 pdf.repeat(:each) do
-    pdf.number_pages "Page <page> of <total>#{' '*15}Fire Plan - #{@plan.name}", :at => pdf.bounds.bottom_left, :style => :italic, :size => 10
+    pdf.number_pages "Page <page> of <total>#{' '*15}#{@plan.display_name}", :at => pdf.bounds.bottom_left, :style => :italic, :size => 10
 end
 # work-around for final page number not appearing..
 pages = pdf.page_count
 pdf.go_to_page(pages)
-pdf.draw_text "Page #{pages} of #{pages}#{' '*15}Fire Plan - #{@plan.name}", :at => [pdf.bounds.left - 0, -8], :style => :italic, :size => 10
+pdf.draw_text "Page #{pages} of #{pages}#{' '*15}#{@plan.display_name}", :at => [pdf.bounds.left - 0, -8], :style => :italic, :size => 10
