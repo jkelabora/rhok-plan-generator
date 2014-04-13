@@ -101,6 +101,7 @@
       </div>
 
       <div class="small-12 large-6 columns">
+        {{#selectedEvent.public_tasks.length}}
         <h3 class="list-title">SUGGESTED LIST ({{selectedEvent.public_tasks.length}} item{{plural(selectedEvent.public_tasks.length)}})</h3>
         <table class="allocations">
           <tbody>
@@ -112,6 +113,7 @@
             {{/selectedEvent.public_tasks}}
           </tbody>
         </table>
+        {{/selectedEvent.public_tasks.length}}
       </div>
 
     </div>
