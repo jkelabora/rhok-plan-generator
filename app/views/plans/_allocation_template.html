@@ -71,8 +71,8 @@
   </div>
   <div class="introduction">
     <div class="row">
-      <div class="small-12 large-6 columns">
-        <h3 class="list-title">YOUR LIST ({{selectedEvent.custom_tasks.length}} item{{plural(selectedEvent.custom_tasks.length)}})</h3>
+      <div class="small-12 columns">
+        <h3 class="list-title">You have {{selectedEvent.custom_tasks.length}} task{{plural(selectedEvent.custom_tasks.length)}} (double-click to edit)</h3>
         <table class="allocations">
           <tbody>
             {{#selectedEvent.custom_tasks:i}}
@@ -99,24 +99,25 @@
           </tbody>
         </table>
       </div>
+    </div>
 
-      <div class="small-12 large-6 columns">
+    <div class="row">
+
+      <div class="small-10 small-centered columns">
         {{#selectedEvent.public_tasks.length}}
-        <h3 class="list-title">SUGGESTED LIST ({{selectedEvent.public_tasks.length}} item{{plural(selectedEvent.public_tasks.length)}})</h3>
-        <table class="allocations">
-          <tbody>
+        <h3 class="list-title">{{selectedEvent.public_tasks.length}} Suggested Task{{plural(selectedEvent.public_tasks.length)}} (click to add to your list)</h3>
+          <ul>
             {{#selectedEvent.public_tasks:i}}
-            <tr on-click="move-task">
-              <td class="move-task" title="Add this task to your list"><i class="fi-plus"></i></td>
-              <td class="suggested content">{{name}}</td>
-            </tr>
+            <li class="move-task" on-click="move-task">
+              <i class="fi-arrow-up"></i>
+              <span class="suggested">{{name}}</span>
+            </li>
             {{/selectedEvent.public_tasks}}
-          </tbody>
-        </table>
+          </ul>
         {{/selectedEvent.public_tasks.length}}
       </div>
-
     </div>
+
   </div>
 </section>
 

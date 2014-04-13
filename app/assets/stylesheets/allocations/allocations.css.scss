@@ -82,23 +82,6 @@
     background: #5a9aa8;
   }
 
-  td.move-task {
-    background: #7CAA7A;
-  }
-
-  td.suggested {
-    padding: .6em;
-    word-break: break-word;
-  }
-
-  td.allocation-signature {
-    background: rgb(91,154,168);
-    text-align: center;
-    h4 {
-      color: rgb(147,185,194);
-    }
-  }
-
   td.allocation-delete {
     text-align: center;
     background: rgb(205,205,205);
@@ -107,6 +90,15 @@
   .add-task {
     margin: 0 !important;
   }
+
+  li.move-task {
+    &:hover { color: #5a9aa8; }
+    i {
+      color: #5a9aa8;
+      padding-right: 10px;
+    }
+  }
+
 }
 
 .edit-name, .edit-postcode {
