@@ -16,7 +16,13 @@
   }
 
   .list-title {
+    // margin-bottom: 20px;
+    color: #222;
+  }
+
+  .list-subtitle {
     margin-bottom: 20px;
+    color: #222;
   }
 
   .events {
@@ -60,7 +66,7 @@
     h1 {
       color: #222;
     }
-    padding: 30px 50px;
+    padding: 30px 30px;
   }
 
   table.allocations {
@@ -103,6 +109,10 @@
 
 .edit-name, .edit-postcode {
   border-bottom: 1px dotted white;
+}
+
+div.row.postcode {
+  padding-bottom: 10px;
 }
 
 // http://jon.haslett.id.au/post/37391562488/fixing-the-hover-problem-on-touch-screens-with-feature

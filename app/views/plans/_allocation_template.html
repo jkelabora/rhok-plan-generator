@@ -18,7 +18,7 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row postcode">
     <div class="large-12 columns plan-editable">
       <h2>Postcode: <span class="edit-postcode">{{plan.postcode}}</span></h2>
     </div>
@@ -72,7 +72,9 @@
   <div class="introduction">
     <div class="row">
       <div class="small-12 columns">
-        <h3 class="list-title">You have {{selectedEvent.custom_tasks.length}} task{{plural(selectedEvent.custom_tasks.length)}} (double-click/tap to edit)</h3>
+        <h3 class="list-title">You have {{selectedEvent.custom_tasks.length}} task{{plural(selectedEvent.custom_tasks.length)}}</h3>
+        <h4 class="show-for-touch list-subtitle">Double-tap to edit</h4>
+        <h4 class="hide-for-touch list-subtitle">Double-click to edit</h4>
         <table class="allocations">
           <tbody>
             {{#selectedEvent.custom_tasks:i}}
@@ -102,10 +104,11 @@
     </div>
 
     <div class="row">
-
+      {{#selectedEvent.public_tasks.length}}
       <div class="small-12 large-10 large-centered columns">
-        {{#selectedEvent.public_tasks.length}}
-        <h3 class="list-title">{{selectedEvent.public_tasks.length}} Suggested Task{{plural(selectedEvent.public_tasks.length)}} (click/tap to add to your list)</h3>
+        <h3 class="list-title">{{selectedEvent.public_tasks.length}} suggested task{{plural(selectedEvent.public_tasks.length)}}</h3>
+        <h4 class="show-for-touch list-subtitle">Tap to add</h4>
+        <h4 class="hide-for-touch list-subtitle">Click to add</h4>
           <ul>
             {{#selectedEvent.public_tasks:i}}
             <li class="move-task" on-click="move-task">

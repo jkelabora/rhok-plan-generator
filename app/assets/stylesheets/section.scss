@@ -1,12 +1,12 @@
 @import 'variables';
 
-section { 
+section {
   .introduction {
-    h3, p {
+    h2, h3, h4, p {
       text-align: center;
+      color: $title-colour;
     }
     h3 {
-      color: $title-colour;
       margin-top: 15px;
     }
   }
