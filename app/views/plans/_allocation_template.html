@@ -79,14 +79,12 @@
           <tbody>
             {{#selectedEvent.custom_tasks:i}}
             <tr>
-              <td class="bullet"></td>
               <td on-click="update-task" class="content {{i}}">{{name}}</td>
               <td on-click="remove-task" class="allocation-delete"><i class="fi-x"></i></td>
             </tr>
             {{/selectedEvent.custom_tasks}}
 
             <tr>
-              <td class="bullet"></td>
               <td colspan="2">
                 <div class="row collapse">
                   <div class="small-10 columns">
