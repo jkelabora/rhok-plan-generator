@@ -25,6 +25,7 @@ class Signup
   validates :plan_name, presence: true
   validates :postcode, presence: true
   validates_numericality_of :postcode
+  validates_length_of :postcode, is: 4
 
   # Forms are never themselves persisted
   def persisted?

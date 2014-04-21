@@ -70,13 +70,24 @@ class PlansController < ApplicationController
 
   def update
     @plan = Plan.find_by_private_guid(params[:private_guid])
-    if params[:name] && @plan.update_attribute(:name, params[:name])
-      render :json => params[:name]
-    elsif params[:postcode] && (@plan.postcode = params[:postcode]; @plan.save)
+    if params[:name]
+      @plan.name = params[:name]
+      if @plan.save
+        render :json => params[:name]
+      else
+        @plan.reload
+        render :json => @plan.name # re-render original
+      end
+    end
+    if params[:postcode]
+      @plan.postcode = params[:postcode]
+      if @plan.save
       # todo: altering the postcode of a copied plan will mean the traversal in the visualisation will break..
-      render :json => params[:postcode]
-    else
-      render :status => :unprocessable_entity, :json => {}
+        render :json => params[:postcode]
+      else
+        @plan.reload
+        render :json => @plan.postcode # re-render original
+      end
     end
   end
 

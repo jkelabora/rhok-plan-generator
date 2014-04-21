@@ -4,6 +4,7 @@ class Plan < ActiveRecord::Base
   validates_uniqueness_of :private_guid
   validates_uniqueness_of :public_guid, if: Proc.new { |p| p.is_public? }
   validates_numericality_of :postcode
+  validates_length_of :postcode, is: 4
 
   has_many :people
 
