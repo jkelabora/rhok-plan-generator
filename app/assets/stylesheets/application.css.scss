@@ -24,8 +24,10 @@
 ul { list-style: none; }
 html, body { height: 100%; }
 
-// fix for main title getting cropped on iphone
-nav.top-bar .name h1 a { width: auto; }
+nav.top-bar {
+  .name h1 a { width: auto; } // fix for main title getting cropped on iphone
+  img { height: 45px; background: black; } // background: white; }
+}
 
 section.headline {
   background: rgb(91,154,168);
