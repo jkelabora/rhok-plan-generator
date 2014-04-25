@@ -30,9 +30,7 @@ class HomeController < ApplicationController
                 postcode_node: true,
                 size: Plan.for_postcode(postcode).count,
                 children:
-                  Plan.top_level.for_postcode(postcode).public_plans.collect do |p|
-                    generate_decendents(p)
-                  end + [{ size: Plan.top_level.for_postcode(postcode).private_plans.count, name: "#{Plan.top_level.for_postcode(postcode).private_plans.count} private plans!" }]
+                  postcode_level_nodes(postcode)
               }
             end
         }.to_json
@@ -40,19 +38,37 @@ class HomeController < ApplicationController
 
       private
 
-      def generate_decendents node
-        {
-          name: node.display_name,
-          size: 4,
-        }.merge(children(node))
+      def postcode_level_nodes postcode
+        top_level_plans = Plan.top_level.for_postcode(postcode)
+        public_and_private_nodes(top_level_plans)
       end
 
-      def children node
-        { children:
-          node.child_plans.collect do |c|
-            generate_decendents(c) # recurse
-          end + [{ size: 9, name: 'view!', guid: node.public_guid, view_node: true }]
-        }
+      def public_and_private_nodes plans
+        public_nodes(plans) + private_node(plans)
+      end
+
+      def public_nodes plans
+        plans.select{|p| p.is_public? }.collect do |p|
+          {
+            name: p.display_name,
+            size: 4,
+            children:
+              view_node(p) + public_and_private_nodes(p.child_plans) #recurse
+          }
+        end
+      end
+
+      def private_node plans
+        plan_count = plans.select{|p| !p.is_public? }.count
+        return [] unless plan_count > 0
+        [{
+          name: "#{plan_count} private plan#{'s' if plan_count > 1}",
+          size: plan_count
+        }]
+      end
+
+      def view_node plan
+        [{ size: 9, name: 'view!', guid: plan.public_guid, view_node: true }]
       end
 
     end
