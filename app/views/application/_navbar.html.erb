@@ -6,10 +6,14 @@
       </li>
     </ul>
 
-    <section class="top-bar-section">
+    <section class="top-bar-section hide-for-mobile show-for-landscape">
       <ul class="right">
-        <!-- <li class="active"><%= image_tag('branding/brw-square-logo.svg') %></li> -->
-        <li class="active"><%= image_tag('branding/wca-logo.svg') %></li>
+        <li class="active">
+          <% txt = "An initiative of the Warrandyte Community Association" %>
+          <a href="http://www.warrandyte.org.au">
+            <%= image_tag('branding/wca-logo-re-done.svg', alt: txt, title: txt) %>
+          </a>
+        </li>
       </ul>
     </section>
   </nav>
