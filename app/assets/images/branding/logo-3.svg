@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="328px" height="216px" viewBox="0 0 328 216" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <title>logo 1</title>
+    <description>Created with Sketch (http://www.bohemiancoding.com/sketch)</description>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <text id="THE-PLAN-" fill="#4B8490" sketch:type="MSTextLayer" font-family="Arial Black" font-size="48" font-weight="686">
+            <tspan x="282" y="-24">THE PLAN</tspan>
+            <tspan x="551.320312" y="-24" font-family="Helvetica" font-size="12" font-weight="normal"> </tspan>
+        </text>
+        <text id="WHAT’S-" fill="#DDDDDD" sketch:type="MSTextLayer" font-family="Arial Black" font-size="48" font-weight="686">
+            <tspan x="85" y="-25">WHAT’S</tspan>
+            <tspan x="289.679688" y="-25" font-family="Helvetica" font-size="12" font-weight="normal"> </tspan>
+        </text>
+        <path d="M313.922852,131.765625 C313.922852,131.765625 314.416013,75.2578125 314.416016,45.9863281 C314.416016,16.7148438 278.259766,10.1289062 278.259766,10.1289062 C278.259766,10.1289062 71.4511719,8.46484364 44.8828125,10.7148438 C35.6410331,11.4975042 28.8995842,15.0447078 24.0372365,19.3384659 C14.9212592,27.3884465 12.4101562,38.0625 12.4101562,38.0625 L12.4101562,129.619141 C12.4101597,156.210945 40.578125,164.417969 40.578125,164.417969 L279.645647,164.417969 L313.03651,197.808832 L313.922852,131.765625 Z" id="Path-1" stroke="#4B838F" stroke-width="11" fill="#FFFFFF" sketch:type="MSShapeGroup"></path>
+        <text id="WHAT’S" stroke="#4B8490" stroke-width="3" fill="#FFFFFF" sketch:type="MSTextLayer" font-family="Verdana" font-size="61" font-weight="bold">
+            <tspan x="28" y="83">WHAT’S</tspan>
+        </text>
+        <text id="THE-PLAN" sketch:type="MSTextLayer" font-family="Verdana" font-size="49" font-weight="bold">
+            <tspan x="28" y="138" fill="#679EAB">THE</tspan>
+            <tspan x="135.905273" y="138" fill="#4B8490"> </tspan>
+            <tspan x="152.65332" y="138" fill="#679EAB">PLAN</tspan>
+        </text>
+    </g>
+</svg>

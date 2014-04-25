@@ -27,9 +27,9 @@ html, body { height: 100%; }
 nav.top-bar {
   height: 80px;
   line-height: 80px;
-  .name h1 a { width: auto; } // fix for main title getting cropped on iphone
-  img { width: 144px; padding-top: 5px }
-  .title-area { padding-top: 18px; }
+  .logo  img { width: 117px; padding: 5px 0 0 5px }
+  .brand img { width: 115px; padding-top: 20px }
+  // .title-area { padding-top: 18px; }
 }
 
 section.headline {
