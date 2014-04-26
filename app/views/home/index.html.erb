@@ -18,34 +18,21 @@
   </div>
   <div class="row">
     <div class='large-12 columns description'>
-      <p>If you'd rather not rush, below is a representation of all the plans in the system grouped by postcode. Have a look around and find template plans for your area and see which of those have been used by people as a starting point for their own plan. If you choose to 'view' the contents of a template, and you like what you see, you can copy it for yourself, customise it and download it.</p> 
+      <p>If you'd rather not rush, below is a representation of all the plans in the system grouped by postcode. Have a look around and find template plans for your area and see which of those have been used by people as a starting point for their own plan. If you choose to 'view' the contents of a template, and you like what you see, you can copy it for yourself, customise it and download it.</p>
     </div>
   </div>
 </section>
 
 <section class='main-page'>
 
-  <div class='row'>
-    <div class='small-12 columns'>
-      <div id="chart"></div>
-
-      <%= javascript_include_tag "application.js" %>
-      <%= javascript_include_tag "d3-v3-min.js" %>
-      <%= javascript_include_tag "home/visualisation.js" %>
-
-      <!-- <%= render 'collapsible_tree_visualisation' %> -->
-      <!-- <%= render 'tree_visualisation' %> -->
-
-      <!--  <%= link_to_function 'Force Directed', 'force_directed()' %> -->
-      <!-- <span class='link-spacer'/>|</span> -->
-      <!-- <%= link_to_function 'Force Directed', 'force_directed()' %> -->
-      <!-- <span class='link-spacer'/>|</span> -->
-      <!-- <%= link_to_function 'Collapsible Tree', 'collapsible_tree()' %> -->
-      <!-- <span class='link-spacer'/>|</span> -->
-      <!-- <%= link_to_function '(Static Tree)', 'static_tree()' %> -->
-
-    </div>
+  <div class='row show-for-small'>
+    <%= render 'summary_view' %>
   </div>
+
+  <div class='row hide-for-small'>
+    <%= render 'visualisation' %>
+  </div>
+
 </section>
 
 <section class='headline'>
