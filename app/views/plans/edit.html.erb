@@ -14,8 +14,7 @@
       <% end %>
 
       <span class='button mailto-button'>
-        <% link = "mailto:?Subject=Link%20to%20the%20plan%20%27#{@plan.escaped_name}%27&Body=#{plan_edit_url(:private_guid => @plan.private_guid)}" %>
-        <i class="fi-mail"></i><a href=<%= link %> target="_top">Email a link to this page</a>
+        <i class="fi-mail"></i><a href=<%= share_mailto(@plan) %> target="_top">Email a link to this page</a>
       </span>
 
     </div>
