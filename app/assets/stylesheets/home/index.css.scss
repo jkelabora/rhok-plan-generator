@@ -65,10 +65,6 @@ stroke: #000000;
     }
   }
 
-  tr.active {
-    background: #4b8490;
-  }
-
   .major {
     text-align: center;
     font-size: 40px;
@@ -76,6 +72,7 @@ stroke: #000000;
     padding: 10px 20px;
   }
   .minor {
+    background: #4b8490;
     width: 100%;
     padding: 10px 40px 10px 20px;
     a {
