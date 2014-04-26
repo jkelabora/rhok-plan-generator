@@ -1,14 +1,29 @@
-<div class="section-container auto" data-section>
-<!--   <section class="active">
-    <p class="title" data-section-title><a href="#panel1">Section 1</a></p>
-    <div class="content" data-section-content>
-      <p>Content of section 1.</p>
-    </div>
-  </section>
-  <section>
-    <p class="title" data-section-title><a href="#panel2">Section 2</a></p>
-    <div class="content" data-section-content>
-      <p>Content of section 2.</p>
-    </div>
-  </section>
- --></div>
+<div class="row">
+  <div class="small-10 small-centered columns">
+    <table class="summary">
+      <tr class="">
+        <td class="major">
+          <%= @plans_across_postcodes %>
+        </td>
+      </tr>
+      <tr class="">
+        <td class="major">
+          <%= @private_plan_count %> are private plans
+        </td>
+      </tr>
+      <tr onclick="togglePublicPlans()">
+        <td class="major">
+          <%= @public_plans.count == 1 ? "1 public template plan" : "#{@public_plans.count} are public template plans" %>
+        </td>
+      </tr>
+      <% @public_plans.each do |plan| %>
+        <tr class="public-plan-content">
+          <td class="minor">
+            <%= link_to plan.name, plan_url(plan.public_guid) %>
+          </td>
+        </tr>
+      <% end %>
+      </tr>
+    </table>
+  </div>
+</div>

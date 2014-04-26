@@ -3,10 +3,11 @@ class HomeController < ApplicationController
   respond_to :json
 
   def index
-    @people_count = Person.count
-    @task_count = Task.count
-    @allocation_count = Allocation.count
     @blank_plan = Plan.new
+
+    @plans_across_postcodes = SummaryInformationPresenter.plans_across_postcodes
+    @private_plan_count = Plan.private_plans.count
+    @public_plans = Plan.public_plans
   end
 
   def visualisation
@@ -15,13 +16,21 @@ class HomeController < ApplicationController
 
   private
 
+  class SummaryInformationPresenter
+    class << self
+      def plans_across_postcodes
+        "#{Plan.count} plans across #{Plan.uniq.pluck(:postcode).count} postcodes!"
+      end
+    end
+  end
+
   class VisualisationPresenter
 
     class << self
 
       def present
         {
-          name: "#{Plan.count} plans across #{Plan.uniq.pluck(:postcode).count} postcodes!",
+          name: SummaryInformationPresenter.plans_across_postcodes,
           root_node: true,
           size: Plan.count,
           children:

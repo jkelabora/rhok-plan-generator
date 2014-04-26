@@ -49,3 +49,40 @@ stroke: #000000;
     fill: #176E9B;
     font: 20px sans-serif; */
   }
+
+
+.summary {
+  margin-top: 20px;
+  width: 100%;
+  border-collapse: collapse;
+  tr:nth-of-type(even),
+  tr {
+    background: #6ba4b1;
+    border: 1px solid #5a9aa8;
+    cursor: pointer;
+    &:hover {
+      background: rgb(123,174,185);
+    }
+  }
+
+  tr.active {
+    background: #4b8490;
+  }
+
+  .major {
+    text-align: center;
+    font-size: 40px;
+    color: white;
+    padding: 10px 20px;
+  }
+  .minor {
+    width: 100%;
+    padding: 10px 40px 10px 20px;
+    a {
+      color: white;
+      line-height: 2;
+      font-weight: bold;
+    }
+  }
+}
+

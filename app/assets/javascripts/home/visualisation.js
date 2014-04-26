@@ -166,8 +166,17 @@ function force_directed(chart_width, chart_height) {
 
 }
 
+// this should be moved from here.. related to home/_summary_view.html.erb
+function togglePublicPlans() {
+  $('tr.public-plan-content').toggle();
+}
+
+
 $(function($) { // document ready
   var chart_width  = $('div#chart').width(),
       chart_height = 800;
   force_directed(chart_width, chart_height);
+
+  togglePublicPlans(); // should be moved as well.. collapses home/_summary_view.html.erb content on load
+
 });
