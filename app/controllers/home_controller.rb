@@ -5,7 +5,7 @@ class HomeController < ApplicationController
   def index
     @blank_plan = Plan.new
 
-    @plans_across_postcodes = SummaryInformationPresenter.plans_across_postcodes
+    @postcode_count = Plan.uniq.pluck(:postcode).count
     @private_plan_count = Plan.private_plans.count
     @public_plans = Plan.public_plans
   end

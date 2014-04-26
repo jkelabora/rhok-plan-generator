@@ -67,9 +67,10 @@ stroke: #000000;
 
   .major {
     text-align: center;
-    font-size: 40px;
-    color: white;
+    font-size: 30px;
+    color: rgb(221, 221, 221);
     padding: 10px 20px;
+    span.emphasise-number {font-size: 40px; color: white}
   }
   .minor {
     background: #4b8490;
