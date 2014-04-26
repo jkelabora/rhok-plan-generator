@@ -20,6 +20,7 @@
 //= require jquery.scrollTo
 //= require custom-modernizr
 //= require Ractive-legacy
+//= require ga
 //= require allocations/allocations
 //= require signups/new
 
