@@ -11,7 +11,8 @@ div.questions {
   margin-bottom: 15px;
   height: 90px;
   &.highlight {
-    background: rgb(221,221,221);
+    background: rgb(75, 132, 144);
+    label { color: white; }
   }
 }
 
