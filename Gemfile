@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.16'
 gem 'mysql2'
 
+gem 'therubyracer'
+
 gem 'aws-sdk'
 gem 'twilio-ruby'
 gem 'draper', '~> 1.0'
