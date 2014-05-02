@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="160px" height="109px" viewBox="0 0 160 109" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <title>WHATSTHEPLANLOGO.1 1</title>
+    <description>Created with Sketch (http://www.bohemiancoding.com/sketch)</description>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <path d="M149,66.691018 C149,73.6121676 141.954851,79.2230882 133.265442,79.2230882 L124.333457,79.2230882 L140.717066,97 L94.3053639,79.2230882 L23.7345584,79.2230882 C15.0438373,79.2230882 8,73.6121676 8,66.691018 L8,24.5330516 C8,17.6128835 15.0438373,12 23.7345584,12 L133.265442,12 C141.954851,12 149,17.6128835 149,24.5330516 L149,66.691018 Z" id="Fill-319-copy-3" stroke="#4B838F" stroke-width="7" fill="#FFFFFF" sketch:type="MSShapeGroup"></path>
+        <text id="WHAT’S-" fill="#4B838F" sketch:type="MSTextLayer" font-family="Arial Black" font-size="28.4956346" font-weight="686">
+            <tspan x="18" y="43">WHAT’S</tspan>
+            <tspan x="141.471807" y="43" fill="#DDDDDD"> </tspan>
+        </text>
+        <text id="THE-PLAN" sketch:type="MSTextLayer" font-family="Arial Black" font-size="22.3009314" font-weight="686">
+            <tspan x="17" y="68" fill="#4B838F">THE</tspan>
+            <tspan x="67.7868867" y="68" fill="#3C707C"> </tspan>
+            <tspan x="75.2241602" y="68" fill="#4B838F">PLAN</tspan>
+        </text>
+    </g>
+</svg>
